@@ -34,6 +34,7 @@ html :where(.editor-styles-wrapper) p {
 		.review-header-desc {
 			margin-top: 25px;
 			display: flex;
+			flex-wrap: wrap;
 			column-gap: 40px;
 			.desc {
 				display: flex;
@@ -90,15 +91,19 @@ html :where(.editor-styles-wrapper) p {
 				}
 			}
 		}
-		.review-footer-button span {
-			background: #ed6f57;
-			color: #fff;
-			padding: 12px 50px;
-			margin: 20px 20px 0 0;
-			cursor: pointer;
-			text-align: center;
-			font-size: black;
-			text-decoration: none;
+		.review-footer-button {
+			display: flex;
+			align-items: center;
+			span {
+				background: #ed6f57;
+				color: #fff;
+				padding: 12px 50px;
+				margin: 20px 20px 0 0;
+				cursor: pointer;
+				text-align: center;
+				font-size: black;
+				text-decoration: none;
+			}
 		}
 		.review-left {
 			display: grid;
@@ -126,6 +131,7 @@ html :where(.editor-styles-wrapper) p {
 
 	.bBlocksProductReview {
 		display: flex;
+		flex-wrap: wrap;
 		.stars {
 			display: flex;
 			align-items: center;
