@@ -16,12 +16,108 @@
       "type": "string",
       "default": ""
     },
+    "product": {
+      "type": "object",
+      "default": { "desktop": 2 }
+    },
+    "columns": {
+      "type": "object",
+      "default": { "desktop": 2 }
+    },
+    "ImageStyle": {
+      "type": "object",
+      "default": { "areaWidth": "25%", "size": "full" }
+    },
+    "productDetails": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "default": "Product Name"
+        },
+        "price": {
+          "type": "number",
+          "default": 49.99
+        },
+        "salePrice": {
+          "type": "number",
+          "default": 39.99
+        },
+        "image": {
+          "type": "string",
+          "default": "product-image.jpg"
+        },
+        "description": {
+          "type": "string",
+          "default": "Product description goes here."
+        }
+      }
+    },
+    "productFeatures": {
+      "type": "object",
+      "title": {
+        "type": "string",
+        "default": "Feature Title"
+      },
+      "rating": {
+        "type": "number",
+        "default": 4.9
+      },
+      "description": {
+        "type": "string",
+        "default": "Feature description"
+      }
+    },
+    "labels": {
+      "Pros": "Pros",
+      "Cons": "Cons",
+      "Buttons": "Button"
+    },
 
-
-
-
-
-
+    "style": {
+      "type": "number",
+      "default": "10px"
+    },
+    "mainHeading": {
+      "type": "string",
+      "default": "Main Heading"
+    },
+    "subHeading": {
+      "type": "string",
+      "default": "Sub Heading"
+    },
+    "customFontSize": {
+      "type": "number",
+      "default": "35px"
+    },
+    "allTextColor": {
+      "type": "string",
+      "default": "#7a7a7a"
+    },
+    "btnColor": {
+      "type": "string",
+      "default": "#7a7a7a"
+    },
+    "btnTextColor": {
+      "type": "string",
+      "default": "#7a7a7a"
+    },
+    "borderColor": {
+      "type": "string",
+      "default": "#7a7a7a"
+    },
+    "posIconColor": {
+      "type": "string",
+      "default": "#7a7a7a"
+    },
+    "consIconColor": {
+      "type": "string",
+      "default": "#7a7a7a"
+    },
+    "bgColor": {
+      "type": "string",
+      "default": "#7a7a7a"
+    },
     "ratingScale": {
       "type": "number",
       "default": 5
