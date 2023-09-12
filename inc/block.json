@@ -98,6 +98,49 @@
       "type": "string",
       "default": "default"
     },
+    "background": {},
+    "padding": {},
+    "border": {},
+    "shadow": {},
+    "colors": {
+      "type": "object",
+      "default": {
+        "text": "",
+        "button": {},
+        "buttonHov": {},
+        "prosIcon": "",
+        "consIcon": ""
+      }
+    },
+    "rating": {
+      "type": "object",
+      "default": {
+        "scale": 10,
+        "size": 18,
+        "childSize": 16,
+        "style": "solid",
+        "fillColor": "",
+        "emptyColor": ""
+      }
+    },
+    "mainHeadTypo": {
+      "type": "object",
+      "default": {
+        "fontSize": 24
+      }
+    },
+    "subHeadTypo": {
+      "type": "object",
+      "default": {
+        "fontSize": 20
+      }
+    },
+    "textTypo": {
+      "type": "object",
+      "default": {
+        "fontSize": 16
+      }
+    },
     "mainHeading": {
       "type": "string",
       "default": "Main Heading"
@@ -138,36 +181,7 @@
       "type": "string",
       "default": "#0073AA"
     },
-    "ratingScale": {
-      "type": "number",
-      "default": 5
-    },
-    "rating": {
-      "type": "number",
-      "default": 5.0
-    },
-    "iconStyle": {
-      "type": "string",
-      "default": "solid"
-    },
-    "prefix": {
-      "type": "string",
-      "default": ""
-    },
-    "gap": {
-      "type": "string",
-      "default": "10px"
-    },
-    "alignment": {
-      "type": "string",
-      "default": "center"
-    },
-    "textTypo": {
-      "type": "object",
-      "default": {
-        "fontSize": "16px"
-      }
-    },
+
     "textColor": {
       "type": "string",
       "default": "#7a7a7a"
