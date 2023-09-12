@@ -3,10 +3,8 @@ import Settings from "./Settings";
 import Style from "./Style";
 import Rating from './Rating';
 
-
 const Edit = (props) => {
   const { className, attributes, setAttributes, clientId } = props;
-
 
   useEffect(() => {
     clientId && setAttributes({ cId: clientId });

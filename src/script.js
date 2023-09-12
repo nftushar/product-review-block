@@ -4,9 +4,8 @@ import "./style.scss";
 import Style from "./Style";
 import Rating from './Rating';
 
-
 document.addEventListener("DOMContentLoaded", () => {
-    const iframeEls = document.querySelectorAll(".wp-block-b-blocks-product-review");
+    const iframeEls = document.querySelectorAll(".wp-block-b-blocks-star-rating");
     iframeEls.forEach((iframeEl) => {
         const attributes = JSON.parse(iframeEl.dataset.attributes);
         const { cId } = attributes;

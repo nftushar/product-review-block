@@ -33,7 +33,7 @@ const Settings = ({ attributes, setAttributes }) => {
 				{tab.name === "general" && (
 					<PanelBody
 						className="bPlPanelBody"
-						title={__("Settings", "product-review")}
+						title={__("Settings", "star-rating")}
 					>
 						<SelectControl
 							label="Rating Scale"
@@ -48,14 +48,14 @@ const Settings = ({ attributes, setAttributes }) => {
 
 						<TextControl
 							className="mt20"
-							label={__("Prefix", "product-review")}
+							label={__("Prefix", "star-rating")}
 							value={prefix}
 							onChange={(val) => setAttributes({ prefix: val })}
 						/>
 
 						<RangeControl
 							className="mt20"
-							label={__("Rating", "product-review")}
+							label={__("Rating", "star-rating")}
 							labelPosition="left"
 							value={rating}
 							onChange={(val) => setAttributes({ rating: val })}
@@ -66,7 +66,7 @@ const Settings = ({ attributes, setAttributes }) => {
 
 						<BtnGroup
 							className="mt20"
-							label={__("Icon Style", "product-review")}
+							label={__("Icon Style", "star-rating")}
 							value={iconStyle}
 							onChange={val => setAttributes({ iconStyle: val })}
 							options={iconOptions} isIcon={true} />
@@ -76,10 +76,10 @@ const Settings = ({ attributes, setAttributes }) => {
 				{tab.name === "style" && (
 					<PanelBody
 						className="bPlPanelBody"
-						title={__("Title", "product-review")}
+						title={__("Title", "star-rating")}
 					>
 						<UnitControl
-							label={__("Gap", "product-review")}
+							label={__("Gap", "star-rating")}
 							labelPosition="left"
 							value={gap}
 							onChange={(val) => setAttributes({ gap: val })}
@@ -89,16 +89,16 @@ const Settings = ({ attributes, setAttributes }) => {
 
 						<BtnGroup
 							className="mt20"
-							label={__("Alignment", "product-review")}
+							label={__("Alignment", "star-rating")}
 							value={alignment}
 							onChange={val => setAttributes({ alignment: val })}
 							options={iconAlignments} isIcon={true} />
 
-						<BColor label={__('Text Color', 'product-review')} value={textColor} onChange={val => setAttributes({ textColor: val })} defaultColor='#0000' />
+						<BColor label={__('Text Color', 'star-rating')} value={textColor} onChange={val => setAttributes({ textColor: val })} defaultColor='#0000' />
 
-						<Typography label={__('Text Typography', 'product-review')} value={textTypo} onChange={val => setAttributes({ textTypo: val })} defaults={{ fontSize: 16 }} produce={produce} />
+						<Typography label={__('Text Typography', 'star-rating')} value={textTypo} onChange={val => setAttributes({ textTypo: val })} defaults={{ fontSize: 16 }} produce={produce} />
 
-						<MultiShadowControl label={__('Text Shadow', 'product-review')} value={textShadow} onChange={val => setAttributes({ textShadow: val })} type="text" produce={produce} />
+						<MultiShadowControl label={__('Text Shadow', 'star-rating')} value={textShadow} onChange={val => setAttributes({ textShadow: val })} type="text" produce={produce} />
 
 					</PanelBody>
 				)}

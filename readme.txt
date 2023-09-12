@@ -1,7 +1,7 @@
-=== Product Review Block ===
+=== Star Rating ===
 Contributors: abuhayat, charlescormier
 Donate link: https://gum.co/wpdonate/
-Tags: block, product-review-block, product, review, Gutenberg block
+Tags: block, star-rating, star, rating, Gutenberg block
 Requires at least: 5.0+
 Tested up to: 6.2.2
 Stable tag: 1.0.0
@@ -16,7 +16,7 @@ Short Description
 Large Description
 
 
-**[Demos](https://bblockswp.com/demo/product-review-block/)**
+**[Demos](https://bblockswp.com/demo/star-rating/)**
 
 
 = Features =
@@ -24,8 +24,8 @@ Large Description
 
 
 = How to use =
-- First, install the product-review-block plugin
-- Add the product-review-block block from the block category called "Widgets" in the Gutenberg editor.
+- First, install the star-rating plugin
+- Add the star-rating block from the block category called "Widgets" in the Gutenberg editor.
 - You can change block settings from the right-side settings sidebar.
 - Enjoy!
 
@@ -54,29 +54,31 @@ Large Description
 🔥 **[3D Viewer](https://3d-viewer.bplugins.com/)** – Display interactive 3D models on the webs.
 
 
+
+
 == Installation ==
 
 = From Gutenberg Editor: =
 1. Go to the WordPress Block/Gutenberg Editor
-2. Search For **product-review-block**
-3. Click on the **product-review-block** to add the block
+2. Search For **star-rating**
+3. Click on the **star-rating** to add the block
 
 = Download & Upload: =
-1. Download the **product-review-block** plugin (*.zip file*)
+1. Download the **star-rating** plugin (*.zip file*)
 2. In your admin area, go to the Plugins menu and click on **Add New**
-3. Click on **Upload Plugin** and choose the **`product-review-block.zip`** file and click on **Install Now**
+3. Click on **Upload Plugin** and choose the **`star-rating.zip`** file and click on **Install Now**
 4. Activate the plugin and Enjoy!
 
 = Manually: =
-1. Download and upload the **product-review-block** plugin to the **`/wp-content/plugins/`** directory
+1. Download and upload the **star-rating** plugin to the **`/wp-content/plugins/`** directory
 2. Activate the plugin through the Plugins menu in WordPress
 
 
 == Frequently Asked Questions ==
 
-= Is product-review-block free? =
+= Is star-rating free? =
 
-Yes, product-review-block is a free Gutenberg block plugin.
+Yes, star-rating is a free Gutenberg block plugin.
 
 = Does it work with any WordPress theme? =
 
@@ -92,12 +94,12 @@ You can use unlimited times as you want.
 
 = Where can I get support? =
 
-You can post your questions on the [support forum here](https://wordpress.org/support/plugin/product-review-block/)
+You can post your questions on the [support forum here](https://wordpress.org/support/plugin/star-rating/)
 
 
 == Screenshots ==
 
-1. product-review-block
+1. star-rating
 2. Settings
 
 
