@@ -17,7 +17,7 @@ function ProductReview({ attributes }) {
       </div>
       <div className="review-header-desc">
         <div className="image">
-          <image></image>
+          <img src="http://localhost/wordpress/wp-content/uploads/2023/09/zebra-1050446_1280-300x200.jpg"/>
         </div>
         <div className="desc">
           <p>hello this is a product description</p>

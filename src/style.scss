@@ -33,6 +33,12 @@ html :where(.editor-styles-wrapper) p {
 		}
 		.review-header-desc {
 			margin-top: 25px;
+			display: flex;
+			column-gap: 40px;
+			.desc {
+				display: flex;
+				align-items: center;
+			}
 		}
 		.header-rating {
 			display: flex;
