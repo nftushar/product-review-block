@@ -31,7 +31,7 @@ html :where(.editor-styles-wrapper) p {
 		.review-header {
 			margin-top: 20px;
 		}
-		.review-header-desc {
+		.review-header-content {
 			margin-top: 25px;
 			display: flex;
 			flex-wrap: wrap;
@@ -39,6 +39,7 @@ html :where(.editor-styles-wrapper) p {
 			.desc {
 				display: flex;
 				align-items: center;
+				margin-top: 20px;
 			}
 		}
 		.header-rating {
@@ -66,6 +67,7 @@ html :where(.editor-styles-wrapper) p {
 				gap: 15px;
 			}
 			.review-right {
+					margin-top: 20px;
 				// background: var(--background-color);
 				// grid-area: right;
 				// padding: 20px 20px 20px;
@@ -93,6 +95,7 @@ html :where(.editor-styles-wrapper) p {
 		}
 		.review-footer-button {
 			display: flex;
+			flex-wrap: wrap;
 			align-items: center;
 			span {
 				background: #ed6f57;
@@ -111,6 +114,7 @@ html :where(.editor-styles-wrapper) p {
 			.review-left-content {
 				display: grid;
 				gap: 5px;
+				margin-top: 20px;
 				.review-heading {
 					font-size: inherit;
 					font-weight: 600;
@@ -123,9 +127,8 @@ html :where(.editor-styles-wrapper) p {
 			}
 		}
 		.review-footer {
-			margin-top: 30px;
+			margin-top: 50px;
 			display: grid;
-			gap: 20px;
 		}
 	}
 

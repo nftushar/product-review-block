@@ -15,12 +15,12 @@ function ProductReview({ attributes }) {
           </span>
         </div>
       </div>
-      <div className="review-header-desc">
+      <div className="review-header-content">
         <div className="image">
           <img src="http://localhost/wordpress/wp-content/uploads/2023/09/zebra-1050446_1280-300x200.jpg"/>
         </div>
         <div className="desc">
-          <p>hello this is a product description</p>
+          <p >hello this is a product description</p>
         </div>
       </div>
       <div className="review-body">
