@@ -18,65 +18,85 @@
     },
     "product": {
       "type": "object",
-      "default": { "desktop": 2 }
+      "default": {
+        "name": "Product Name",
+        "price": 49.99,
+        "salePrice": 39.99,
+        "image": "",
+        "description": "Product description goes here."
+      }
+    },
+    "ratings": {
+      "type": "array",
+      "default": [
+        {
+          "title": "Stability",
+          "rating": 9,
+          "description": ""
+        },
+        {
+          "title": "Ease of Use",
+          "rating": 7,
+          "description": ""
+        },
+        {
+          "title": "Look & Feel",
+          "rating": 8,
+          "description": ""
+        },
+        {
+          "title": "Price",
+          "rating": 7,
+          "description": ""
+        }
+      ]
     },
     "columns": {
       "type": "object",
       "default": { "desktop": 2 }
     },
-    "ImageStyle": {
+    "imageStyle": {
       "type": "object",
       "default": { "areaWidth": "25%", "size": "full" }
     },
-    "productDetails": {
-      "type": "object",
-      "properties": {
-        "name": {
-          "type": "string",
-          "default": "Product Name"
-        },
-        "price": {
-          "type": "number",
-          "default": 49.99
-        },
-        "salePrice": {
-          "type": "number",
-          "default": 39.99
-        },
-        "image": {
-          "type": "string",
-          "default": "product-image.jpg"
-        },
-        "description": {
-          "type": "string",
-          "default": "Product description goes here."
-        }
-      }
-    },
-    "productFeatures": {
-      "type": "object",
-      "title": {
-        "type": "string",
-        "default": "Feature Title"
-      },
-      "rating": {
-        "type": "number",
-        "default": 4.9
-      },
-      "description": {
-        "type": "string",
-        "default": "Feature description"
-      }
-    },
     "labels": {
-      "Pros": "Pros",
-      "Cons": "Cons",
-      "Buttons": "Button"
+      "type": "object",
+      "default": {
+        "pros": "Pros",
+        "cons": "Cons",
+        "buttons": "Buy this Product"
+      }
     },
-
-    "boxStyle": {
-      "type": "number",
-      "default": "10px"
+    "pros": {
+      "type": "array",
+      "default": [
+        { "text": "Easy to use" },
+        { "text": "Good price" },
+        { "text": "Sturdy build and ergonomics" }
+      ]
+    },
+    "cons": {
+      "type": "array",
+      "default": [
+        { "text": "Incompatible with old versions" },
+        { "text": "Hard to assemble" },
+        { "text": "Bad color combination" }
+      ]
+    },
+    "buttons": {
+      "type": "array",
+      "default": [
+        {
+          "text": "Buy on Amazon",
+          "link": "",
+          "isSponsored": false,
+          "isNewTab": true
+        }
+      ]
+    },
+    "style": {
+      "type": "string",
+      "default": "default"
     },
     "mainHeading": {
       "type": "string",
