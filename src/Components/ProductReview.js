@@ -5,12 +5,11 @@ import Footer from "./Footer";
 
 function ProductReview({ attributes }) {
   return (
-    // <h1>HEllo</h1>
     <div className="main">
       <Header attributes={attributes} />
       <Body attributes={attributes} />
       <div className="review-footer">
-          <Footer attributes={attributes} />  
+        <Footer attributes={attributes} />
       </div>
     </div>
   );
