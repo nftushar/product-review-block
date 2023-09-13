@@ -12,8 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const { cId } = attributes;
 
     render(
-      <>
-        <h1>HEllo</h1>
+      <> 
         <Style attributes={attributes} clientId={cId} />
         <ProductReview attributes={attributes} />
       </>,

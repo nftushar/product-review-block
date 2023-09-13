@@ -1,4 +1,4 @@
- html {
+html {
 	scroll-behavior: smooth;
 }
 h1,
@@ -65,7 +65,7 @@ html :where(.editor-styles-wrapper) p {
 				gap: 15px;
 			}
 			.review-right {
-					margin-top: 20px;
+				margin-top: 20px;
 				// background: var(--background-color);
 				// grid-area: right;
 				// padding: 20px 20px 20px;
@@ -76,7 +76,7 @@ html :where(.editor-styles-wrapper) p {
 				.review-right-pros-item {
 					display: flex;
 					// padding: 2px 0;
-					align-items: center; 
+					align-items: center;
 					svg {
 						width: 20px;
 						height: 20px;
@@ -129,7 +129,7 @@ html :where(.editor-styles-wrapper) p {
 		}
 	}
 
-	.bBlocksProductReview {
+	.reviewRatings {
 		display: flex;
 		flex-wrap: wrap;
 		.stars {

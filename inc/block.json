@@ -32,7 +32,7 @@
         {
           "title": "Stability",
           "rating": 9,
-          "description": ""
+          " ": ""
         },
         {
           "title": "Ease of Use",
@@ -181,7 +181,7 @@
       "type": "string",
       "default": "#0073AA"
     },
-
+ 
     "textColor": {
       "type": "string",
       "default": "#7a7a7a"
