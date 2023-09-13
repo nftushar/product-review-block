@@ -36,9 +36,7 @@ const Review = (props) => {
       <div className="review-left-features">
         <div className="review-left-content">
           <span className="review-heading">Stability</span>
-          {/* Pass 'attributes' prop to the 'Rating' component */}
           <Rating attributes={attributes} />
-
           <span className="review-desc">Feature description</span>
         </div>
       </div>
@@ -47,6 +45,16 @@ const Review = (props) => {
 };
 
 const Considerations = () => {
+  return (
+    <>
+      <Pros/>
+      <Cons/>
+       
+    </>
+  );
+};
+
+const Pros = () => {
   return (
     <>
       <h3>Pros</h3>
@@ -88,5 +96,48 @@ const Considerations = () => {
         </div>
       </div>
     </>
+  );
+};
+
+const Cons = () => {
+  return (
+    <> 
+  <div className="review-right-pros">
+    <h3>Cons</h3>
+    <div className="review-right-pros-item">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        aria-hidden="true"
+        focusable="false"
+      >
+        <path d="M13 11.8l6.1-6.3-1-1-6.1 6.2-6.1-6.2-1 1 6.1 6.3-6.5 6.7 1 1 6.5-6.6 6.5 6.6 1-1z"></path>
+      </svg>
+      <p aria-label="Why do you like the product?">Incompatible with old</p>
+    </div>
+    <div className="review-right-pros-item">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        aria-hidden="true"
+        focusable="false"
+      >
+        <path d="M13 11.8l6.1-6.3-1-1-6.1 6.2-6.1-6.2-1 1 6.1 6.3-6.5 6.7 1 1 6.5-6.6 6.5 6.6 1-1z"></path>
+      </svg>
+      <p aria-label="Why do you like the product?">Incompatible with old</p>
+    </div>
+    <div className="review-right-pros-item">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        aria-hidden="true"
+        focusable="false"
+      >
+        <path d="M13 11.8l6.1-6.3-1-1-6.1 6.2-6.1-6.2-1 1 6.1 6.3-6.5 6.7 1 1 6.5-6.6 6.5 6.6 1-1z"></path>
+      </svg>
+      <p aria-label="Why do you like the product?">Incompatible with old</p>
+    </div>
+  </div>;
+   </>
   );
 };
