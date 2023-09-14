@@ -23,6 +23,12 @@ const iconOptions = [
   { label: __("Outline", "rating"), value: "outline", icon: outlineStar },
 ];
 
+// function updateReview(index, property, value) {
+//   const newReviews = [...reviews];
+//   newReviews[index][property] = value;
+//   setAttributes({ reviews: newReviews });
+// }
+
 const Settings = ({ attributes, setAttributes }) => {
   // const { rating, textTypo, textColor, textShadow } = attributes;
   // const { scale, style, emptyColor, fillColor } = rating;
@@ -92,7 +98,7 @@ const General = (props) => {
             setAttributes({ rating: { ...rating, scale: val } })
           }
         />
-
+        {/* 
         <RangeControl
           className="mt20"
           label={__("Rating", "product-review")}
@@ -104,7 +110,7 @@ const General = (props) => {
           min={1}
           max={scale}
           step={0.1}
-        />
+        /> */}
         <BtnGroup
           className="mt20"
           label={__("Icon Style", "product-review")}
@@ -121,12 +127,12 @@ const General = (props) => {
         className="bPlPanelBody"
         title={__("Products Rating", "product-review")}
       >
-        {ratings.map((value) => {
+        {/* {ratings.map((value) => {
           const { title, rating, description } = value;
           return (
             <>
               <PanelBody
-              initialOpen={false}
+                initialOpen={false}
                 className="bPlPanelBody"
                 title={__("Product Rating", "product-review")}
               >
@@ -135,7 +141,7 @@ const General = (props) => {
                   label={__("Rating", "product-review")}
                   labelPosition="left"
                   value={rating}
-                  onChange={(rating) => setAttributes(rating)}
+                  onChange={(val) => setAttributes({ rating: val })}
                   min={1}
                   max={scale}
                   step={0.1}
@@ -144,16 +150,61 @@ const General = (props) => {
                   className="mt20"
                   label={__("Add Title", "product-review")}
                   value={title}
-                  onChange={(title) => setAttributes(title)}
+                  onChange={(val) => setAttributes({ title: val })}
                 />
+
                 <TextControl
                   className="mt20"
                   label={__("Add Description", "product-review")}
                   value={description}
-                  onChange={(description) => setAttributes(description)}
+                  onChange={(val) => setAttributes({ description: val })}
                 />
               </PanelBody>
             </>
+          );
+        })} */}
+
+        {ratings.map((val, index) => {
+          const { title, rating, description } = val;
+
+          return (
+            <div key={index}>
+              <PanelBody
+                initialOpen={false}
+                className="bPlPanelBody"
+                title={__(`Product Rating ${index + 1}`, "product-review")}
+              >
+                <RangeControl
+                  className="mt20"
+                  label={__("Rating", "product-review")}
+                  labelPosition="left"
+                  value={rating}
+                  onChange={(val) => {
+                    setAttributes({ rating: val });
+                  }}
+                  // min={1}
+                  max={scale}
+                  // step={0.1}
+                />
+                <TextControl
+                  className="mt20"
+                  label={__("Add Title", "product-review")}
+                  value={title}
+                  onChange={(val) => {
+                    setAttributes({ title: val });
+                  }}
+                />
+
+                <TextControl
+                  className="mt20"
+                  label={__("Add Description", "product-review")}
+                  value={description}
+                  onChange={(val) => {
+                    setAttributes({ description: val });
+                  }}
+                />
+              </PanelBody>
+            </div>
           );
         })}
       </PanelBody>
