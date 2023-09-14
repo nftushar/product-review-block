@@ -21,11 +21,7 @@ const Edit = (props) => {
 
   return (
     <>
-      <Settings
-        attributes={attributes}
-        setAttributes={setAttributes}
-        updateReview={updateReview}
-      />
+      <Settings attributes={attributes} setAttributes={setAttributes} updateReview={updateReview} />
       <div className={className} id={`reviewRatings-${clientId}`}>
         <Style attributes={attributes} clientId={clientId} />
         <ProductReview attributes={attributes} updateReview={updateReview} />

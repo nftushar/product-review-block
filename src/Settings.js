@@ -7,8 +7,7 @@ import {
   TabPanel,
   SelectControl,
   RangeControl,
-  TextControl,
-  PanelRow,
+  TextControl, 
 } from "@wordpress/components";
 
 import {
@@ -29,7 +28,7 @@ const iconOptions = [
 //   setAttributes({ reviews: newReviews });
 // }
 
-const Settings = ({ attributes, setAttributes }) => {
+const Settings = ({ attributes, setAttributes, updateReview }) => {
   // const { rating, textTypo, textColor, textShadow } = attributes;
   // const { scale, style, emptyColor, fillColor } = rating;
 
@@ -45,7 +44,11 @@ const Settings = ({ attributes, setAttributes }) => {
         {(tab) => (
           <>
             {tab.name === "general" && (
-              <General attributes={attributes} setAttributes={setAttributes} />
+              <General
+                attributes={attributes}
+                setAttributes={setAttributes}
+                updateReview={updateReview}
+              />
             )}
 
             {tab.name === "style" && (
@@ -61,7 +64,9 @@ const Settings = ({ attributes, setAttributes }) => {
 export default Settings;
 
 const General = (props) => {
-  const { attributes, setAttributes } = props;
+  const { attributes, setAttributes, updateReview } = props;
+
+  // console.log(updateReview);
 
   const { rating, ratings } = attributes;
 
@@ -81,6 +86,7 @@ const General = (props) => {
   // }
 
   return (
+    // General section start
     <>
       <PanelBody
         className="bPlPanelBody"
@@ -179,20 +185,13 @@ const General = (props) => {
                   label={__("Rating", "product-review")}
                   labelPosition="left"
                   value={rating}
-                  onChange={(val) => {
-                    setAttributes({ rating: val });
-                  }}
-                  // min={1}
-                  max={scale}
-                  // step={0.1}
+                  onChange={(val) => updateReview(index, "rating", val)}
                 />
                 <TextControl
                   className="mt20"
                   label={__("Add Title", "product-review")}
                   value={title}
-                  onChange={(val) => {
-                    setAttributes({ title: val });
-                  }}
+                  onChange={(val) => updateReview(index, "title", val)}
                 />
 
                 <TextControl
@@ -209,6 +208,7 @@ const General = (props) => {
         })}
       </PanelBody>
     </>
+    // General section end
   );
 };
 
