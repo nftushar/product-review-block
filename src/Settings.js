@@ -17,8 +17,8 @@ const iconOptions = [
 ];
 
 const Settings = ({ attributes, setAttributes }) => {
-  const { rating, textTypo, textColor, textShadow } = attributes;
-  const { scale, style, emptyColor, fillColor } = rating;
+  // const { rating, textTypo, textColor, textShadow } = attributes;
+  // const { scale, style, emptyColor, fillColor } = rating;
 
   return (
     <InspectorControls>
