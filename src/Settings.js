@@ -7,7 +7,7 @@ import {
   TabPanel,
   SelectControl,
   RangeControl,
-  TextControl, 
+  TextControl,
 } from "@wordpress/components";
 
 import {
@@ -52,7 +52,11 @@ const Settings = ({ attributes, setAttributes, updateReview }) => {
             )}
 
             {tab.name === "style" && (
-              <Style attributes={attributes} setAttributes={setAttributes} />
+              <Style
+                attributes={attributes}
+                setAttributes={setAttributes}
+                updateReview={updateReview}
+              />
             )}
           </>
         )}
@@ -172,7 +176,7 @@ const General = (props) => {
 
         {ratings.map((val, index) => {
           const { title, rating, description } = val;
-
+ 
           return (
             <div key={index}>
               <PanelBody
@@ -198,9 +202,7 @@ const General = (props) => {
                   className="mt20"
                   label={__("Add Description", "product-review")}
                   value={description}
-                  onChange={(val) => {
-                    setAttributes({ description: val });
-                  }}
+                  onChange={(val) => updateReview(index, "description", val)}
                 />
               </PanelBody>
             </div>

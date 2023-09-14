@@ -16,7 +16,7 @@ const Edit = (props) => {
   function updateReview(index, property, value) {
     const newRatings = [...ratings];
     newRatings[index][property] = value;
-    setAttributes({ cards: newRatings });
+    setAttributes({ ratings: newRatings });
   }
 
   return (
