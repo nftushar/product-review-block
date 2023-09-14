@@ -2,7 +2,14 @@ import { __ } from "@wordpress/i18n";
 import { InspectorControls } from "@wordpress/block-editor";
 import { solidStar, outlineStar } from "./utils/icons";
 import produce from "immer";
-import { PanelBody, TabPanel, SelectControl } from "@wordpress/components";
+import {
+  PanelBody,
+  TabPanel,
+  SelectControl,
+  RangeControl,
+  TextControl,
+  PanelRow,
+} from "@wordpress/components";
 
 import {
   BColor,
@@ -32,80 +39,10 @@ const Settings = ({ attributes, setAttributes }) => {
         {(tab) => (
           <>
             {tab.name === "general" && (
-              // <PanelBody
-              //   className="bPlPanelBody"
-              //   title={__("Settings", "star-rating")}
-              // >
-              //   <SelectControl
-              //     label="Rating Scale"
-              //     labelPosition="left"
-              //     value={scale}
-              //     options={[
-              //       { label: "0-5", value: 5 },
-              //       { label: "0-10", value: 10 },
-              //     ]}
-              //     onChange={(val) =>
-              //       setAttributes({ rating: { ...rating, scale: val } })
-              //     }
-              //   />
-              //   <BtnGroup
-              //     className="mt20"
-              //     label={__("Icon Style", "star-rating")}
-              //     value={style}
-              //     onChange={(val) =>
-              //       setAttributes({ rating: { ...rating, style: val } })
-              //     }
-              //     options={iconOptions}
-              //     isIcon={true}
-              //   />
-              // </PanelBody>
               <General attributes={attributes} setAttributes={setAttributes} />
             )}
 
             {tab.name === "style" && (
-              // <PanelBody
-              //   className="bPlPanelBody"
-              //   title={__("Title", "star-rating")}
-              // >
-              //   <BColor
-              //     label={__("Text Color", "star-rating")}
-              //     value={textColor}
-              //     onChange={(val) => setAttributes({ textColor: val })}
-              //     defaultColor="#0000"
-              //   />
-              //   <BColor
-              //     label={__("Fill Color", "star-rating")}
-              //     value={fillColor}
-              //     onChange={(val) =>
-              //       setAttributes({ rating: { ...rating, fillColor: val } })
-              //     }
-              //     defaultColor="#fcce5100"
-              //   />
-              //   <BColor
-              //     label={__("Empty Fill Color", "star-rating")}
-              //     value={emptyColor}
-              //     onChange={(val) =>
-              //       setAttributes({ rating: { ...rating, emptyColor: val } })
-              //     }
-              //     defaultColor="#f0efef"
-              //   />
-              //   <Typography
-              //     label={__("Text Typography", "star-rating")}
-              //     value={textTypo}
-              //     onChange={(val) => setAttributes({ textTypo: val })}
-              //     defaults={{ fontSize: 16 }}
-              //     produce={produce}
-              //   />
-
-              //   <MultiShadowControl
-              //     label={__("Text Shadow", "star-rating")}
-              //     value={textShadow}
-              //     onChange={(val) => setAttributes({ textShadow: val })}
-              //     type="text"
-              //     produce={produce}
-              //   />
-              // </PanelBody>
-
               <Style attributes={attributes} setAttributes={setAttributes} />
             )}
           </>
@@ -117,16 +54,32 @@ const Settings = ({ attributes, setAttributes }) => {
 
 export default Settings;
 
-
 const General = (props) => {
   const { attributes, setAttributes } = props;
-  // console.log(attributes);
-  const { rating } = attributes;
+
+  const { rating, ratings } = attributes;
+
   const { scale, style } = rating;
+
+  // Create a map function for ratings
+
+  // Populate the map with ratings data
+  // ratings.map((value)=>{
+  //  console.log(value)
+  // });
+
+  // ratings.map(getAllData);
+
+  // function getAllData(item) {
+  //   return [item.title, item.rating, item.description].join(" ");
+  // }
 
   return (
     <>
-      <PanelBody className="bPlPanelBody" title={__("Settings", "star-rating")}>
+      <PanelBody
+        className="bPlPanelBody"
+        title={__("Settings", "product-review")}
+      >
         <SelectControl
           label="Rating Scale"
           labelPosition="left"
@@ -139,9 +92,22 @@ const General = (props) => {
             setAttributes({ rating: { ...rating, scale: val } })
           }
         />
+
+        <RangeControl
+          className="mt20"
+          label={__("Rating", "product-review")}
+          labelPosition="left"
+          value={rating}
+          onChange={(val) =>
+            setAttributes({ rating: { ...rating, scale: val } })
+          }
+          min={1}
+          max={scale}
+          step={0.1}
+        />
         <BtnGroup
           className="mt20"
-          label={__("Icon Style", "star-rating")}
+          label={__("Icon Style", "product-review")}
           value={style}
           onChange={(val) =>
             setAttributes({ rating: { ...rating, style: val } })
@@ -149,6 +115,47 @@ const General = (props) => {
           options={iconOptions}
           isIcon={true}
         />
+      </PanelBody>
+
+      <PanelBody
+        className="bPlPanelBody"
+        title={__("Products Rating", "product-review")}
+      >
+        {ratings.map((value) => {
+          const { title, rating, description } = value;
+          return (
+            <>
+              <PanelBody
+              initialOpen={false}
+                className="bPlPanelBody"
+                title={__("Product Rating", "product-review")}
+              >
+                <RangeControl
+                  className="mt20"
+                  label={__("Rating", "product-review")}
+                  labelPosition="left"
+                  value={rating}
+                  onChange={(rating) => setAttributes(rating)}
+                  min={1}
+                  max={scale}
+                  step={0.1}
+                />
+                <TextControl
+                  className="mt20"
+                  label={__("Add Title", "product-review")}
+                  value={title}
+                  onChange={(title) => setAttributes(title)}
+                />
+                <TextControl
+                  className="mt20"
+                  label={__("Add Description", "product-review")}
+                  value={description}
+                  onChange={(description) => setAttributes(description)}
+                />
+              </PanelBody>
+            </>
+          );
+        })}
       </PanelBody>
     </>
   );
@@ -161,15 +168,15 @@ const Style = (props) => {
 
   return (
     <>
-      <PanelBody className="bPlPanelBody" title={__("Title", "star-rating")}>
+      <PanelBody className="bPlPanelBody" title={__("Title", "product-review")}>
         <BColor
-          label={__("Text Color", "star-rating")}
+          label={__("Text Color", "product-review")}
           value={textColor}
           onChange={(val) => setAttributes({ textColor: val })}
           defaultColor="#0000"
         />
         <BColor
-          label={__("Fill Color", "star-rating")}
+          label={__("Fill Color", "product-review")}
           value={fillColor}
           onChange={(val) =>
             setAttributes({ rating: { ...rating, fillColor: val } })
@@ -177,7 +184,7 @@ const Style = (props) => {
           defaultColor="#fcce5100"
         />
         <BColor
-          label={__("Empty Fill Color", "star-rating")}
+          label={__("Empty Fill Color", "product-review")}
           value={emptyColor}
           onChange={(val) =>
             setAttributes({ rating: { ...rating, emptyColor: val } })
@@ -185,7 +192,7 @@ const Style = (props) => {
           defaultColor="#f0efef"
         />
         <Typography
-          label={__("Text Typography", "star-rating")}
+          label={__("Text Typography", "product-review")}
           value={textTypo}
           onChange={(val) => setAttributes({ textTypo: val })}
           defaults={{ fontSize: 16 }}
@@ -193,7 +200,7 @@ const Style = (props) => {
         />
 
         <MultiShadowControl
-          label={__("Text Shadow", "star-rating")}
+          label={__("Text Shadow", "product-review")}
           value={textShadow}
           onChange={(val) => setAttributes({ textShadow: val })}
           type="text"

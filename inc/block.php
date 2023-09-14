@@ -1,5 +1,5 @@
 <?php
-class BDBBlockDirectory{
+class PRProductReview{
 	function __construct(){
 		add_action( 'init', [$this, 'onInit'] );
 	}
@@ -32,4 +32,4 @@ class BDBBlockDirectory{
 		<?php return ob_get_clean();
 	} // Render
 }
-new BDBBlockDirectory();
+new PRProductReview();
