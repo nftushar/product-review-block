@@ -70,7 +70,7 @@
     "pros": {
       "type": "array",
       "default": [
-        { "text": "Easy to use" },
+        { "text": "zzEasy to use" },
         { "text": "Good price" },
         { "text": "Sturdy build and ergonomics" }
       ]
@@ -78,8 +78,8 @@
     "cons": {
       "type": "array",
       "default": [
-        { "text": "Incompatible with old versions" },
-        { "text": "Hard to assemble" },
+        { "text": "aa Incompatible with old versions" },
+        { "text": "zz Hard to assemble" },
         { "text": "Bad color combination" }
       ]
     },
@@ -120,7 +120,7 @@
         "childSize": 16,
         "style": "solid",
         "fillColor": "",
-        "emptyColor": ""
+        "emptyColor": ""  
       }
     },
     "mainHeadTypo": {

@@ -6,8 +6,7 @@ import ProductReview from "./Components/ProductReview";
 const Edit = (props) => {
   const { className, attributes, setAttributes, clientId } = props;
   const { ratings } = attributes;
-
-  // console.log( ratings);
+ 
 
   useEffect(() => {
     clientId && setAttributes({ cId: clientId });
