@@ -5,6 +5,8 @@ import produce from "immer";
 import { PanelBody, TabPanel, SelectControl, RangeControl, TextControl } from "@wordpress/components";
 
 import { BColor, BtnGroup, MultiShadowControl, Typography } from "../../Components";
+import { PanelRow } from '@wordpress/components';
+import { Button } from '@wordpress/components';
 
 const iconOptions = [
   { label: __("Solid", "rating"), value: "solid", icon: solidStar },
@@ -28,20 +30,15 @@ const iconOptions = [
 //   setAttributes({ cards: newCards });
 // };
 
-function handleReviewDelete(index) {
-  const newReviews = [...reviews];
-  newCards.splice(index, 1);
-  setAttributes({ cards: newCards });
-}
 
-const onDuplicateReview = (e, index) => {
-  e.preventDefault();
-  const newReviews = [...reviews];
-  newReviews.splice(index, 0, reviews[index]);
-  setAttributes({ reviews: newReviews });
-};
+// const onDuplicateReview = (e, index) => {
+//   e.preventDefault();
+//   const newReviews = [...reviews];
+//   newReviews.splice(index, 0, reviews[index]);
+//   setAttributes({ reviews: newReviews });
+// };
 
-const Settings = ({ attributes, setAttributes, updateReview, updateButton }) => {
+const Settings = ({ attributes, setAttributes, updateReview, updateButton, reviewDelete }) => {
   // const { rating, textTypo, textColor, textShadow } = attributes;
   // const { scale, style, emptyColor, fillColor } = rating;
 
@@ -62,6 +59,7 @@ const Settings = ({ attributes, setAttributes, updateReview, updateButton }) => 
                 setAttributes={setAttributes}
                 updateReview={updateReview}
                 updateButton={updateButton}
+                reviewDelete={reviewDelete}
               />
             )}
 
@@ -82,10 +80,10 @@ const Settings = ({ attributes, setAttributes, updateReview, updateButton }) => 
 export default Settings;
 
 const General = (props) => {
-  const { attributes, setAttributes, updateReview, updateButton } = props;
+  const { attributes, setAttributes, updateReview, updateButton, reviewDelete } = props;
 
   // console.log(attributes.buttons);
-  
+
   const { rating, ratings, buttons, button } = attributes;
 
   const { scale, style } = rating;
@@ -142,8 +140,8 @@ const General = (props) => {
                   labelPosition="left"
                   value={rating}
                   onChange={(val) => updateReview(index, "rating", val)}
-                 
-                  max={scale >= 10 ? scale : 5} 
+
+                  max={scale >= 10 ? scale : 5}
                 />
                 <TextControl
                   className="mt20"
@@ -159,6 +157,9 @@ const General = (props) => {
                   onChange={(val) => updateReview(index, "description", val)}
                 />
               </PanelBody>
+              <PanelRow className="itemAction mt20">
+                {1 < ratings?.length && <Button className="removeItem" onClick={() => reviewDelete(index)}>Delete</Button>}
+              </PanelRow>
             </div>
           );
         })}

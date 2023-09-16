@@ -25,9 +25,19 @@ const Edit = (props) => {
   }
 
 
+  function reviewDelete(index) {
+    const newReviews = [...ratings];
+    newReviews.splice(index, 1);
+    setAttributes({ ratings: newReviews });
+  }
+
+
+
+
+
   return (
     <>
-      <Settings attributes={attributes} setAttributes={setAttributes} updateReview={updateReview} updateButton={updateButton} />
+      <Settings attributes={attributes} setAttributes={setAttributes} updateReview={updateReview} updateButton={updateButton} reviewDelete={reviewDelete} />
       <div className={className} id={`reviewRatings-${clientId}`}>
         <Style attributes={attributes} clientId={clientId} />
         <ProductReview attributes={attributes} updateReview={updateReview} />
