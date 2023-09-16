@@ -30,16 +30,25 @@ const Reviews = (props) => {
 
 const Review = (props) => {
   const { attributes } = props;
+  const { ratings } = attributes;
+  // const { title, rating, description } = ratings;
+  // console.log(ratings);
 
   return (
     <>
-      <div className="review-left-features">
-        <div className="review-left-content">
-          <span className="review-heading">Stability</span>
-          <Rating attributes={attributes} />
-          <span className="review-desc">Feature description</span>
+      {ratings.map((item, index) => (
+        <div
+          key={index}
+          className="review-left-features"
+          id={`productReviews-${index + 1}`}
+        >
+          <div className="review-left-content">
+            <span className="review-heading">{item.title}</span>
+            <Rating attributes={attributes} />
+            <span className="review-desc">{item.description}</span>
+          </div>
         </div>
-      </div>
+      ))}
     </>
   );
 };

@@ -43,12 +43,7 @@
           "title": "Look & Feel",
           "rating": 8,
           "description": ""
-        },
-        {
-          "title": "Price",
-          "rating": 7,
-          "description": ""
-        }
+        } 
       ]
     },
     "columns": {

@@ -19,7 +19,7 @@ const Rating = ({ attributes }) => {
           })}
         </div>
         <div className="rating-text">
-          {/* <span className="ratingPrefix">{prefix}</span> */}     
+          {/* <span className="ratingPrefix">{prefix}</span> */}
         </div>
       </div>
     </>
