@@ -31,13 +31,24 @@ const Edit = (props) => {
     setAttributes({ ratings: newReviews });
   }
 
+  const onAddReview = () => {
+    const newReviews = [...ratings,
+    {
+      title: `Title of the ${ratings?.length + 1} number review`,
+      rating: 4,
+      description: `Description of the ${ratings?.length + 1} number review`,
+    }
+    ];
+    setAttributes({ ratings: newReviews });
+  };
+
 
 
 
 
   return (
     <>
-      <Settings attributes={attributes} setAttributes={setAttributes} updateReview={updateReview} updateButton={updateButton} reviewDelete={reviewDelete} />
+      <Settings attributes={attributes} setAttributes={setAttributes} updateReview={updateReview} updateButton={updateButton} reviewDelete={reviewDelete} onAddReview={onAddReview} />
       <div className={className} id={`reviewRatings-${clientId}`}>
         <Style attributes={attributes} clientId={clientId} />
         <ProductReview attributes={attributes} updateReview={updateReview} />

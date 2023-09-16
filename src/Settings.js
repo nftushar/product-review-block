@@ -38,7 +38,7 @@ const iconOptions = [
 //   setAttributes({ reviews: newReviews });
 // };
 
-const Settings = ({ attributes, setAttributes, updateReview, updateButton, reviewDelete }) => {
+const Settings = ({ attributes, setAttributes, updateReview, updateButton, reviewDelete, onAddReview }) => {
   // const { rating, textTypo, textColor, textShadow } = attributes;
   // const { scale, style, emptyColor, fillColor } = rating;
 
@@ -60,6 +60,7 @@ const Settings = ({ attributes, setAttributes, updateReview, updateButton, revie
                 updateReview={updateReview}
                 updateButton={updateButton}
                 reviewDelete={reviewDelete}
+                onAddReview={onAddReview}
               />
             )}
 
@@ -80,11 +81,11 @@ const Settings = ({ attributes, setAttributes, updateReview, updateButton, revie
 export default Settings;
 
 const General = (props) => {
-  const { attributes, setAttributes, updateReview, updateButton, reviewDelete } = props;
+  const { attributes, setAttributes, updateReview, updateButton, reviewDelete, onAddReview } = props;
 
   // console.log(attributes.buttons);
 
-  const { rating, ratings, buttons, button } = attributes;
+  const { rating, ratings, buttons } = attributes;
 
   const { scale, style } = rating;
   // const { text, link } = button;
@@ -122,7 +123,7 @@ const General = (props) => {
 
       <PanelBody initialOpen={false}
         className="bPlPanelBody"
-        title={__("Products Rating", "product-review")}
+        title={__("Products Ratings", "product-review")}
       >
         {ratings.map((val, index) => {
           const { title, rating, description } = val;
@@ -156,10 +157,14 @@ const General = (props) => {
                   value={description}
                   onChange={(val) => updateReview(index, "description", val)}
                 />
+
+                <PanelRow className="itemAction mt20">
+                  {1 < ratings?.length && <Button className="removeItem" onClick={() => reviewDelete(index)}>Delete</Button>}
+                  <Button className="duplicateItem" onClick={(e) => onAddReview(e, index)}>
+                    Duplicate
+                  </Button>
+                </PanelRow>
               </PanelBody>
-              <PanelRow className="itemAction mt20">
-                {1 < ratings?.length && <Button className="removeItem" onClick={() => reviewDelete(index)}>Delete</Button>}
-              </PanelRow>
             </div>
           );
         })}
