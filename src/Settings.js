@@ -28,7 +28,7 @@ const iconOptions = [
 //   setAttributes({ reviews: newReviews });
 // }
 
-const Settings = ({ attributes, setAttributes, updateReview }) => {
+const Settings = ({ attributes, setAttributes, updateReview, updateButton }) => {
   // const { rating, textTypo, textColor, textShadow } = attributes;
   // const { scale, style, emptyColor, fillColor } = rating;
 
@@ -48,6 +48,7 @@ const Settings = ({ attributes, setAttributes, updateReview }) => {
                 attributes={attributes}
                 setAttributes={setAttributes}
                 updateReview={updateReview}
+                updateButton={updateButton}
               />
             )}
 
@@ -68,26 +69,14 @@ const Settings = ({ attributes, setAttributes, updateReview }) => {
 export default Settings;
 
 const General = (props) => {
-  const { attributes, setAttributes, updateReview } = props;
+  const { attributes, setAttributes, updateReview, updateButton } = props;
 
-  // console.log(updateReview);
-
-  const { rating, ratings } = attributes;
+  console.log(attributes.buttons);
+  
+  const { rating, ratings, buttons, button } = attributes;
 
   const { scale, style } = rating;
-
-  // Create a map function for ratings
-
-  // Populate the map with ratings data
-  // ratings.map((value)=>{
-  //  console.log(value)
-  // });
-
-  // ratings.map(getAllData);
-
-  // function getAllData(item) {
-  //   return [item.title, item.rating, item.description].join(" ");
-  // }
+  // const { text, link } = button;
 
   return (
     // General section start
@@ -108,19 +97,6 @@ const General = (props) => {
             setAttributes({ rating: { ...rating, scale: val } })
           }
         />
-        {/* 
-        <RangeControl
-          className="mt20"
-          label={__("Rating", "product-review")}
-          labelPosition="left"
-          value={rating}
-          onChange={(val) =>
-            setAttributes({ rating: { ...rating, scale: val } })
-          }
-          min={1}
-          max={scale}
-          step={0.1}
-        /> */}
         <BtnGroup
           className="mt20"
           label={__("Icon Style", "product-review")}
@@ -133,50 +109,13 @@ const General = (props) => {
         />
       </PanelBody>
 
-      <PanelBody
+      <PanelBody initialOpen={false}
         className="bPlPanelBody"
         title={__("Products Rating", "product-review")}
       >
-        {/* {ratings.map((value) => {
-          const { title, rating, description } = value;
-          return (
-            <>
-              <PanelBody
-                initialOpen={false}
-                className="bPlPanelBody"
-                title={__("Product Rating", "product-review")}
-              >
-                <RangeControl
-                  className="mt20"
-                  label={__("Rating", "product-review")}
-                  labelPosition="left"
-                  value={rating}
-                  onChange={(val) => setAttributes({ rating: val })}
-                  min={1}
-                  max={scale}
-                  step={0.1}
-                />
-                <TextControl
-                  className="mt20"
-                  label={__("Add Title", "product-review")}
-                  value={title}
-                  onChange={(val) => setAttributes({ title: val })}
-                />
-
-                <TextControl
-                  className="mt20"
-                  label={__("Add Description", "product-review")}
-                  value={description}
-                  onChange={(val) => setAttributes({ description: val })}
-                />
-              </PanelBody>
-            </>
-          );
-        })} */}
-
         {ratings.map((val, index) => {
           const { title, rating, description } = val;
- 
+
           return (
             <div key={index}>
               <PanelBody
@@ -203,6 +142,40 @@ const General = (props) => {
                   label={__("Add Description", "product-review")}
                   value={description}
                   onChange={(val) => updateReview(index, "description", val)}
+                />
+              </PanelBody>
+            </div>
+          );
+        })}
+      </PanelBody>
+      <PanelBody initialOpen={false}
+        className="bPlPanelBody"
+        title={__("Buttons", "product-review")} >
+
+        {buttons.map((val, index) => {
+          const { text, link } = val;
+          // console.log(text);
+
+          return (
+            <div key={index}>
+              <PanelBody
+                initialOpen={false}
+                className="bPlPanelBody"
+                title={__(`Button ${index + 1}`, "product-review")}
+              >
+                <TextControl
+                  className="mt20"
+                  label={__("Button Label", "product-review")}
+                  value={text}
+                  onChange={(val) => updateButton(index, "text", val)}
+                />
+                <TextControl
+                  className="mt20"
+                  label={__("Add link", "product-review")}
+                  value={link}
+                  onChange={(val) =>
+                    setAttributes({ button: { ...button, link: val } })
+                  }
                 />
               </PanelBody>
             </div>

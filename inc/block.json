@@ -4,9 +4,12 @@
   "title": "Product Review Block",
   "description": "Gutenberg editing with easy-to-use, responsive product-review  more.",
   "category": "media",
-  "keywords": ["product-review", "review", "Gutenberg"],
+  "keywords": [
+    "product-review",
+    "review",
+    "Gutenberg"
+  ],
   "textdomain": "product-review",
-
   "attributes": {
     "align": {
       "type": "string",
@@ -43,16 +46,21 @@
           "title": "Look & Feel",
           "rating": 8,
           "description": ""
-        } 
+        }
       ]
     },
     "columns": {
       "type": "object",
-      "default": { "desktop": 2 }
+      "default": {
+        "desktop": 2
+      }
     },
     "imageStyle": {
       "type": "object",
-      "default": { "areaWidth": "25%", "size": "full" }
+      "default": {
+        "areaWidth": "25%",
+        "size": "full"
+      }
     },
     "labels": {
       "type": "object",
@@ -65,22 +73,40 @@
     "pros": {
       "type": "array",
       "default": [
-        { "text": "zzEasy to use" },
-        { "text": "Good price" },
-        { "text": "Sturdy build and ergonomics" }
+        {
+          "text": "zzEasy to use"
+        },
+        {
+          "text": "Good price"
+        },
+        {
+          "text": "Sturdy build and ergonomics"
+        }
       ]
     },
     "cons": {
       "type": "array",
       "default": [
-        { "text": "aa Incompatible with old versions" },
-        { "text": "zz Hard to assemble" },
-        { "text": "Bad color combination" }
+        {
+          "text": "aa Incompatible with old versions"
+        },
+        {
+          "text": "zz Hard to assemble"
+        },
+        {
+          "text": "Bad color combination"
+        }
       ]
     },
     "buttons": {
       "type": "array",
       "default": [
+        {
+          "text": "Buy on Amazon",
+          "link": "",
+          "isSponsored": false,
+          "isNewTab": true
+        },
         {
           "text": "Buy on Amazon",
           "link": "",
@@ -115,7 +141,7 @@
         "childSize": 16,
         "style": "solid",
         "fillColor": "",
-        "emptyColor": ""  
+        "emptyColor": ""
       }
     },
     "mainHeadTypo": {
@@ -176,7 +202,6 @@
       "type": "string",
       "default": "#0073AA"
     },
- 
     "textColor": {
       "type": "string",
       "default": "#7a7a7a"
@@ -187,7 +212,10 @@
     }
   },
   "supports": {
-    "align": ["wide", "full"],
+    "align": [
+      "wide",
+      "full"
+    ],
     "html": false
   },
   "example": {

@@ -5,7 +5,7 @@ import ProductReview from "./Components/ProductReview";
 
 const Edit = (props) => {
   const { className, attributes, setAttributes, clientId } = props;
-  const { ratings } = attributes;
+  const { ratings, buttons } = attributes;
 
 
   useEffect(() => {
@@ -18,9 +18,16 @@ const Edit = (props) => {
     setAttributes({ ratings: newRatings });
   }
 
+  function updateButton(index, property, value) {
+    const newButtons = [...buttons];
+    newButtons[index][property] = value;
+    setAttributes({ buttons: newButtons });
+  }
+
+
   return (
     <>
-      <Settings attributes={attributes} setAttributes={setAttributes} updateReview={updateReview} />
+      <Settings attributes={attributes} setAttributes={setAttributes} updateReview={updateReview} updateButton={updateButton} />
       <div className={className} id={`reviewRatings-${clientId}`}>
         <Style attributes={attributes} clientId={clientId} />
         <ProductReview attributes={attributes} updateReview={updateReview} />
