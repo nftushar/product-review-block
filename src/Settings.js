@@ -38,7 +38,7 @@ const iconOptions = [
 //   setAttributes({ reviews: newReviews });
 // };
 
-const Settings = ({ attributes, setAttributes, updateReview, updatePros, onAddPros, prosDelete, updateCons, onAddCons, consDelete, updateButton, reviewDelete, onAddReview }) => {
+const Settings = ({ attributes, setAttributes, updateReview, reviewDelete, onAddReview, updatePros, onAddPros, prosDelete, updateCons, onAddCons, consDelete, updateButton, onAddButton, buttonDelete }) => {
   // const { rating, textTypo, textColor, textShadow } = attributes;
   // const { scale, style, emptyColor, fillColor } = rating;
 
@@ -57,16 +57,23 @@ const Settings = ({ attributes, setAttributes, updateReview, updatePros, onAddPr
               <General
                 attributes={attributes}
                 setAttributes={setAttributes}
+
                 updateReview={updateReview}
+                reviewDelete={reviewDelete}
+                onAddReview={onAddReview}
+
                 updatePros={updatePros}
                 onAddPros={onAddPros}
                 prosDelete={prosDelete}
+
                 updateCons={updateCons}
                 onAddCons={onAddCons}
                 consDelete={consDelete}
+
                 updateButton={updateButton}
-                reviewDelete={reviewDelete}
-                onAddReview={onAddReview}
+                onAddButton={onAddButton}
+                buttonDelete={buttonDelete}
+
               />
             )}
 
@@ -87,9 +94,9 @@ const Settings = ({ attributes, setAttributes, updateReview, updatePros, onAddPr
 export default Settings;
 
 const General = (props) => {
-  const { attributes, setAttributes, updateReview, updatePros, prosDelete, onAddPros, updateCons, consDelete, onAddCons, updateButton, reviewDelete, onAddReview } = props;
-
-  // console.log(attributes.buttons);
+  const { attributes, setAttributes, updatePros, prosDelete, onAddPros, updateCons, consDelete, onAddCons,
+    updateButton, onAddButton, buttonDelete, updateReview, reviewDelete, onAddReview } = props;
+ 
 
   const { rating, ratings, pros, cons, buttons } = attributes;
 
@@ -251,6 +258,7 @@ const General = (props) => {
         title={__("Buttons", "product-review")} >
         {buttons.map((val, index) => {
           const { text, link } = val;
+          // console.log(link);
           return (
             <div key={index}>
               <PanelBody
@@ -270,6 +278,12 @@ const General = (props) => {
                   value={link}
                   onChange={(val) => updateButton(index, "link", val)}
                 />
+                <PanelRow className="itemAction mt20">
+                  {1 < buttons?.length && <Button className="removeItem" onClick={() => buttonDelete(index)}>Delete</Button>}
+                  <Button className="duplicateItem" onClick={(e) => onAddButton(e, index)}>
+                    Duplicate
+                  </Button>
+                </PanelRow>
               </PanelBody>
             </div>
           );

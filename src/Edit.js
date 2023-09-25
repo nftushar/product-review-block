@@ -55,11 +55,7 @@ const Edit = (props) => {
       text: `Incompatible with old versions`,
     }];
     setAttributes({ cons: newCons });
-  };
-
-
-
-
+  }; 
 
 
   function updateButton(index, property, value) {
@@ -68,6 +64,20 @@ const Edit = (props) => {
     setAttributes({ buttons: newButtons });
   }
 
+  const onAddButton = () => {
+    const newButton = [...buttons,
+    {
+      text: `Buy on Amazon`,
+      link: ` `,
+    }];
+    setAttributes({ buttons: newButton });
+  }
+
+  function buttonDelete(index) { 
+    const newButton = [...buttons];
+    newButton.splice(index, 1);
+    setAttributes({ buttons: newButton });
+  } 
 
   function reviewDelete(index) {
     const newReviews = [...ratings];
@@ -91,10 +101,11 @@ const Edit = (props) => {
 
   return (
     <>
-      <Settings attributes={attributes} setAttributes={setAttributes} updateReview={updateReview}
+      <Settings attributes={attributes} setAttributes={setAttributes}
         updatePros={updatePros} onAddPros={onAddPros} prosDelete={prosDelete}
         updateCons={updateCons} onAddCons={onAddCons} consDelete={consDelete}
-        updateButton={updateButton} reviewDelete={reviewDelete} onAddReview={onAddReview} />
+        updateButton={updateButton}  onAddButton={onAddButton}   buttonDelete={buttonDelete}  
+        updateReview={updateReview} reviewDelete={reviewDelete} onAddReview={onAddReview} />
 
       <div className={className} id={`reviewRatings-${clientId}`}>
         <Style attributes={attributes} clientId={clientId} />
