@@ -38,7 +38,7 @@ const iconOptions = [
 //   setAttributes({ reviews: newReviews });
 // };
 
-const Settings = ({ attributes, setAttributes, updateReview, updateButton, reviewDelete, onAddReview }) => {
+const Settings = ({ attributes, setAttributes, updateReview, updatePros, onAddPros, prosDelete, updateCons, onAddCons, consDelete, updateButton, reviewDelete, onAddReview }) => {
   // const { rating, textTypo, textColor, textShadow } = attributes;
   // const { scale, style, emptyColor, fillColor } = rating;
 
@@ -58,6 +58,12 @@ const Settings = ({ attributes, setAttributes, updateReview, updateButton, revie
                 attributes={attributes}
                 setAttributes={setAttributes}
                 updateReview={updateReview}
+                updatePros={updatePros}
+                onAddPros={onAddPros}
+                prosDelete={prosDelete}
+                updateCons={updateCons}
+                onAddCons={onAddCons}
+                consDelete={consDelete}
                 updateButton={updateButton}
                 reviewDelete={reviewDelete}
                 onAddReview={onAddReview}
@@ -81,11 +87,11 @@ const Settings = ({ attributes, setAttributes, updateReview, updateButton, revie
 export default Settings;
 
 const General = (props) => {
-  const { attributes, setAttributes, updateReview, updateButton, reviewDelete, onAddReview } = props;
+  const { attributes, setAttributes, updateReview, updatePros, prosDelete, onAddPros, updateCons, consDelete, onAddCons, updateButton, reviewDelete, onAddReview } = props;
 
   // console.log(attributes.buttons);
 
-  const { rating, ratings, buttons } = attributes;
+  const { rating, ratings, pros, cons, buttons } = attributes;
 
   const { scale, style } = rating;
   // const { text, link } = button;
@@ -169,14 +175,82 @@ const General = (props) => {
           );
         })}
       </PanelBody>
+
+
+      <PanelBody initialOpen={false}
+        className="bPlPanelBody"
+        title={__("Pros", "product-review")}
+      >
+        {pros.map((val, index) => {
+          const { text } = val;
+
+          return (
+            <div key={index}>
+              <PanelBody
+                initialOpen={false}
+                className="bPlPanelBody"
+                title={__(`Pros ${index + 1}`, "Pros")}
+              >
+                <TextControl
+                  className="mt20"
+                  label={__("Add Title", "product-review")}
+                  value={text}
+                  onChange={(val) => updatePros(index, "text", val)}
+                />
+
+                <PanelRow className="itemAction mt20">
+                  {1 < pros?.length && <Button className="removeItem" onClick={() => prosDelete(index)}>Delete</Button>}
+                  <Button className="duplicateItem" onClick={(e) => onAddPros(e, index)}>
+                    Duplicate
+                  </Button>
+                </PanelRow>
+              </PanelBody>
+            </div>
+          );
+        })}
+      </PanelBody>
+
+      <PanelBody initialOpen={false}
+        className="bPlPanelBody"
+        title={__("Cons", "product-review")}
+      >
+        {cons.map((val, index) => {
+          const { text } = val;
+
+          return (
+            <div key={index}>
+              <PanelBody
+                initialOpen={false}
+                className="bPlPanelBody"
+                title={__(`Cons ${index + 1}`, "Cons")}
+              >
+                <TextControl
+                  className="mt20"
+                  label={__("Add Title", "product-review")}
+                  value={text}
+                  onChange={(val) => updateCons(index, "text", val)}
+                />
+
+                <PanelRow className="itemAction mt20">
+                  {1 < cons?.length && <Button className="removeItem" onClick={() => consDelete(index)}>Delete</Button>}
+                  <Button className="duplicateItem" onClick={(e) => onAddCons(e, index)}>
+                    Duplicate
+                  </Button>
+                </PanelRow>
+              </PanelBody>
+            </div>
+          );
+        })}
+      </PanelBody>
+
+
+
+
       <PanelBody initialOpen={false}
         className="bPlPanelBody"
         title={__("Buttons", "product-review")} >
-
         {buttons.map((val, index) => {
           const { text, link } = val;
-          // console.log(text);
-
           return (
             <div key={index}>
               <PanelBody

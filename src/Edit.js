@@ -5,7 +5,7 @@ import ProductReview from "./Components/ProductReview";
 
 const Edit = (props) => {
   const { className, attributes, setAttributes, clientId } = props;
-  const { ratings, buttons } = attributes;
+  const { ratings, pros, cons, buttons } = attributes;
 
 
   useEffect(() => {
@@ -17,6 +17,50 @@ const Edit = (props) => {
     newRatings[index][property] = value;
     setAttributes({ ratings: newRatings });
   }
+
+
+  function updatePros(index, property, value) {
+    const newPros = [...pros];
+    newPros[index][property] = value;
+    setAttributes({ pros: newPros });
+  }
+  function prosDelete(index) {
+    const newPros = [...pros];
+    newPros.splice(index, 1);
+    setAttributes({ pros: newPros });
+  }
+  const onAddPros = () => {
+    const newPros = [...pros,
+    {
+      text: `Sturdy build and ergonomics`,
+    }];
+    setAttributes({ pros: newPros });
+  };
+
+
+  function updateCons(index, property, value) {
+    const newCons = [...cons];
+    newCons[index][property] = value;
+    setAttributes({ cons: newCons });
+  }
+  function consDelete(index) {
+    const newCons = [...cons];
+    newCons.splice(index, 1);
+    setAttributes({ cons: newCons });
+  }
+  const onAddCons = () => {
+    // console.log(cons);
+    const newCons = [...cons,
+    {
+      text: `Incompatible with old versions`,
+    }];
+    setAttributes({ cons: newCons });
+  };
+
+
+
+
+
 
   function updateButton(index, property, value) {
     const newButtons = [...buttons];
@@ -45,10 +89,13 @@ const Edit = (props) => {
 
 
 
-
   return (
     <>
-      <Settings attributes={attributes} setAttributes={setAttributes} updateReview={updateReview} updateButton={updateButton} reviewDelete={reviewDelete} onAddReview={onAddReview} />
+      <Settings attributes={attributes} setAttributes={setAttributes} updateReview={updateReview}
+        updatePros={updatePros} onAddPros={onAddPros} prosDelete={prosDelete}
+        updateCons={updateCons} onAddCons={onAddCons} consDelete={consDelete}
+        updateButton={updateButton} reviewDelete={reviewDelete} onAddReview={onAddReview} />
+
       <div className={className} id={`reviewRatings-${clientId}`}>
         <Style attributes={attributes} clientId={clientId} />
         <ProductReview attributes={attributes} updateReview={updateReview} />
