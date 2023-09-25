@@ -5,8 +5,8 @@ const Style = ({ attributes, clientId }) => {
 	const { ratings, rating, gap, alignment, textTypo, textColor, textShadow } =
 		attributes;
 
-	const mainSl = `#reviewRatings-${clientId}`;
-	const ratingSl = `#reviewRatings-${clientId} .ratting`;
+	const mainSl = `#productReviews-${clientId}`;
+	const ratingSl = `#productReviews-${clientId} .productReviews`;
 	const starSl = `${ratingSl} .stars .star`;
 	const intAndDec = (rating + "").split(".");
 	const ratingInt = parseInt(intAndDec[0]);

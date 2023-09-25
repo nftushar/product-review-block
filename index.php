@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name:Product Review Block run
+ * Plugin Name:Product Review Block 
  * Description: productReviewBlock Gutenberg plugin: Streamline Gutenberg editing with easy-to-use, responsive productReviewBlock  and more..
  * Version: 1.0.0
  * Author: bPlugins LLC
