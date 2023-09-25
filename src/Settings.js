@@ -138,8 +138,8 @@ const General = (props) => {
         className="bPlPanelBody"
         title={__("Products Ratings", "product-review")}
       >
-        {ratings.map((val, index) => {
-          const { title, rating, description } = val;
+        {ratings.map((ratting, index) => {
+          const { title, rating, description } = ratting;
 
           return (
             <div key={index}>

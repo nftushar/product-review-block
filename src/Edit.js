@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
-import Settings from "./Settings";
-import Style from "./Style";
-import ProductReview from "./Components/ProductReview";
+import Settings from "./Settings"; 
+import ProductReview from './Components/Backend/ProductReview'; 
+import Style from './Style';
+import Body from './Components/Backend/Body';
 
 const Edit = (props) => {
   const { className, attributes, setAttributes, clientId } = props;
@@ -48,8 +49,7 @@ const Edit = (props) => {
     newCons.splice(index, 1);
     setAttributes({ cons: newCons });
   }
-  const onAddCons = () => {
-    // console.log(cons);
+  const onAddCons = () => { 
     const newCons = [...cons,
     {
       text: `Incompatible with old versions`,
@@ -108,8 +108,8 @@ const Edit = (props) => {
         updateReview={updateReview} reviewDelete={reviewDelete} onAddReview={onAddReview} />
 
       <div className={className} id={`reviewRatings-${clientId}`}>
-        <Style attributes={attributes} clientId={clientId} />
-        <ProductReview attributes={attributes} updateReview={updateReview} />
+        <Style attributes={attributes} clientId={clientId} />  
+        <ProductReview attributes={attributes} updateReview={updateReview} />  
       </div>
     </>
   );

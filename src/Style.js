@@ -6,7 +6,7 @@ const Style = ({ attributes, clientId }) => {
 		attributes;
 
 	const mainSl = `#reviewRatings-${clientId}`;
-	const ratingSl = `#reviewRatings-${clientId} .reviewRatings`;
+	const ratingSl = `#reviewRatings-${clientId} .ratting`;
 	const starSl = `${ratingSl} .stars .star`;
 	const intAndDec = (rating + "").split(".");
 	const ratingInt = parseInt(intAndDec[0]);

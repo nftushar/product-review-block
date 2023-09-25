@@ -1,7 +1,7 @@
 import { render } from "react-dom";
 import "./style.scss";
 import Style from "./Style";
-import ProductReview from "./Components/ProductReview";
+import ProductReview from './Components/Backend/ProductReview';
 
 document.addEventListener("DOMContentLoaded", () => {
   const ratingEls = document.querySelectorAll(
@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const { cId } = attributes;
 
     render(
-      <> 
+      <>
         <Style attributes={attributes} clientId={cId} />
         <ProductReview attributes={attributes} />
       </>,

@@ -129,9 +129,11 @@ html :where(.editor-styles-wrapper) p {
 		}
 	}
 
-	.reviewRatings {
+	.ratting {
 		display: flex;
-		flex-wrap: wrap;
+		align-items: center;
+		gap: 12px;
+
 		.stars {
 			display: flex;
 			align-items: center;
