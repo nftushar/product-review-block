@@ -94,10 +94,7 @@ const Edit = (props) => {
     }
     ];
     setAttributes({ ratings: newReviews });
-  };
-
-
-
+  }; 
 
   return (
     <>
