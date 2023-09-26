@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
-import Settings from "./Settings"; 
-import ProductReview from './Components/Backend/ProductReview'; 
+import produce from 'immer';
+
+import Settings from "./Settings";
+import ProductReview from './Components/Backend/ProductReview';
 import Style from './Style';
 import Body from './Components/Backend/Body';
 
@@ -8,10 +10,20 @@ const Edit = (props) => {
   const { className, attributes, setAttributes, clientId } = props;
   const { ratings, pros, cons, buttons } = attributes;
 
-
   useEffect(() => {
     clientId && setAttributes({ cId: clientId });
   }, [clientId, setAttributes]);
+
+  const updateArray = (array, index, property, value) => {
+    const newArray = produce(attributes[array], draft => {
+      draft[index][property] = value;
+    });
+
+    setAttributes({ [array]: newArray });
+  }
+  const updateObject = (object, property, value) => {
+    setAttributes({ [object]: { ...attributes[object], [property]: value } });
+  }
 
   function updateReview(index, property, value) {
     const newRatings = [...ratings];
@@ -49,13 +61,13 @@ const Edit = (props) => {
     newCons.splice(index, 1);
     setAttributes({ cons: newCons });
   }
-  const onAddCons = () => { 
+  const onAddCons = () => {
     const newCons = [...cons,
     {
       text: `Incompatible with old versions`,
     }];
     setAttributes({ cons: newCons });
-  }; 
+  };
 
 
   function updateButton(index, property, value) {
@@ -73,11 +85,11 @@ const Edit = (props) => {
     setAttributes({ buttons: newButton });
   }
 
-  function buttonDelete(index) { 
+  function buttonDelete(index) {
     const newButton = [...buttons];
     newButton.splice(index, 1);
     setAttributes({ buttons: newButton });
-  } 
+  }
 
   function reviewDelete(index) {
     const newReviews = [...ratings];
@@ -94,19 +106,22 @@ const Edit = (props) => {
     }
     ];
     setAttributes({ ratings: newReviews });
-  }; 
+  };
+
+  const nestedProps = { attributes, setAttributes, updateArray, updateObject }
 
   return (
     <>
       <Settings attributes={attributes} setAttributes={setAttributes}
         updatePros={updatePros} onAddPros={onAddPros} prosDelete={prosDelete}
         updateCons={updateCons} onAddCons={onAddCons} consDelete={consDelete}
-        updateButton={updateButton}  onAddButton={onAddButton}   buttonDelete={buttonDelete}  
+        updateButton={updateButton} onAddButton={onAddButton} buttonDelete={buttonDelete}
         updateReview={updateReview} reviewDelete={reviewDelete} onAddReview={onAddReview} />
 
       <div className={className} id={`productReviews-${clientId}`}>
-        <Style attributes={attributes} clientId={clientId} />  
-        <ProductReview attributes={attributes} updateReview={updateReview} setAttributes={setAttributes} />  
+        <Style attributes={attributes} clientId={clientId} />
+        
+        <ProductReview  {...nestedProps} updateReview={updateReview} />
       </div>
     </>
   );
