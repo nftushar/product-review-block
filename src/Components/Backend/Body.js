@@ -4,11 +4,11 @@ import { RichText } from "@wordpress/block-editor";
 import { __ } from '@wordpress/i18n';
 
 function Body(props) {
-  const { attributes, updateReview } = props;
-
+  const { attributes, setAttributes, updateReview, } = props;
+  // console.log(setAttributes);
   return (
     <div className="review-body">
-      <Reviews attributes={attributes} updateReview={updateReview} />
+      <Reviews attributes={attributes} setAttributes={setAttributes} updateReview={updateReview} />
     </div>
   );
 }
@@ -16,12 +16,12 @@ function Body(props) {
 export default Body;
 
 const Reviews = (props) => {
-  const { attributes, updateReview } = props;
+  const { attributes, updateReview, setAttributes } = props;
 
   return (
     <>
       <div className="review-left">
-        <Review attributes={attributes} updateReview={updateReview} />
+        <Review attributes={attributes} setAttributes={setAttributes} updateReview={updateReview} />
       </div>
       <div className="review-right">
         <Considerations attributes={attributes} />
@@ -32,13 +32,16 @@ const Reviews = (props) => {
 
 const Review = (props) => {
   // console.log(props);
-  const { attributes, updateReview } = props;
-  const { ratings } = attributes;
+  const { attributes, setAttributes, updateReview } = props;
+  // console.log(setAttributes);
 
+  const { ratings } = attributes;
+  // console.log(ratings);
   return (
     <>
-      {ratings.map((ratting, index) => {
-        const { title, rating, description } = ratting;
+      {ratings.map((ratings, index) => {
+        const { title, rating, description } = ratings;
+        // console.log(ratting);
 
         return <div
           key={index}
@@ -50,7 +53,7 @@ const Review = (props) => {
               tagName="span"
               value={title}
               className="review-heading"
-              onChange={(content) => updateReview(index, "item.title", content)}
+              onChange={(content) => updateReview(index, "title", content)}
               placeholder={__("Enter Title", "product-review")}
               inlineToolbar
               allowedFormats={["core/bold", "core/italic"]}
@@ -60,7 +63,8 @@ const Review = (props) => {
               tagName="span"
               value={description}
               className="review-desc"
-              onChange={(content) => updateReview(index, "item.description", content)}
+              onChange={(content) => updateReview(index, "description", content)}
+              // onChange={(val) => setAttributes({ ratings: { ...ratings, description: val } })} 
               placeholder={__("Enter Title", "product-review")}
               inlineToolbar
               allowedFormats={["core/bold", "core/italic"]}
@@ -75,12 +79,10 @@ const Review = (props) => {
 const Considerations = (props) => {
   const { attributes } = props;
 
-  return (
-    <>
-      <Pros attributes={attributes} />
-      <Cons attributes={attributes} />
-    </>
-  );
+  return <>
+    <Pros attributes={attributes} />
+    <Cons attributes={attributes} />
+  </>;
 };
 
 const Pros = (props) => {

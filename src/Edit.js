@@ -106,7 +106,7 @@ const Edit = (props) => {
 
       <div className={className} id={`productReviews-${clientId}`}>
         <Style attributes={attributes} clientId={clientId} />  
-        <ProductReview attributes={attributes} updateReview={updateReview} />  
+        <ProductReview attributes={attributes} updateReview={updateReview} setAttributes={setAttributes} />  
       </div>
     </>
   );

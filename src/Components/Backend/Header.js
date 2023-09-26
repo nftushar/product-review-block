@@ -1,28 +1,35 @@
 import React from "react";
 import Rating from './Rating';
+import { RichText } from '@wordpress/block-editor';
+import { __ } from '@wordpress/i18n';
+// import { name } from 'browser-sync';
 // import Rating from "../Components/Rating";
 
-function Header({ attributes }) {
+function Header({ attributes, setAttributes  }) {
+
+// console.log(setAttributes);
   return (
     <div className="productHeader">
       <Highlight attributes={attributes} />
-      <Details attributes={attributes} />
+      <Details attributes={attributes} setAttributes={setAttributes} />
     </div>
   );
 }
 export default Header;
 
 const Highlight = ({ attributes }) => {
+  const { product } = attributes;
+  const { name, price, salePrice } = product;
   return (
     <>
       <div className="review-header">
-        <h1 className="review-heading">Shart</h1>
+        <h1 className="review-heading">{name}</h1>
         <div className="header-rating">
           <div className="rating-comp">
             <Rating attributes={attributes} />
           </div>
           <span className="dist-price">
-            <del>$20</del> $18
+            <del>${price}</del> ${salePrice}
           </span>
         </div>
       </div>
@@ -30,14 +37,26 @@ const Highlight = ({ attributes }) => {
   );
 };
 
-const Details = () => {
+const Details = ({  attributes, setAttributes }) => {
+// console.log(setAttributes);
+  
+  const { product } = attributes;
+  const {  image, description } = product; 
   return (
     <div className="review-header-content">
       <div className="image">
-        <img src="http://localhost/wordpress/wp-content/uploads/2023/09/zebra-1050446_1280-300x200.jpg" />
+      <img src={image} />  
       </div>
       <div className="desc">
-        <p>hello this is a product description</p>
+      <RichText
+              tagName="p"
+              value={description} 
+              onChange={(val) => setAttributes({ product: { ...product, description: val } })} 
+              placeholder={__("Enter Description", "product-review")}
+              inlineToolbar
+              allowedFormats={["core/bold", "core/italic"]}
+            />
+        {/* <p>{description}</p> */}
       </div>
     </div>
   );

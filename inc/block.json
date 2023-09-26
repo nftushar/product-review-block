@@ -25,7 +25,7 @@
         "name": "Product Name",
         "price": 49.99,
         "salePrice": 39.99,
-        "image": "",
+        "image": "http://localhost/wordpress/wp-content/uploads/2023/09/zebra-1050446_1280-300x200.jpg",
         "description": "Product description goes here."
       }
     },
@@ -35,17 +35,17 @@
         {
           "title": "Stability",
           "rating": 9,
-          "description": ""
+          "description": "Hello des rating"
         },
         {
           "title": "Ease of Use",
           "rating": 7,
-          "description": ""
+          "description": "Hello des rating"
         },
         {
           "title": "Look & Feel",
           "rating": 8,
-          "description": ""
+          "description": "Hello des rating"
         }
       ]
     },

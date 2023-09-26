@@ -2,7 +2,7 @@ import { __ } from "@wordpress/i18n";
 import { InspectorControls } from "@wordpress/block-editor";
 import { solidStar, outlineStar } from "./utils/icons";
 import produce from "immer";
-import { PanelBody, TabPanel, SelectControl, RangeControl, TextControl } from "@wordpress/components";
+import { PanelBody, TabPanel, SelectControl, RangeControl, TextControl, __experimentalNumberControl as NumberControl } from "@wordpress/components";
 
 import { BColor, BtnGroup, MultiShadowControl, Typography } from "../../Components";
 import { PanelRow } from '@wordpress/components';
@@ -12,31 +12,6 @@ const iconOptions = [
   { label: __("Solid", "rating"), value: "solid", icon: solidStar },
   { label: __("Outline", "rating"), value: "outline", icon: outlineStar },
 ];
-
-// const onAddReating = () => {
-//   const newCards = [
-//     ...ratings,
-//     {
-//       background: ratings?.[0]?.background || {
-//         color: '#fff'
-//       },
-//       img: "",
-//       title: `Title of the ${ratings?.length + 1} number card`,
-//       desc: `Description of the ${ratings?.length + 1} number card`,
-//       btnLabal: ratings?.[0]?.btnLabal || 'Button',
-//       btnUrl: "#",
-//     }
-//   ];
-//   setAttributes({ cards: newCards });
-// };
-
-
-// const onDuplicateReview = (e, index) => {
-//   e.preventDefault();
-//   const newReviews = [...reviews];
-//   newReviews.splice(index, 0, reviews[index]);
-//   setAttributes({ reviews: newReviews });
-// };
 
 const Settings = ({ attributes, setAttributes, updateReview, reviewDelete, onAddReview, updatePros, onAddPros, prosDelete, updateCons, onAddCons, consDelete, updateButton, onAddButton, buttonDelete }) => {
   // const { rating, textTypo, textColor, textShadow } = attributes;
@@ -96,9 +71,10 @@ export default Settings;
 const General = (props) => {
   const { attributes, setAttributes, updatePros, prosDelete, onAddPros, updateCons, consDelete, onAddCons,
     updateButton, onAddButton, buttonDelete, updateReview, reviewDelete, onAddReview } = props;
- 
 
-  const { rating, ratings, pros, cons, buttons } = attributes;
+
+  const { product, rating, ratings, pros, cons, buttons } = attributes;
+  const { name, price, salePrice, image, description } = product;
 
   const { scale, style } = rating;
   // const { text, link } = button;
@@ -136,10 +112,35 @@ const General = (props) => {
 
       <PanelBody initialOpen={false}
         className="bPlPanelBody"
-        title={__("Products Ratings", "product-review")}
-      >
-        {ratings.map((ratting, index) => {
-          const { title, rating, description } = ratting;
+        title={__("Products Details", "product-review")} >
+        <TextControl
+          className="mt20"
+          value={name}
+          onChange={(val) => setAttributes({ product: { ...product, name: val } })}
+        />
+
+        <NumberControl
+          isShiftStepEnabled={true}
+          label={__("Add Price", "product-review")}
+          value={price}
+          onChange={(val) => setAttributes({ product: { ...product, price: val } })}
+
+        /> 
+        {/* shiftStep={10} */}
+        <TextControl
+          className="mt20"
+          label={__("Add Description", "product-review")}
+          value={description}
+          onChange={(val) => setAttributes({ product: { ...product, description: val } })}
+        />
+      </PanelBody>
+
+      <PanelBody initialOpen={false}
+        className="bPlPanelBody"
+        title={__("Products Ratings", "product-review")}>
+
+        {ratings.map((ratings, index) => { 
+          const { title, rating, description } = ratings;
 
           return (
             <div key={index}>
@@ -154,7 +155,6 @@ const General = (props) => {
                   labelPosition="left"
                   value={rating}
                   onChange={(val) => updateReview(index, "rating", val)}
-
                   max={scale >= 10 ? scale : 5}
                 />
                 <TextControl
@@ -182,7 +182,6 @@ const General = (props) => {
           );
         })}
       </PanelBody>
-
 
       <PanelBody initialOpen={false}
         className="bPlPanelBody"
@@ -249,8 +248,6 @@ const General = (props) => {
           );
         })}
       </PanelBody>
-
-
 
 
       <PanelBody initialOpen={false}
