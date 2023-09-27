@@ -116,12 +116,14 @@ const Edit = (props) => {
         updatePros={updatePros} onAddPros={onAddPros} prosDelete={prosDelete}
         updateCons={updateCons} onAddCons={onAddCons} consDelete={consDelete}
         updateButton={updateButton} onAddButton={onAddButton} buttonDelete={buttonDelete}
-        updateReview={updateReview} reviewDelete={reviewDelete} onAddReview={onAddReview} />
+        updateReview={updateReview} reviewDelete={reviewDelete} onAddReview={onAddReview}
+        updateArray={updateArray}        
+        />
 
       <div className={className} id={`productReviews-${clientId}`}>
         <Style attributes={attributes} clientId={clientId} />
         
-        <ProductReview  {...nestedProps} updateReview={updateReview} />
+        <ProductReview  {...nestedProps} updateArray={updateArray}/>
       </div>
     </>
   );

@@ -13,7 +13,7 @@ const iconOptions = [
   { label: __("Outline", "rating"), value: "outline", icon: outlineStar },
 ];
 
-const Settings = ({ attributes, setAttributes, updateReview, reviewDelete, onAddReview, updatePros, onAddPros, prosDelete, updateCons, onAddCons, consDelete, updateButton, onAddButton, buttonDelete }) => {
+const Settings = ({ attributes, setAttributes, updateArray, reviewDelete, onAddReview, updatePros, onAddPros, prosDelete, updateCons, onAddCons, consDelete, updateButton, onAddButton, buttonDelete }) => {
   // const { rating, textTypo, textColor, textShadow } = attributes;
   // const { scale, style, emptyColor, fillColor } = rating;
 
@@ -32,20 +32,17 @@ const Settings = ({ attributes, setAttributes, updateReview, reviewDelete, onAdd
               <General
                 attributes={attributes}
                 setAttributes={setAttributes}
+                updateArray={updateArray}
 
-                updateReview={updateReview}
                 reviewDelete={reviewDelete}
                 onAddReview={onAddReview}
 
-                updatePros={updatePros}
                 onAddPros={onAddPros}
                 prosDelete={prosDelete}
 
-                updateCons={updateCons}
                 onAddCons={onAddCons}
                 consDelete={consDelete}
 
-                updateButton={updateButton}
                 onAddButton={onAddButton}
                 buttonDelete={buttonDelete}
 
@@ -56,7 +53,7 @@ const Settings = ({ attributes, setAttributes, updateReview, reviewDelete, onAdd
               <Style
                 attributes={attributes}
                 setAttributes={setAttributes}
-                updateReview={updateReview}
+                updateArray={updateArray}
               />
             )}
           </>
@@ -70,11 +67,11 @@ export default Settings;
 
 const General = (props) => {
   const { attributes, setAttributes, updatePros, prosDelete, onAddPros, updateCons, consDelete, onAddCons,
-    updateButton, onAddButton, buttonDelete, updateReview, reviewDelete, onAddReview } = props;
+    updateButton, onAddButton, buttonDelete, updateArray, reviewDelete, onAddReview } = props;
 
 
   const { product, rating, ratings, pros, cons, buttons } = attributes;
-  const { name, price, salePrice, image, description } = product;
+  const { name, price, description } = product;
 
   const { scale, style } = rating;
   // const { text, link } = button;
@@ -125,7 +122,7 @@ const General = (props) => {
           value={price}
           onChange={(val) => setAttributes({ product: { ...product, price: val } })}
 
-        /> 
+        />
         {/* shiftStep={10} */}
         <TextControl
           className="mt20"
@@ -139,7 +136,7 @@ const General = (props) => {
         className="bPlPanelBody"
         title={__("Products Ratings", "product-review")}>
 
-        {ratings.map((ratings, index) => { 
+        {ratings.map((ratings, index) => {
           const { title, rating, description } = ratings;
 
           return (
@@ -153,26 +150,25 @@ const General = (props) => {
                   className="mt20"
                   label={__("Rating", "product-review")}
                   labelPosition="left"
-                  value={rating}
-                  onChange={(val) => updateReview(index, "rating", val)}
+                  value={rating} 
+                  onChange={(val) => updateArray("ratings", index, "rating", val)}
+
                   max={scale >= 10 ? scale : 5}
                 />
                 <TextControl
                   className="mt20"
                   label={__("Add Title", "product-review")}
                   value={title}
-                  onChange={(val) => updateReview(index, "title", val)}
+                  onChange={(val) => updateArray("ratings", index, "title", val)}
                 />
-
                 <TextControl
                   className="mt20"
                   label={__("Add Description", "product-review")}
                   value={description}
-                  onChange={(val) => updateReview(index, "description", val)}
-                />
-
+                  onChange={(val) => updateArray("ratings", index, "description", val)}
+                /> 
                 <PanelRow className="itemAction mt20">
-                  {1 < ratings?.length && <Button className="removeItem" onClick={() => reviewDelete(index)}>Delete</Button>}
+                  {1 < pros?.length && <Button className="removeItem" onClick={() => reviewDelete(index)}>Delete</Button>}
                   <Button className="duplicateItem" onClick={(e) => onAddReview(e, index)}>
                     Duplicate
                   </Button>
@@ -200,8 +196,8 @@ const General = (props) => {
                 <TextControl
                   className="mt20"
                   label={__("Add Title", "product-review")}
-                  value={text}
-                  onChange={(val) => updatePros(index, "text", val)}
+                  value={text} 
+                  onChange={(val) => updateArray("pros", index, "text", val)} 
                 />
 
                 <PanelRow className="itemAction mt20">
@@ -233,8 +229,9 @@ const General = (props) => {
                 <TextControl
                   className="mt20"
                   label={__("Add Title", "product-review")}
-                  value={text}
-                  onChange={(val) => updateCons(index, "text", val)}
+                  value={text} 
+                  onChange={(val) => updateArray("cons", index, "text", val)} 
+
                 />
 
                 <PanelRow className="itemAction mt20">
@@ -254,8 +251,7 @@ const General = (props) => {
         className="bPlPanelBody"
         title={__("Buttons", "product-review")} >
         {buttons.map((val, index) => {
-          const { text, link } = val;
-          // console.log(link);
+          const { text, link } = val; 
           return (
             <div key={index}>
               <PanelBody
@@ -266,14 +262,16 @@ const General = (props) => {
                 <TextControl
                   className="mt20"
                   label={__("Button Label", "product-review")}
-                  value={text}
-                  onChange={(val) => updateButton(index, "text", val)}
+                  value={text} 
+                  onChange={(val) => updateArray("buttons", index, "text", val)} 
+
                 />
                 <TextControl
                   className="mt20"
                   label={__("Add link", "product-review")}
-                  value={link}
-                  onChange={(val) => updateButton(index, "link", val)}
+                  value={link} 
+                  onChange={(val) => updateArray("buttons", index, "link", val)} 
+
                 />
                 <PanelRow className="itemAction mt20">
                   {1 < buttons?.length && <Button className="removeItem" onClick={() => buttonDelete(index)}>Delete</Button>}
