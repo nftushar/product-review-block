@@ -70,8 +70,9 @@ const General = (props) => {
     updateButton, onAddButton, buttonDelete, updateArray, reviewDelete, onAddReview } = props;
 
 
-  const { product, rating, ratings, pros, cons, buttons } = attributes;
+  const { product, rating, ratings, labels, pros, cons, buttons } = attributes;
   const { name, price, description } = product;
+  const { labelPros, labelCons, labelButtons } = labels;
 
   const { scale, style } = rating;
   // const { text, link } = button;
@@ -150,7 +151,7 @@ const General = (props) => {
                   className="mt20"
                   label={__("Rating", "product-review")}
                   labelPosition="left"
-                  value={rating} 
+                  value={rating}
                   onChange={(val) => updateArray("ratings", index, "rating", val)}
 
                   max={scale >= 10 ? scale : 5}
@@ -166,7 +167,7 @@ const General = (props) => {
                   label={__("Add Description", "product-review")}
                   value={description}
                   onChange={(val) => updateArray("ratings", index, "description", val)}
-                /> 
+                />
                 <PanelRow className="itemAction mt20">
                   {1 < pros?.length && <Button className="removeItem" onClick={() => reviewDelete(index)}>Delete</Button>}
                   <Button className="duplicateItem" onClick={(e) => onAddReview(e, index)}>
@@ -179,6 +180,33 @@ const General = (props) => {
         })}
       </PanelBody>
 
+      {/* Labels start */}
+      <PanelBody initialOpen={false}
+        className="bPlPanelBody"
+        title={__("Labels", "product-review")}
+      >
+        <TextControl
+          className="mt20"
+          label={__("Pros Labels", "product-review")}
+          value={labelPros}
+          onChange={(val) => setAttributes({ labels: { ...labels, labelPros: val } })}
+        />
+        <TextControl
+          className="mt20"
+          label={__("Cons Labels", "product-review")}
+          value={labelCons}
+          onChange={(val) => setAttributes({ labels: { ...labels, labelCons: val } })}
+        />
+        <TextControl
+          className="mt20"
+          label={__("Buttons Labels", "product-review")}
+          value={labelButtons}
+          onChange={(val) => setAttributes({ labels: { ...labels, labelButtons: val } })}
+        />
+      </PanelBody>
+      {/* Label end */}
+
+      {/* Pros start */}
       <PanelBody initialOpen={false}
         className="bPlPanelBody"
         title={__("Pros", "product-review")}
@@ -196,8 +224,8 @@ const General = (props) => {
                 <TextControl
                   className="mt20"
                   label={__("Add Title", "product-review")}
-                  value={text} 
-                  onChange={(val) => updateArray("pros", index, "text", val)} 
+                  value={text}
+                  onChange={(val) => updateArray("pros", index, "text", val)}
                 />
 
                 <PanelRow className="itemAction mt20">
@@ -211,6 +239,7 @@ const General = (props) => {
           );
         })}
       </PanelBody>
+      {/* Pros end */}
 
       <PanelBody initialOpen={false}
         className="bPlPanelBody"
@@ -229,8 +258,8 @@ const General = (props) => {
                 <TextControl
                   className="mt20"
                   label={__("Add Title", "product-review")}
-                  value={text} 
-                  onChange={(val) => updateArray("cons", index, "text", val)} 
+                  value={text}
+                  onChange={(val) => updateArray("cons", index, "text", val)}
 
                 />
 
@@ -251,7 +280,7 @@ const General = (props) => {
         className="bPlPanelBody"
         title={__("Buttons", "product-review")} >
         {buttons.map((val, index) => {
-          const { text, link } = val; 
+          const { text, link } = val;
           return (
             <div key={index}>
               <PanelBody
@@ -262,15 +291,15 @@ const General = (props) => {
                 <TextControl
                   className="mt20"
                   label={__("Button Label", "product-review")}
-                  value={text} 
-                  onChange={(val) => updateArray("buttons", index, "text", val)} 
+                  value={text}
+                  onChange={(val) => updateArray("buttons", index, "text", val)}
 
                 />
                 <TextControl
                   className="mt20"
                   label={__("Add link", "product-review")}
-                  value={link} 
-                  onChange={(val) => updateArray("buttons", index, "link", val)} 
+                  value={link}
+                  onChange={(val) => updateArray("buttons", index, "link", val)}
 
                 />
                 <PanelRow className="itemAction mt20">

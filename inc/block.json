@@ -65,9 +65,9 @@
     "labels": {
       "type": "object",
       "default": {
-        "pros": "Pros",
-        "cons": "Cons",
-        "buttons": "Buy this Product"
+        "labelPros": "Pros",
+        "labelCons": "Cons",
+        "labelButtons": "Buy this Product"
       }
     },
     "pros": {
