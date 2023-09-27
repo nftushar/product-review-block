@@ -69,7 +69,6 @@ const Edit = (props) => {
     setAttributes({ cons: newCons });
   };
 
-
   function updateButton(index, property, value) {
     const newButtons = [...buttons];
     newButtons[index][property] = value;
@@ -117,13 +116,13 @@ const Edit = (props) => {
         updateCons={updateCons} onAddCons={onAddCons} consDelete={consDelete}
         updateButton={updateButton} onAddButton={onAddButton} buttonDelete={buttonDelete}
         updateReview={updateReview} reviewDelete={reviewDelete} onAddReview={onAddReview}
-        updateArray={updateArray}        
-        />
+        updateArray={updateArray}
+      />
 
       <div className={className} id={`productReviews-${clientId}`}>
         <Style attributes={attributes} clientId={clientId} />
-        
-        <ProductReview  {...nestedProps} updateArray={updateArray}/>
+
+        <ProductReview  {...nestedProps} />
       </div>
     </>
   );

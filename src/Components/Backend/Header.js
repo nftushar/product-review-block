@@ -16,12 +16,27 @@ function Header(props) {
 export default Header;
 
 const Highlight = (props) => {
-  const { product } = props.attributes;
+  // console.log(props);
+  const {  attributes, setAttributes } = props;
+  const { product } = attributes
   const { name, price, salePrice } = product;
+  // console.log(setAttributes)
   return (
     <>
+    
       <div className="review-header">
-        <h1 className="review-heading">{name}</h1>
+        <h1 className="review-heading"> 
+          <RichText
+            tagName="span"
+            value={name}
+            className="review-heading" 
+            onChange={(val) => setAttributes({ product: { ...product, name: val } })}
+            placeholder={__("Enter Name", "product-review")}
+            inlineToolbar
+            allowedFormats={["core/bold", "core/italic"]}
+          />
+
+        </h1>
         <div className="header-rating">
           <div className="rating-comp">
             <Rating {...props} />
