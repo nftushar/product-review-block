@@ -23,38 +23,47 @@ html :where(.editor-styles-wrapper) p {
 		box-sizing: border-box;
 	}
 
-	.main {
+	.productReviews {
 		background-color: oldlace;
 		padding: 3em;
-		.review-header {
-			margin-top: 20px;
-		}
-		.review-header-content {
-			margin-top: 25px;
-			display: flex;
-			flex-wrap: wrap;
-			column-gap: 40px;
-			.desc {
-				display: flex;
-				align-items: center;
+
+		.productHeader {
+			.headerTop {
 				margin-top: 20px;
 			}
-		}
-		.header-rating {
-			display: flex;
-			justify-content: space-between;
-			align-items: center;
-			flex-wrap: wrap;
-			margin-top: 20px;
-			span.dist-price {
-				font-size: 25px;
-				del {
-					opacity: 0.4;
-					padding-right: 10px;
+			.productName {
+			}
+
+			.headerMiddle {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				flex-wrap: wrap;
+				margin-top: 20px;
+
+				.productPrice {
+					font-size: 25px;
+					del {
+						opacity: 0.4;
+						padding-right: 10px;
+					}
+				}
+			}
+
+			.productImgDesc {
+				margin-top: 25px;
+				display: flex;
+				flex-wrap: wrap;
+				column-gap: 40px;
+				align-items: center;
+
+				p {
+					margin: 0 !important;
 				}
 			}
 		}
-		.review-body {
+
+		.productBody {
 			display: flex;
 			justify-content: space-between;
 			align-items: center;

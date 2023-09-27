@@ -5,7 +5,7 @@ function Body(props) {
   const { attributes } = props;
 
   return (
-    <div className="review-body">
+    <div className="productBody">
       <Reviews attributes={attributes} />
     </div>
   );
@@ -40,7 +40,7 @@ const Review = (props) => {
         <div
           key={index}
           className="review-left-features"
-          id={`productReviews-${index + 1}`}
+          id={`reviewRatings-${index + 1}`}
         >
           <div className="review-left-content">
             <span className="review-heading">{item.title}</span>

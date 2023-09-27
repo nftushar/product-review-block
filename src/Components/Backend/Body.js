@@ -5,11 +5,9 @@ import { __ } from '@wordpress/i18n';
 
 function Body(props) {
   // console.log(updateReview);
-  return (
-    <div className="review-body">
-      <Reviews {...props} />
-    </div>
-  );
+  return <div className="productBody">
+    <Reviews {...props} />
+  </div>;
 }
 
 export default Body;
@@ -38,7 +36,7 @@ const Review = (props) => {
       return <div
         key={index}
         className="review-left-features"
-        id={`productReviews-${index + 1}`}
+        id={`reviewRatings-${index + 1}`}
       >
         <div className="review-left-content">
           <RichText

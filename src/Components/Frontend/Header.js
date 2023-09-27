@@ -18,7 +18,7 @@ const Highlight = ({ attributes }) => {
       <h1 className="review-heading">Shart</h1>
       <div className="header-rating">
         <div className="rating-comp">
-          <Rating attributes={attributes} /> 
+          <Rating attributes={attributes} />
         </div>
         <span className="dist-price">
           <del>$20</del> $18
@@ -30,13 +30,13 @@ const Highlight = ({ attributes }) => {
 
 const Details = () => {
   return (
-    <div className="review-header-content">
+    <div className="productImgDesc">
       <div className="image">
         <img src="http://localhost/wordpress/wp-content/uploads/2023/09/zebra-1050446_1280-300x200.jpg" />
       </div>
-      <div className="desc">
-        <p>hello this is a product description</p>
-      </div>
+
+      <p>hello this is a product description</p>
+
     </div>
   );
 };
