@@ -227,7 +227,6 @@ const General = (props) => {
                   value={text}
                   onChange={(val) => updateArray("pros", index, "text", val)}
                 />
-
                 <PanelRow className="itemAction mt20">
                   {1 < pros?.length && <Button className="removeItem" onClick={() => prosDelete(index)}>Delete</Button>}
                   <Button className="duplicateItem" onClick={(e) => onAddPros(e, index)}>
