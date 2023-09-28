@@ -21,7 +21,7 @@ const Highlight = ({ attributes }) => {
           <Rating attributes={attributes} />
         </div>
         <span className="dist-price">
-          <del>$20</del> $18
+          <del>$20aa</del> $18aa
         </span>
       </div>
     </div>

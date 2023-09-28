@@ -25,6 +25,7 @@
         "name": "Product Name",
         "price": 49.99,
         "salePrice": 39.99,
+        "currency": "USD",
         "image": "http://localhost/wordpress/wp-content/uploads/2020/09/bg-04-free-img.jpg",
         "description": "Product description goes here."
       }
@@ -88,10 +89,10 @@
       "type": "array",
       "default": [
         {
-          "text": "aa Incompatible with old versions"
+          "text": "Incompatible with old versions"
         },
         {
-          "text": "zz Hard to assemble"
+          "text": "Hard to assemble"
         },
         {
           "text": "Bad color combination"
@@ -119,16 +120,67 @@
       "type": "string",
       "default": "default"
     },
-    "background": {},
-    "padding": {},
-    "border": {},
-    "shadow": {},
+    "background": {
+      "type": "object",
+      "default": {
+        "color": "#6ef0a2",
+        "bgType": "gradient",
+        "gradient": "linear-gradient(to right, #f3fbed, #f1f9eb, #f0f7e9, #e4eedc, #dbeccd)"
+      }
+    },
+    "padding": {
+      "type": "object",
+      "default": {
+        "top": "0px",
+        "right": "0px",
+        "bottom": "0px",
+        "left": "0px"
+      }
+    },
+    "border": {
+      "type": "string",
+      "default": "8px"
+    },
+    "shadow": {
+      "type": "array",
+      "default": [
+        {
+          "hOffset": "0px",
+          "vOffset": "4px",
+          "blur": "8px",
+          "spreed": "0px",
+          "color": "#0003"
+        }
+      ]
+    },
+    "btnColors": {
+      "type": "object",
+      "default": {
+        "color": "#fff",
+        "bg": "#eb15dc"
+      }
+    },
+    "btnHovColors": {
+      "type": "object",
+      "default": {
+        "color": "#fff",
+        "bg": "#5df571"
+      }
+    },
+
+
     "colors": {
       "type": "object",
       "default": {
         "text": "",
-        "button": {},
-        "buttonHov": {},
+        "button": {
+          "color": "#fff",
+          "bgColor": "#5435"
+        },
+        "buttonHov": {
+          "color": "#0003",
+          "bgColor": "#5435"
+        },
         "prosIcon": "",
         "consIcon": ""
       }

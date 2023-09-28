@@ -2,18 +2,15 @@ import { __ } from "@wordpress/i18n";
 import { InspectorControls } from "@wordpress/block-editor";
 import { solidStar, outlineStar } from "./utils/icons";
 import produce from "immer";
-import { PanelBody, TabPanel, SelectControl, RangeControl, TextControl, __experimentalNumberControl as NumberControl } from "@wordpress/components";
+import { PanelBody, TabPanel, SelectControl, RangeControl, TextControl, Button, PanelRow, TextareaControl, __experimentalNumberControl as NumberControl } from "@wordpress/components";
 
-import { BColor, BtnGroup, MultiShadowControl, Typography, InlineMediaUpload } from "../../Components";
-import { PanelRow } from '@wordpress/components';
-import { Button } from '@wordpress/components';
-
+import { BColor, BtnGroup, MultiShadowControl, Typography, InlineMediaUpload, Background, ColorsControl } from "../../Components";
 const iconOptions = [
   { label: __("Solid", "rating"), value: "solid", icon: solidStar },
   { label: __("Outline", "rating"), value: "outline", icon: outlineStar },
 ];
 
-const Settings = ({ attributes, setAttributes, updateArray, reviewDelete, onAddReview, updatePros, onAddPros, prosDelete, updateCons, onAddCons, consDelete, updateButton, onAddButton, buttonDelete }) => {
+const Settings = ({ attributes, setAttributes, updateArray, reviewDelete, onAddReview, onAddPros, prosDelete, onAddCons, consDelete, onAddButton, buttonDelete }) => {
   // const { rating, textTypo, textColor, textShadow } = attributes;
   // const { scale, style, emptyColor, fillColor } = rating;
 
@@ -66,12 +63,11 @@ const Settings = ({ attributes, setAttributes, updateArray, reviewDelete, onAddR
 export default Settings;
 
 const General = (props) => {
-  const { attributes, setAttributes, updatePros, prosDelete, onAddPros, updateCons, consDelete, onAddCons,
-    updateButton, onAddButton, buttonDelete, updateArray, reviewDelete, onAddReview } = props;
+  const { attributes, setAttributes, prosDelete, onAddPros, consDelete, onAddCons, onAddButton, buttonDelete, updateArray, reviewDelete, onAddReview } = props;
 
 
   const { product, rating, ratings, labels, pros, cons, buttons } = attributes;
-  const { name, price, description, image } = product;
+  const { name, price, salePrice, currency, description, image } = product;
   const { labelPros, labelCons, labelButtons } = labels;
 
   const { scale, style } = rating;
@@ -125,14 +121,27 @@ const General = (props) => {
 
 
         <NumberControl
+          className="mt20"
           isShiftStepEnabled={true}
           label={__("Add Price", "product-review")}
           value={price}
           onChange={(val) => setAttributes({ product: { ...product, price: val } })}
-
+        />
+        <NumberControl
+          className="mt20"
+          isShiftStepEnabled={true}
+          label={__("Add Sale Price", "product-review")}
+          value={salePrice}
+          onChange={(val) => setAttributes({ product: { ...product, salePrice: val } })}
         />
         {/* shiftStep={10} */}
         <TextControl
+          className="mt20"
+          label={__("Add Currency", "product-review")}
+          value={currency}
+          onChange={(val) => setAttributes({ product: { ...product, currency: val } })}
+        />
+        <TextareaControl
           className="mt20"
           label={__("Add Description", "product-review")}
           value={description}
@@ -169,7 +178,7 @@ const General = (props) => {
                   value={title}
                   onChange={(val) => updateArray("ratings", index, "title", val)}
                 />
-                <TextControl
+                <TextareaControl
                   className="mt20"
                   label={__("Add Description", "product-review")}
                   value={description}
@@ -326,9 +335,10 @@ const General = (props) => {
 
 const Style = (props) => {
   const { attributes, setAttributes } = props;
-  const { rating, textTypo, textColor, textShadow } = attributes;
+  const { rating, textTypo, textColor, textShadow, background, btnColors, btnHovColors } = attributes;
   const { emptyColor, fillColor } = rating;
 
+  // Style section start
   return (
     <>
       <PanelBody className="bPlPanelBody" title={__("Title", "product-review")}>
@@ -370,6 +380,29 @@ const Style = (props) => {
           produce={produce}
         />
       </PanelBody>
+      <PanelBody className="bPlPanelBody" title={__("Colors", "product-review")}>
+        <Background
+          label={__("Background", "product-review")}
+          value={background}
+          onChange={(val) =>
+            setAttributes({ background: val })
+          }
+        />
+        
+        <ColorsControl
+          className="mt20"
+          label={__("Colors", "info-cards")}
+          value={btnColors}
+          onChange={(val) => setAttributes({ btnColors: val })}
+        />
+        <ColorsControl
+          label={__("Hover Colors", "info-cards")}
+          value={btnHovColors}
+          onChange={(val) => setAttributes({ btnHovColors: val })}
+        />
+      </PanelBody>
     </>
+
   );
 };
+{/* // Style section end */ }

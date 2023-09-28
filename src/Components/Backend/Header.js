@@ -9,7 +9,6 @@ function Header(props) {
   return (
     <div className="productHeader">
       <Highlight {...props} />
-
       <Details {...props} />
     </div>
   );
