@@ -13,6 +13,13 @@ h6 {
 	margin: 0px;
 	transition: all 500ms ease;
 	width: 100%;
+	color: #000;
+}
+span {
+	color: #000;
+}
+p {
+	color: #000;
 }
 html :where(.editor-styles-wrapper) p {
 	margin: 0;
@@ -46,6 +53,7 @@ html :where(.editor-styles-wrapper) p {
 
 				.productPrice {
 					font-size: 25px;
+					font-weight: 500;
 					del {
 						opacity: 0.4;
 						padding-right: 10px;
@@ -63,11 +71,17 @@ html :where(.editor-styles-wrapper) p {
 				p {
 					margin: 0 !important;
 				}
-				.image{ 
-					height: 100%; 
-					background-repeat: no-repeat;
-					background-size: contain;
-					border: 1px solid red;
+				.image {
+					// height: 100%;
+					// background-repeat: no-repeat;
+					// background-size: contain;
+					// border: 1px solid red;
+				// min-width: 60%;
+
+				max-width: 50%;
+					img {
+						max-width: 100%;
+					}
 				}
 			}
 		}
@@ -83,9 +97,9 @@ html :where(.editor-styles-wrapper) p {
 				gap: 15px;
 			}
 			.review-right {
-				margin-top: 20px; 
+				margin-top: 20px;
 				.review-right-pros-item {
-					display: flex; 
+					display: flex;
 					svg {
 						width: 20px;
 						height: 20px;
@@ -110,7 +124,7 @@ html :where(.editor-styles-wrapper) p {
 				margin: 20px 12px 0 0;
 				cursor: pointer;
 				text-align: center;
-				color: black;
+				color: #000;
 				text-decoration: none;
 			}
 		}
@@ -126,8 +140,9 @@ html :where(.editor-styles-wrapper) p {
 					font-weight: 600;
 				}
 				.span.review-desc {
-					font-size: 80%; 
+					font-size: 80%;
 					opacity: 0.7;
+					color: #000;
 				}
 			}
 		}
