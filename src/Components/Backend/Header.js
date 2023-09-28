@@ -16,8 +16,7 @@ function Header(props) {
 }
 export default Header;
 
-const Highlight = (props) => {
-  // console.log(props);
+const Highlight = (props) => { 
   const { attributes, setAttributes } = props;
   const { product, ratings } = attributes
   const { name, price, salePrice } = product;

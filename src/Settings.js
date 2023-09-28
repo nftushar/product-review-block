@@ -4,7 +4,7 @@ import { solidStar, outlineStar } from "./utils/icons";
 import produce from "immer";
 import { PanelBody, TabPanel, SelectControl, RangeControl, TextControl, __experimentalNumberControl as NumberControl } from "@wordpress/components";
 
-import { BColor, BtnGroup, MultiShadowControl, Typography } from "../../Components";
+import { BColor, BtnGroup, MultiShadowControl, Typography, InlineMediaUpload } from "../../Components";
 import { PanelRow } from '@wordpress/components';
 import { Button } from '@wordpress/components';
 
@@ -71,7 +71,7 @@ const General = (props) => {
 
 
   const { product, rating, ratings, labels, pros, cons, buttons } = attributes;
-  const { name, price, description } = product;
+  const { name, price, description, image } = product;
   const { labelPros, labelCons, labelButtons } = labels;
 
   const { scale, style } = rating;
@@ -112,10 +112,17 @@ const General = (props) => {
         className="bPlPanelBody"
         title={__("Products Details", "product-review")} >
         <TextControl
+          label={__("Add Name", "product-review")}
           className="mt20"
           value={name}
           onChange={(val) => setAttributes({ product: { ...product, name: val } })}
         />
+        <InlineMediaUpload
+          label={__("Add Image", "product-review")}
+          className="mt20"
+          value={image}
+          onChange={(val) => setAttributes({ product: { ...product, image: val } })} />
+
 
         <NumberControl
           isShiftStepEnabled={true}

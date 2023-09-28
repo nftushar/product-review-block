@@ -31,9 +31,7 @@ const Reviews = (props) => {
 const Review = (props) => {
   const { attributes } = props;
   const { ratings } = attributes;
-  // const { title, rating, description } = ratings;
-  // console.log(ratings);
-
+  // const { title, rating, description } = ratings; 
   return (
     <>
       {ratings.map((item, index) => (
@@ -92,8 +90,7 @@ const Pros = (props) => {
 
 const Cons = (props) => {
   const { attributes } = props;
-  const { cons } = attributes;
-  // console.log(cons);
+  const { cons } = attributes;  
   return (
     <>
       <div className="review-right-pros">

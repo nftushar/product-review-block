@@ -30,6 +30,9 @@ html :where(.editor-styles-wrapper) p {
 		.productHeader {
 			.headerTop {
 				margin-top: 20px;
+				.productName {
+					font-size: 40px;
+				}
 			}
 			.productName {
 			}
@@ -60,6 +63,12 @@ html :where(.editor-styles-wrapper) p {
 				p {
 					margin: 0 !important;
 				}
+				.image{ 
+					height: 100%; 
+					background-repeat: no-repeat;
+					background-size: contain;
+					border: 1px solid red;
+				}
 			}
 		}
 
@@ -74,18 +83,9 @@ html :where(.editor-styles-wrapper) p {
 				gap: 15px;
 			}
 			.review-right {
-				margin-top: 20px;
-				// background: var(--background-color);
-				// grid-area: right;
-				// padding: 20px 20px 20px;
-				// overflow: hidden;
-				// border-bottom: var(--border-width) solid var(--border-color);
-				// border-left: calc(var(--border-width) / 2) solid var(--border-color);
-				// border-right: var(--border-width) solid var(--border-color);
+				margin-top: 20px; 
 				.review-right-pros-item {
-					display: flex;
-					// padding: 2px 0;
-					// align-items: center;
+					display: flex; 
 					svg {
 						width: 20px;
 						height: 20px;
@@ -126,8 +126,7 @@ html :where(.editor-styles-wrapper) p {
 					font-weight: 600;
 				}
 				.span.review-desc {
-					font-size: 80%;
-					// font-size: 2px;
+					font-size: 80%; 
 					opacity: 0.7;
 				}
 			}

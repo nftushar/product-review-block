@@ -3,8 +3,7 @@ import Rating from "./Rating";
 import { RichText } from "@wordpress/block-editor";
 import { __ } from '@wordpress/i18n';
 
-function Body(props) {
-  // console.log(updateReview);
+function Body(props) { 
   return <div className="productBody">
     <Reviews {...props} />
   </div>;
@@ -26,8 +25,7 @@ const Reviews = (props) => {
 };
 
 const Review = (props) => {
-  const { attributes, updateArray } = props;
-  // console.log(updateArray);
+  const { attributes, updateArray } = props; 
   const { ratings } = attributes;
 
   return <>
@@ -79,8 +77,7 @@ const Pros = (props) => {
     <h3>Pros</h3>
     <div className="review-right-pros">
       {pros.map((item, index) => {
-        const { text } = item;
-        // console.log(text);
+        const { text } = item;  
 
         return <div key={index} className="review-right-pros-item" id={`productReviews-${index + 1}`} >
           <svg

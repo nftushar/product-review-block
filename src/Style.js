@@ -2,8 +2,8 @@ import { getMultiShadowCSS, getTypoCSS } from "../../Components/utils/getCSS";
 import { getArrFromNum } from "./utils/functions";
 
 const Style = ({ attributes, clientId }) => {
-	const { ratings, rating, gap, alignment, textTypo, textColor, textShadow } =
-		attributes;
+	const { ratings, rating, gap, alignment, textTypo, textColor, textShadow } = attributes;
+ 
 
 	const mainSl = `#productReviews-${clientId}`;
 	const ratingSl = `#productReviews-${clientId} .productReviews`;
@@ -47,8 +47,7 @@ const Style = ({ attributes, clientId }) => {
 					return 0
 			}
 		})()}%;
-		}
-	`;
+		}`;
 
 	// All Ratings
 	const ratingsCSS = ratings.map((r, index) => {
