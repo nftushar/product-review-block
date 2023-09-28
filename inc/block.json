@@ -167,6 +167,15 @@
         "bg": "#5df571"
       }
     },
+    "btnPadding": {
+      "type": "object",
+      "default": {
+        "top": "10px",
+        "right": "15px",
+        "bottom": "10px",
+        "left": "15px"
+      }
+    },
 
 
     "colors": {
@@ -174,15 +183,17 @@
       "default": {
         "text": "",
         "button": {
-          "color": "#fff",
-          "bgColor": "#5435"
+          "color": "#000",
+          "bgType": "gradient",
+          "gradient": "linear-gradient(to right, #f3fbed, #f1f9eb, #f0f7e9, #e4eedc, #dbeccd)"
+
         },
         "buttonHov": {
-          "color": "#0003",
-          "bgColor": "#5435"
+          "color": "#fff",
+          "bg": "#5df571"
         },
-        "prosIcon": "",
-        "consIcon": ""
+        "prosIcon": "#04b84c",
+        "consIcon": "#ff1919"
       }
     },
     "rating": {

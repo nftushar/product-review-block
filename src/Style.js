@@ -2,9 +2,8 @@ import { getMultiShadowCSS, getTypoCSS, getColorsCSS, getBackgroundCSS } from ".
 import { getArrFromNum } from "./utils/functions";
 
 const Style = ({ attributes, clientId }) => {
-	const { ratings, rating, gap, alignment, textTypo, textColor, textShadow, background, btnColors, btnHovColors } = attributes; 
-
-console.log(btnColors);
+	const { ratings, rating, gap, alignment, textTypo, textColor, textShadow, background, colors, btnColors } = attributes; 
+const {button, buttonHov} = colors; 
 
 	const mainSl = `#productReviews-${clientId}`;
 	const ratingSl = `#productReviews-${clientId} .productReviews`;
@@ -70,13 +69,12 @@ console.log(btnColors);
  
 		${ratingSl} {
             ${getBackgroundCSS(background)} 
-
         }
 		${buttonSl}{
-			${getColorsCSS(btnColors)}; 
+			${getBackgroundCSS(button)}; 
 		}
 		${buttonSl}:hover {
-            ${getColorsCSS(btnHovColors)}
+            ${getColorsCSS(buttonHov)}
         }
 
 

@@ -71,17 +71,19 @@ const Considerations = (props) => {
 
 const Pros = (props) => {
   const { attributes, updateArray } = props;
-  const { pros, labels } = attributes;
+  const { pros, labels, colors } = attributes;
+  const { prosIcon } = colors;
   const { labelPros } = labels;
 
   return <>
     <div className="review-right-pros">
-    <h3>{labelPros}</h3>
+      <h3>{labelPros}</h3>
       {pros.map((item, index) => {
         const { text } = item;
 
         return <div key={index} className="review-right-pros-item" id={`productReviews-${index + 1}`} >
           <svg
+            fill={prosIcon}
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
             aria-hidden="true"
@@ -107,8 +109,9 @@ const Pros = (props) => {
 
 const Cons = (props) => {
   const { attributes, updateArray } = props;
-  const { cons, labels } = attributes;
-  const {  labelCons } = labels;
+  const { cons, labels, colors } = attributes;
+  const { labelCons } = labels;
+  const { consIcon } = colors;
 
   return <>
     <div className="review-right-pros">
@@ -118,6 +121,7 @@ const Cons = (props) => {
 
         return <div key={index} className="review-right-pros-item">
           <svg
+          fill={consIcon}
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
             aria-hidden="true"

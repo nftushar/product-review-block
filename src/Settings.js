@@ -335,9 +335,11 @@ const General = (props) => {
 
 const Style = (props) => {
   const { attributes, setAttributes } = props;
-  const { rating, textTypo, textColor, textShadow, background, btnColors, btnHovColors } = attributes;
+  const { rating, textTypo, textColor, textShadow, background, colors } = attributes;
   const { emptyColor, fillColor } = rating;
+  const { button, buttonHov, consIcon, prosIcon } = colors;
 
+  console.log(prosIcon);
   // Style section start
   return (
     <>
@@ -386,19 +388,41 @@ const Style = (props) => {
           value={background}
           onChange={(val) =>
             setAttributes({ background: val })
-          }
-        />
-        
+          } />
+
         <ColorsControl
           className="mt20"
-          label={__("Colors", "info-cards")}
-          value={btnColors}
-          onChange={(val) => setAttributes({ btnColors: val })}
+          label={__("Btn Colors", "product-review")}
+          value={button}
+          onChange={(val) => setAttributes({ button: val })}
         />
         <ColorsControl
-          label={__("Hover Colors", "info-cards")}
-          value={btnHovColors}
-          onChange={(val) => setAttributes({ btnHovColors: val })}
+          label={__("btn Hover Colors", "product-review")}
+          value={buttonHov}
+          onChange={(val) => setAttributes({ buttonHov: val })}
+        />
+        <BColor
+          label={__("Text Color", "product-review")}
+          value={textColor}
+          onChange={(val) => setAttributes({ textColor: val })}
+          defaultColor="#0000"
+        />
+
+        <BColor
+          label={__("Pros icon Color", "product-review")}
+          value={prosIcon}
+          onChange={(val) =>
+            setAttributes({ colors: { ...colors, prosIcon: val } })
+          }
+          defaultColor="#0000"
+        />
+        <BColor
+          label={__("Cons icon Color", "product-review")}
+          value={consIcon}
+          onChange={(val) =>
+            setAttributes({ colors: { ...colors, consIcon: val } })
+          }
+          defaultColor="#0000"
         />
       </PanelBody>
     </>
