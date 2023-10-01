@@ -182,17 +182,19 @@
       "type": "object",
       "default": {
         "text": "",
-        "button": {
+        "buttonZ": {
           "color": "#000",
           "bgType": "gradient",
           "gradient": "linear-gradient(to right, #f3fbed, #f1f9eb, #f0f7e9, #e4eedc, #dbeccd)"
         },
+        "button": {
+          "color": "#fff", 
+          "bg": "#D80032"
+        },
         "buttonHov": {
           "color": "#fff",
           "bg": "#5df571"
-        },
-        "prosIcon": "#04b84c",
-        "consIcon": "#ff1919"
+        }
       }
     },
     "rating": {

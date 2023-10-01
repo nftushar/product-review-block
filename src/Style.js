@@ -2,15 +2,16 @@ import { getMultiShadowCSS, getTypoCSS, getColorsCSS, getBackgroundCSS } from ".
 import { getArrFromNum } from "./utils/functions";
 
 const Style = ({ attributes, clientId }) => {
-	const { ratings, rating, gap, alignment, textTypo, textColor, textShadow, background, colors, btnColors } = attributes; 
-const {button, buttonHov} = colors; 
-
+	const { ratings, rating, gap, alignment, textTypo, textColor, textShadow, background, colors } = attributes;
+	const { button, buttonHov } = colors;
+console.log(button);
 	const mainSl = `#productReviews-${clientId}`;
-	const ratingSl = `#productReviews-${clientId} .productReviews`;
-	const buttonSl = `#productReviews-${clientId} .productReviews  .review-footer-button span`;
-	const headerSl = `#productReviews-${clientId} .productHeader`;
-	const bodySl = `#productReviews-${clientId} .productBody`;
-	const footerSl = `#productReviews-${clientId} .productFooter`;
+	const ratingSl = `${mainSl} .productReviews`;
+	const buttonSl = `${ratingSl} .review-footer-button a`;
+	const headerSl = `${mainSl} .productHeader`;
+	const bodySl = `${mainSl} .productBody`;
+	const footerSl = `${mainSl} .productFooter`;
+
 	// Average Ratting
 	const totalRatings = ratings.reduce((previous, { rating }) => previous + rating, 0);
 	const ratingAverage = ratings?.length ? (totalRatings / ratings?.length).toFixed(1) : 0;
@@ -71,7 +72,7 @@ const {button, buttonHov} = colors;
             ${getBackgroundCSS(background)} 
         }
 		${buttonSl}{
-			${getBackgroundCSS(button)}; 
+			${getColorsCSS(button)}; 
 		}
 		${buttonSl}:hover {
             ${getColorsCSS(buttonHov)}

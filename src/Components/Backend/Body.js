@@ -2,6 +2,8 @@ import React from "react";
 import Rating from "./Rating";
 import { RichText } from "@wordpress/block-editor";
 import { __ } from '@wordpress/i18n';
+import {  mainProsIcon, mainConsIcon } from "../../utils/icons";
+
 
 function Body(props) {
   return <div className="productBody">
@@ -71,8 +73,7 @@ const Considerations = (props) => {
 
 const Pros = (props) => {
   const { attributes, updateArray } = props;
-  const { pros, labels, colors } = attributes;
-  const { prosIcon } = colors;
+  const { pros, labels } = attributes; 
   const { labelPros } = labels;
 
   return <>
@@ -82,16 +83,7 @@ const Pros = (props) => {
         const { text } = item;
 
         return <div key={index} className="review-right-pros-item" id={`productReviews-${index + 1}`} >
-          <svg
-            fill={prosIcon}
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            aria-hidden="true"
-            focusable="false"
-          >
-            <path d="M18.3 5.6L9.9 16.9l-4.6-3.4-.9 2.4 5.8 4.3 9.3-12.6z"></path>
-          </svg>
-
+           {mainProsIcon}
           <RichText
             tagName="p"
             value={text}
@@ -109,9 +101,8 @@ const Pros = (props) => {
 
 const Cons = (props) => {
   const { attributes, updateArray } = props;
-  const { cons, labels, colors } = attributes;
-  const { labelCons } = labels;
-  const { consIcon } = colors;
+  const { cons, labels } = attributes;
+  const { labelCons } = labels; 
 
   return <>
     <div className="review-right-pros">
@@ -120,15 +111,7 @@ const Cons = (props) => {
         const { text } = item;
 
         return <div key={index} className="review-right-pros-item">
-          <svg
-          fill={consIcon}
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            aria-hidden="true"
-            focusable="false"
-          >
-            <path d="M13 11.8l6.1-6.3-1-1-6.1 6.2-6.1-6.2-1 1 6.1 6.3-6.5 6.7 1 1 6.5-6.6 6.5 6.6 1-1z"></path>
-          </svg>
+         {mainConsIcon}
           <RichText
             tagName="p"
             value={text}

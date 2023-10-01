@@ -9,10 +9,10 @@ function Footer(props) {
     <div className="review-footer-button">
       {buttons.map((item, index) => (
         <div key={index} className="review-footer-button">
-          <a key={index} href={item.link} className="review-footer-button">
-            <span aria-multiline="true" aria-label="Button label">
-              {item.text}
-            </span>
+          <a aria-multiline="true" aria-label="Button label" key={index} href={item.link} >
+
+            {item.text}
+
           </a>
         </div>
       ))}

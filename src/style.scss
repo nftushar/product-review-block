@@ -93,9 +93,9 @@ html :where(.editor-styles-wrapper) p {
 			align-items: center;
 			flex-wrap: wrap;
 			margin-top: 20px;
-			.review-left-features {  
+			.review-left-features {
 				gap: 15px;
-			} 
+			}
 			.review-right {
 				margin-top: 20px;
 
@@ -121,8 +121,10 @@ html :where(.editor-styles-wrapper) p {
 			display: flex;
 			flex-wrap: wrap;
 			align-items: center;
-			span {
-				// background: #ed6f57;
+			gap: 20px;
+
+			a {
+				background-color: #ffbb38;
 				color: #fff;
 				padding: 12px 50px;
 				margin: 20px 12px 0 0;
