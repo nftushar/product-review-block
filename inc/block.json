@@ -186,7 +186,6 @@
           "color": "#000",
           "bgType": "gradient",
           "gradient": "linear-gradient(to right, #f3fbed, #f1f9eb, #f0f7e9, #e4eedc, #dbeccd)"
-
         },
         "buttonHov": {
           "color": "#fff",
@@ -206,72 +205,6 @@
         "fillColor": "",
         "emptyColor": ""
       }
-    },
-    "mainHeadTypo": {
-      "type": "object",
-      "default": {
-        "fontSize": 24
-      }
-    },
-    "subHeadTypo": {
-      "type": "object",
-      "default": {
-        "fontSize": 20
-      }
-    },
-    "textTypo": {
-      "type": "object",
-      "default": {
-        "fontSize": 16
-      }
-    },
-    "mainHeading": {
-      "type": "string",
-      "default": "Main Heading"
-    },
-    "subHeading": {
-      "type": "string",
-      "default": "Sub Heading"
-    },
-    "customFontSize": {
-      "type": "number",
-      "default": "35px"
-    },
-    "allTextColor": {
-      "type": "string",
-      "default": "#000"
-    },
-    "btnColor": {
-      "type": "string",
-      "default": "#EE7070"
-    },
-    "btnTextColor": {
-      "type": "string",
-      "default": "#fff"
-    },
-    "borderColor": {
-      "type": "string",
-      "default": "#65DE7B"
-    },
-    "posIconColor": {
-      "type": "string",
-      "default": "#65DE7B"
-    },
-    "consIconColor": {
-      "type": "string",
-      "default": "#F93502"
-    },
-    "bgColor": {
-      "type": "string",
-      "default": "#0073AA"
-    },
-    "textColor": {
-      "type": "string",
-      "default": "#7a7a7a"
-    },
-    "textShadow": {
-      "type": "array",
-      "default": []
     }
   },
   "supports": {
