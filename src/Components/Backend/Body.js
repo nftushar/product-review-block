@@ -2,7 +2,7 @@ import React from "react";
 import Rating from "./Rating";
 import { RichText } from "@wordpress/block-editor";
 import { __ } from '@wordpress/i18n';
-import {  mainProsIcon, mainConsIcon } from "../../utils/icons";
+import { mainProsIcon, mainConsIcon } from "../../utils/icons";
 
 
 function Body(props) {
@@ -73,45 +73,52 @@ const Considerations = (props) => {
 
 const Pros = (props) => {
   const { attributes, updateArray } = props;
-  const { pros, labels } = attributes; 
+  const { pros, labels, product } = attributes;
+  const { subHeSize } = product;
   const { labelPros } = labels;
 
-  return <>
+  return (
     <div className="review-right-pros">
-      <h3>{labelPros}</h3>
+      {React.createElement(subHeSize, null, labelPros)}
       {pros.map((item, index) => {
         const { text } = item;
 
-        return <div key={index} className="review-right-pros-item" id={`productReviews-${index + 1}`} >
-           {mainProsIcon}
-          <RichText
-            tagName="p"
-            value={text}
-            className="review-desc"
-            onChange={(content) => updateArray('pros', index, "text", content)}
-            placeholder={__("Enter Pros Title", "product-review")}
-            inlineToolbar
-            allowedFormats={["core/bold", "core/italic"]}
-          />
-        </div>
+        return (
+          <div key={index} className="review-right-pros-item" id={`productReviews-${index + 1}`}>
+            {mainProsIcon}
+            <RichText
+              tagName="p"
+              value={text}
+              className="review-desc"
+              onChange={(content) => updateArray('pros', index, "text", content)}
+              placeholder={__("Enter Pros Title", "product-review")}
+              inlineToolbar
+              allowedFormats={["core/bold", "core/italic"]}
+            />
+          </div>
+        );
       })}
     </div>
-  </>
+  );
 };
+
 
 const Cons = (props) => {
   const { attributes, updateArray } = props;
-  const { cons, labels } = attributes;
-  const { labelCons } = labels; 
+  const { cons, labels, product } = attributes; 
+    const { subHeSize } = product;
+
+  
+  const { labelCons } = labels;
 
   return <>
-    <div className="review-right-pros">
-      <h3>{labelCons}</h3>
+    <div className="review-right-pros"> 
+      {React.createElement(subHeSize, null, labelCons)}
       {cons.map((item, index) => {
         const { text } = item;
 
         return <div key={index} className="review-right-pros-item">
-         {mainConsIcon}
+          {mainConsIcon}
           <RichText
             tagName="p"
             value={text}

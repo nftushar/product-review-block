@@ -74,7 +74,7 @@ const General = (props) => {
   // const { text, link } = button;
 
   return (
-    // General section start
+    // General start
     <>
       <PanelBody
         className="bPlPanelBody"
@@ -329,20 +329,57 @@ const General = (props) => {
         })}
       </PanelBody>
     </>
-    // General section end
+    // General end
   );
 };
 
 const Style = (props) => {
   const { attributes, setAttributes } = props;
-  const { rating, textTypo, textColor, textShadow, background, colors } = attributes;
+  const { rating, textTypo, textColor, textShadow, background, colors, product } = attributes;
+  const { nameSize, subHeSize } = product;
   const { emptyColor, fillColor } = rating;
   const { button, buttonHov } = colors;
 
-  // Style section start
+  // Style start
   return (
     <>
       <PanelBody className="bPlPanelBody" title={__("Title", "product-review")}>
+
+        <PanelBody className="bPlPanelBody" title={__("TypoGraphy", "product-review")}>
+          <SelectControl
+            label="Main Heading"
+            labelPosition="left"
+            value={nameSize}
+            options={[
+              { label: "H1", value: "h1" },
+              { label: "H2", value: "h2" },
+              { label: "H3", value: "h3" },
+              { label: "H4", value: "h4" },
+              { label: "H5", value: "h5" },
+              { label: "H6", value: "h6" },
+            ]}
+            onChange={(val) =>
+              setAttributes({ product: { ...product, nameSize: val } })
+            }
+          />
+          <SelectControl
+            label="Sub Heading"
+            labelPosition="left"
+            value={subHeSize}
+            options={[
+              { label: "H1", value: "h1" },
+              { label: "H2", value: "h2" },
+              { label: "H3", value: "h3" },
+              { label: "H4", value: "h4" },
+              { label: "H5", value: "h5" },
+              { label: "H6", value: "h6" },
+            ]}
+            onChange={(val) =>
+              setAttributes({ product: { ...product, subHeSize: val } })
+            }
+          />
+
+        </PanelBody>
         <BColor
           label={__("Text Color", "product-review")}
           value={textColor}
@@ -407,4 +444,4 @@ const Style = (props) => {
 
   );
 };
-{/* // Style section end */ }
+{/* // Style end */ }

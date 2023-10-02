@@ -18,14 +18,14 @@ export default Header;
 const Highlight = (props) => { 
   const { attributes, setAttributes } = props;
   const { product, ratings } = attributes
-  const { name, price, salePrice } = product;
-
+  const { name, nameSize, price, salePrice } = product;
+// console.log(nameSize);
   const totalRatings = ratings.reduce((previous, { rating }) => previous + rating, 0);
   const ratingAverage = ratings?.length ? (totalRatings / ratings?.length).toFixed(1) : 0;
 
   return <div className="headerTop">
     <RichText
-      tagName="h1"
+      tagName={nameSize}
       value={name}
       className="productName"
       onChange={(val) => setAttributes({ product: { ...product, name: val } })}

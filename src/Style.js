@@ -4,7 +4,7 @@ import { getArrFromNum } from "./utils/functions";
 const Style = ({ attributes, clientId }) => {
 	const { ratings, rating, gap, alignment, textTypo, textColor, textShadow, background, colors } = attributes;
 	const { button, buttonHov } = colors;
-console.log(button);
+// console.log(button);
 	const mainSl = `#productReviews-${clientId}`;
 	const ratingSl = `${mainSl} .productReviews`;
 	const buttonSl = `${ratingSl} .review-footer-button a`;

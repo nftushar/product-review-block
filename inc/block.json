@@ -23,6 +23,8 @@
       "type": "object",
       "default": {
         "name": "Product Name",
+        "nameSize":"h2",   
+        "subHeSize":"h2",   
         "price": 49.99,
         "salePrice": 39.99,
         "currency": "USD",
