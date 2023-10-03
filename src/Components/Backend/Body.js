@@ -73,13 +73,13 @@ const Considerations = (props) => {
 
 const Pros = (props) => {
   const { attributes, updateArray } = props;
-  const { pros, labels, product } = attributes;
-  const { subHeSize } = product;
+  const { pros, labels, layout } = attributes;
+  const { subHeadingTag } = layout;
   const { labelPros } = labels;
 
   return (
     <div className="review-right-pros">
-      {React.createElement(subHeSize, null, labelPros)}
+      {React.createElement(subHeadingTag, null, labelPros)}
       {pros.map((item, index) => {
         const { text } = item;
 
@@ -105,15 +105,15 @@ const Pros = (props) => {
 
 const Cons = (props) => {
   const { attributes, updateArray } = props;
-  const { cons, labels, product } = attributes; 
-    const { subHeSize } = product;
+  const { cons, labels, layout } = attributes;
+  const { subHeadingTag } = layout;
 
-  
+
   const { labelCons } = labels;
 
   return <>
-    <div className="review-right-pros"> 
-      {React.createElement(subHeSize, null, labelCons)}
+    <div className="review-right-pros">
+      {React.createElement(subHeadingTag, null, labelCons)}
       {cons.map((item, index) => {
         const { text } = item;
 

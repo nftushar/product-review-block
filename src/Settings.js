@@ -169,7 +169,6 @@ const General = (props) => {
                   labelPosition="left"
                   value={rating}
                   onChange={(val) => updateArray("ratings", index, "rating", val)}
-
                   max={scale >= 10 ? scale : 5}
                 />
                 <TextControl
@@ -268,15 +267,13 @@ const General = (props) => {
               <PanelBody
                 initialOpen={false}
                 className="bPlPanelBody"
-                title={__(`Cons ${index + 1}`, "Cons")}
-              >
+                title={__(`Cons ${index + 1}`, "Cons")} >
+
                 <TextControl
                   className="mt20"
                   label={__("Add Title", "product-review")}
                   value={text}
-                  onChange={(val) => updateArray("cons", index, "text", val)}
-
-                />
+                  onChange={(val) => updateArray("cons", index, "text", val)} />
 
                 <PanelRow className="itemAction mt20">
                   {1 < cons?.length && <Button className="removeItem" onClick={() => consDelete(index)}>Delete</Button>}
@@ -301,15 +298,14 @@ const General = (props) => {
               <PanelBody
                 initialOpen={false}
                 className="bPlPanelBody"
-                title={__(`Button ${index + 1}`, "product-review")}
-              >
+                title={__(`Button ${index + 1}`, "product-review")}>
+
                 <TextControl
                   className="mt20"
                   label={__("Button Label", "product-review")}
                   value={text}
-                  onChange={(val) => updateArray("buttons", index, "text", val)}
+                  onChange={(val) => updateArray("buttons", index, "text", val)} />
 
-                />
                 <TextControl
                   className="mt20"
                   label={__("Add link", "product-review")}
@@ -335,113 +331,122 @@ const General = (props) => {
 
 const Style = (props) => {
   const { attributes, setAttributes } = props;
-  const { rating, textTypo, textColor, textShadow, background, colors, product } = attributes;
+  const { rating, textTypo, textColor, textShadow, background, colors, product, contentSize, layout } = attributes;
+  const { headingTag, subHeadingTag } = layout;
+
   const { nameSize, subHeSize } = product;
   const { emptyColor, fillColor } = rating;
   const { button, buttonHov } = colors;
 
   // Style start
-  return (
-    <>
-      <PanelBody className="bPlPanelBody" title={__("Title", "product-review")}>
+  return <>
+    <PanelBody className="bPlPanelBody" title={__("Title", "product-review")}>
 
-        <PanelBody className="bPlPanelBody" title={__("TypoGraphy", "product-review")}>
-          <SelectControl
-            label="Main Heading"
-            labelPosition="left"
-            value={nameSize}
-            options={[
-              { label: "H1", value: "h1" },
-              { label: "H2", value: "h2" },
-              { label: "H3", value: "h3" },
-              { label: "H4", value: "h4" },
-              { label: "H5", value: "h5" },
-              { label: "H6", value: "h6" },
-            ]}
-            onChange={(val) =>
-              setAttributes({ product: { ...product, nameSize: val } })
-            }
-          />
-          <SelectControl
-            label="Sub Heading"
-            labelPosition="left"
-            value={subHeSize}
-            options={[
-              { label: "H1", value: "h1" },
-              { label: "H2", value: "h2" },
-              { label: "H3", value: "h3" },
-              { label: "H4", value: "h4" },
-              { label: "H5", value: "h5" },
-              { label: "H6", value: "h6" },
-            ]}
-            onChange={(val) =>
-              setAttributes({ product: { ...product, subHeSize: val } })
-            }
-          />
-
-        </PanelBody>
-        <BColor
-          label={__("Text Color", "product-review")}
-          value={textColor}
-          onChange={(val) => setAttributes({ textColor: val })}
-          defaultColor="#0000"
-        />
-        <BColor
-          label={__("Fill Color", "product-review")}
-          value={fillColor}
+      <PanelBody className="bPlPanelBody" title={__("Typography", "product-review")}>
+        <SelectControl
+          label="Main Heading"
+          labelPosition="left"
+          value={headingTag}
+          options={[
+            { label: "H1", value: "h1" },
+            { label: "H2", value: "h2" },
+            { label: "H3", value: "h3" },
+            { label: "H4", value: "h4" },
+            { label: "H5", value: "h5" },
+            { label: "H6", value: "h6" },
+          ]}
           onChange={(val) =>
-            setAttributes({ rating: { ...rating, fillColor: val } })
+            setAttributes({ layout: { ...layout, headingTag: val } })
           }
-          defaultColor="#fcce5100"
         />
-        <BColor
-          label={__("Empty Fill Color", "product-review")}
-          value={emptyColor}
+        <SelectControl
+          label="Sub Heading"
+          labelPosition="left"
+          value={subHeadingTag}
+          options={[
+            { label: "H1", value: "h1" },
+            { label: "H2", value: "h2" },
+            { label: "H3", value: "h3" },
+            { label: "H4", value: "h4" },
+            { label: "H5", value: "h5" },
+            { label: "H6", value: "h6" },
+          ]}
           onChange={(val) =>
-            setAttributes({ rating: { ...rating, emptyColor: val } })
+            setAttributes({ layout: { ...layout, subHeadingTag: val } })
           }
-          defaultColor="#f0efef"
-        />
-        <Typography
-          label={__("Text Typography", "product-review")}
-          value={textTypo}
-          onChange={(val) => setAttributes({ textTypo: val })}
-          defaults={{ fontSize: 16 }}
-          produce={produce}
         />
 
-        <MultiShadowControl
-          label={__("Text Shadow", "product-review")}
-          value={textShadow}
-          onChange={(val) => setAttributes({ textShadow: val })}
-          type="text"
-          produce={produce}
-        />
-      </PanelBody>
-      <PanelBody className="bPlPanelBody" title={__("Colors", "product-review")}>
-        <Background
-          label={__("Background", "product-review")}
-          value={background}
-          onChange={(val) =>
-            setAttributes({ background: val })
-          } />
-
-        <ColorsControl
+        <RangeControl
           className="mt20"
-          label={__("Btn Colors", "product-review")}
-          value={button}
-          onChange={(val) =>
-            setAttributes({ colors: { ...colors, button: val } })
-          }
+          label={__("Content Size", "product-review")}
+          labelPosition="left"
+          value={contentSize}
+          onChange={(val) => setAttributes({ contentSize: val })}
+          min={8}
+          max={25}
         />
-        <ColorsControl
-          label={__("btn Hover Colors", "product-review")}
-          value={buttonHov}
-          onChange={(val) => setAttributes({ colors: { ...colors, buttonHov: val } })}
-        />
-      </PanelBody>
-    </>
 
-  );
+      </PanelBody>
+      <BColor
+        label={__("Text Color", "product-review")}
+        value={textColor}
+        onChange={(val) => setAttributes({ textColor: val })}
+        defaultColor="#0000"
+      />
+      <BColor
+        label={__("Fill Color", "product-review")}
+        value={fillColor}
+        onChange={(val) =>
+          setAttributes({ rating: { ...rating, fillColor: val } })
+        }
+        defaultColor="#fcce5100"
+      />
+      <BColor
+        label={__("Empty Fill Color", "product-review")}
+        value={emptyColor}
+        onChange={(val) =>
+          setAttributes({ rating: { ...rating, emptyColor: val } })
+        }
+        defaultColor="#f0efef"
+      />
+      <Typography
+        label={__("Text Typography", "product-review")}
+        value={textTypo}
+        onChange={(val) => setAttributes({ textTypo: val })}
+        defaults={{ fontSize: 16 }}
+        produce={produce}
+      />
+
+      <MultiShadowControl
+        label={__("Text Shadow", "product-review")}
+        value={textShadow}
+        onChange={(val) => setAttributes({ textShadow: val })}
+        type="text"
+        produce={produce}
+      />
+    </PanelBody>
+    <PanelBody className="bPlPanelBody" title={__("Colors", "product-review")}>
+      <Background
+        label={__("Background", "product-review")}
+        value={background}
+        onChange={(val) =>
+          setAttributes({ background: val })
+        } />
+
+      <ColorsControl
+        className="mt20"
+        label={__("Btn Colors", "product-review")}
+        value={button}
+        onChange={(val) =>
+          setAttributes({ colors: { ...colors, button: val } })
+        }
+      />
+      <ColorsControl
+        label={__("btn Hover Colors", "product-review")}
+        value={buttonHov}
+        onChange={(val) => setAttributes({ colors: { ...colors, buttonHov: val } })}
+      />
+    </PanelBody>
+  </>;
 };
 {/* // Style end */ }

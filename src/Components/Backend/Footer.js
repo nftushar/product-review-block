@@ -2,12 +2,12 @@ import React from "react";
 
 function Footer(props) {
   const { attributes } = props;
-  const { buttons, product, labels } = attributes;
+  const { buttons, labels, layout } = attributes;
   const { labelButtons } = labels
-  const { subHeSize } = product;
+  const { subHeadingTag } = layout;
 
   return <div className='productFooter'>
-    {React.createElement(subHeSize, null, labelButtons)}
+    {React.createElement(subHeadingTag, null, labelButtons)}
     <div className="review-footer-button">
       {buttons.map((item, index) => (
         <div key={index} className="review-footer-button">

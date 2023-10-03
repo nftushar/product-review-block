@@ -2,7 +2,7 @@
   "apiVersion": "1",
   "name": "b-blocks/product-review",
   "title": "Product Review Block",
-  "description": "Gutenberg editing with easy-to-use, responsive product-review  more.",
+  "description": "Gutenberg Product Review Block: Easy, responsive reviews.",
   "category": "media",
   "keywords": [
     "product-review",
@@ -23,8 +23,8 @@
       "type": "object",
       "default": {
         "name": "Product Name",
-        "nameSize":"h2",   
-        "subHeSize":"h2",   
+        "nameSize": "h2",
+        "subHeSize": "h2",
         "price": 49.99,
         "salePrice": 39.99,
         "currency": "USD",
@@ -51,12 +51,6 @@
           "description": "Hello des rating"
         }
       ]
-    },
-    "columns": {
-      "type": "object",
-      "default": {
-        "desktop": 2
-      }
     },
     "imageStyle": {
       "type": "object",
@@ -118,6 +112,13 @@
         }
       ]
     },
+    "layout": {
+      "type": "object",
+      "default": {
+        "headingTag": "h2",
+        "subHeadingTag": "h4"
+      }
+    },
     "style": {
       "type": "string",
       "default": "default"
@@ -155,6 +156,12 @@
         }
       ]
     },
+    "textTypo": {
+      "type": "object",
+      "default": {
+        "fontSize": 16
+      }
+    },
     "btnColors": {
       "type": "object",
       "default": {
@@ -178,8 +185,6 @@
         "left": "15px"
       }
     },
-
-
     "colors": {
       "type": "object",
       "default": {
@@ -190,7 +195,7 @@
           "gradient": "linear-gradient(to right, #f3fbed, #f1f9eb, #f0f7e9, #e4eedc, #dbeccd)"
         },
         "button": {
-          "color": "#fff", 
+          "color": "#fff",
           "bg": "#D80032"
         },
         "buttonHov": {

@@ -2,15 +2,21 @@ import { getMultiShadowCSS, getTypoCSS, getColorsCSS, getBackgroundCSS } from ".
 import { getArrFromNum } from "./utils/functions";
 
 const Style = ({ attributes, clientId }) => {
-	const { ratings, rating, gap, alignment, textTypo, textColor, textShadow, background, colors } = attributes;
+	const { ratings, rating, gap, alignment, textTypo, textColor, textShadow, background, colors, contentSize, layout } = attributes;
 	const { button, buttonHov } = colors;
-// console.log(button);
+
 	const mainSl = `#productReviews-${clientId}`;
 	const ratingSl = `${mainSl} .productReviews`;
 	const buttonSl = `${ratingSl} .review-footer-button a`;
 	const headerSl = `${mainSl} .productHeader`;
+	const headerDesc = `${headerSl} .productImgDesc p`;
 	const bodySl = `${mainSl} .productBody`;
+	const reviewDec = `${ratingSl} .review-left .review-left-content`;
+	const prosCons = `${ratingSl} .review-right .review-right-pros .review-right-pros-item p`;
 	const footerSl = `${mainSl} .productFooter`;
+
+
+
 
 	// Average Ratting
 	const totalRatings = ratings.reduce((previous, { rating }) => previous + rating, 0);
@@ -49,7 +55,6 @@ const Style = ({ attributes, clientId }) => {
 			}
 		})()}%;
 		}`;
-
 	// All Ratings
 	const ratingsCSS = ratings.map((r, index) => {
 		const { rating } = r;
@@ -65,6 +70,16 @@ const Style = ({ attributes, clientId }) => {
 
 	return <style dangerouslySetInnerHTML={{
 		__html: `
+		 
+		${headerDesc}{
+			font-size: ${contentSize}px;
+		} 
+		${reviewDec}{
+			font-size: ${contentSize}px;
+		}
+		${prosCons}{
+			font-size: ${contentSize}px;
+		}
 		${averageRatingsCSS}
 		${ratingsCSS}
  
