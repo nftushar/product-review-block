@@ -4,6 +4,7 @@ import { getArrFromNum } from "./utils/functions";
 const Style = ({ attributes, clientId }) => {
 	const { ratings, rating, gap, alignment, textTypo, textColor, textShadow, background, colors, contentSize, layout } = attributes;
 	const { button, buttonHov } = colors;
+	const { fillColor } = rating;
 
 	const mainSl = `#productReviews-${clientId}`;
 	const ratingSl = `${mainSl} .productReviews`;
@@ -14,9 +15,7 @@ const Style = ({ attributes, clientId }) => {
 	const reviewDec = `${ratingSl} .review-left .review-left-content`;
 	const prosCons = `${ratingSl} .review-right .review-right-pros .review-right-pros-item p`;
 	const footerSl = `${mainSl} .productFooter`;
-
-
-
+	const starFillSl = `${mainSl} .ratting .stars .star .starFill svg`;
 
 	// Average Ratting
 	const totalRatings = ratings.reduce((previous, { rating }) => previous + rating, 0);
@@ -25,8 +24,7 @@ const Style = ({ attributes, clientId }) => {
 	const intAndDec = (ratingAverage + '').split('.');
 	const ratingInt = parseInt(intAndDec[0]);
 	const ratingDec = parseInt(intAndDec[1] || 0);
-	const averageRatingsCSS = `
-		${getArrFromNum(ratingInt).map((index) => `${starSl}:nth-child(${index}) .starFill`).join(', ')}{
+	const averageRatingsCSS = `${getArrFromNum(ratingInt).map((index) => `${starSl}:nth-child(${index}) .starFill`).join(', ')}{
 			width: 100%;
 		}
 		${starSl}:nth-child(${ratingInt + 1}) .starFill{
@@ -80,20 +78,21 @@ const Style = ({ attributes, clientId }) => {
 		${prosCons}{
 			font-size: ${contentSize}px;
 		}
+		${starFillSl}{
+			fill: ${fillColor};
+		}
 		${averageRatingsCSS}
 		${ratingsCSS}
  
-		${ratingSl} {
-            ${getBackgroundCSS(background)} 
+		${ratingSl}{
+            ${getBackgroundCSS(background)};
         }
 		${buttonSl}{
 			${getColorsCSS(button)}; 
 		}
 		${buttonSl}:hover {
-            ${getColorsCSS(buttonHov)}
+            ${getColorsCSS(buttonHov)};
         }
-
-
 	`}} />;
 };
 export default Style;

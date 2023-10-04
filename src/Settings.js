@@ -71,7 +71,6 @@ const General = (props) => {
   const { labelPros, labelCons, labelButtons } = labels;
 
   const { scale, style } = rating;
-  // const { text, link } = button;
 
   return (
     // General start
@@ -88,9 +87,17 @@ const General = (props) => {
             { label: "0-5", value: 5 },
             { label: "0-10", value: 10 },
           ]}
-          onChange={(val) =>
-            setAttributes({ rating: { ...rating, scale: val } })
-          }
+          onChange={(val) => {
+            const newRatings = produce(ratings, draft => {
+              draft.map((__, index) => {
+                const value = 5 === parseInt(val) ? Math.ceil(__.rating / 2) : __.rating * 2;
+
+                draft[index]['rating'] = value;
+              });
+            });
+
+            setAttributes({ rating: { ...rating, scale: val }, ratings: newRatings });
+          }}
         />
         <BtnGroup
           className="mt20"
