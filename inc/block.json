@@ -2,7 +2,7 @@
   "apiVersion": "1",
   "name": "b-blocks/product-review",
   "title": "Product Review Block",
-  "description": "Gutenberg Product Review Block: Easy, responsive reviews....",
+  "description": "simplifying the addition of stylish and informative product reviews.",
   "category": "media",
   "keywords": [
     "product-review",
@@ -23,8 +23,6 @@
       "type": "object",
       "default": {
         "name": "Product Name",
-        "nameSize": "h2",
-        "subHeSize": "h2",
         "price": 49.99,
         "salePrice": 39.99,
         "currency": "USD",
@@ -211,8 +209,8 @@
         "size": 18,
         "childSize": 16,
         "style": "solid",
-        "fillColor": "",
-        "emptyColor": ""
+        "fillColor": "#fde300",
+        "emptyColor": "#00a4bd"
       }
     }
   },

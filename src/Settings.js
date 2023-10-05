@@ -72,6 +72,7 @@ const General = (props) => {
 
   const { scale, style } = rating;
 
+  // console.log(image);
   return (
     // General start
     <>
@@ -119,14 +120,13 @@ const General = (props) => {
           className="mt20"
           value={name}
           onChange={(val) => setAttributes({ product: { ...product, name: val } })}
-        />
-        <InlineMediaUpload
-          label={__("Add Image", "product-review")}
-          className="mt20"
-          value={image}
-          onChange={(val) => setAttributes({ product: { ...product, image: val } })} />
-
-
+        /> 
+          <InlineMediaUpload
+            label={__("Add Image", "product-review")}
+            className="mt20"
+            value={image}
+            onChange={(val) => setAttributes({ product: { ...product, image: val } })}
+          />     
         <NumberControl
           className="mt20"
           isShiftStepEnabled={true}
@@ -394,12 +394,12 @@ const Style = (props) => {
         />
 
       </PanelBody>
-      <BColor
+      {/* <BColor
         label={__("Text Color", "product-review")}
         value={textColor}
         onChange={(val) => setAttributes({ textColor: val })}
         defaultColor="#0000"
-      />
+      /> */}
       <BColor
         label={__("Fill Color", "product-review")}
         value={fillColor}
@@ -416,7 +416,8 @@ const Style = (props) => {
         }
         defaultColor="#f0efef"
       />
-      <Typography
+
+      {/* <Typography
         label={__("Text Typography", "product-review")}
         value={textTypo}
         onChange={(val) => setAttributes({ textTypo: val })}
@@ -430,7 +431,8 @@ const Style = (props) => {
         onChange={(val) => setAttributes({ textShadow: val })}
         type="text"
         produce={produce}
-      />
+      /> */}
+
     </PanelBody>
     <PanelBody className="bPlPanelBody" title={__("Colors", "product-review")}>
       <Background

@@ -33,11 +33,8 @@ const Review = (props) => {
   return <>
     {ratings.map((ratings, index) => {
       const { title, rating, description } = ratings;
-      return <div
-        key={index}
-        className="review-left-features"
-        id={`reviewRatings-${index + 1}`}
-      >
+      return <div key={index} className="review-left-features" id={`reviewRatings-${index + 1}`}  >
+        
         <div className="review-left-content">
           <RichText
             tagName="span"
@@ -107,8 +104,6 @@ const Cons = (props) => {
   const { attributes, updateArray } = props;
   const { cons, labels, layout } = attributes;
   const { subHeadingTag } = layout;
-
-
   const { labelCons } = labels;
 
   return <>

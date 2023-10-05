@@ -1,28 +1,24 @@
 import React from "react";
 import Rating from "./Rating";
+import { mainProsIcon, mainConsIcon } from "../../utils/icons";
+
 
 function Body(props) {
-  const { attributes } = props;
-
-  return (
-    <div className="productBody">
-      <Reviews attributes={attributes} />
-    </div>
-  );
+  return <div className="productBody">
+    <Reviews {...props} />
+  </div>;
 }
 
 export default Body;
 
 const Reviews = (props) => {
-  const { attributes } = props;
-
   return (
     <>
       <div className="review-left">
-        <Review attributes={attributes} />
+        <Review {...props} />
       </div>
       <div className="review-right">
-        <Considerations attributes={attributes} />
+        <Considerations {...props} />
       </div>
     </>
   );
@@ -30,85 +26,87 @@ const Reviews = (props) => {
 
 const Review = (props) => {
   const { attributes } = props;
-  const { ratings } = attributes;
-  // const { title, rating, description } = ratings; 
+  const { ratings } = attributes; 
   return (
     <>
-      {ratings.map((item, index) => (
-        <div
+      {ratings.map((ratings, index) => {
+        const { title, rating, description } = ratings;
+        return <div
           key={index}
           className="review-left-features"
           id={`reviewRatings-${index + 1}`}
         >
           <div className="review-left-content">
-            <span className="review-heading">{item.title}</span>
-            <Rating attributes={attributes} />
-            <span className="review-desc">{item.description}</span>
+            <span className="review-heading">{title}</span>
+            <Rating attributes={attributes} rating={rating} />
+            <span className="review-desc">{description}</span>
           </div>
         </div>
-      ))}
+      })}
     </>
-  );
+  )
 };
+
 
 const Considerations = (props) => {
-  const { attributes } = props;
-
-  return (
-    <>
-      <Pros attributes={attributes} />
-      <Cons attributes={attributes} />
-    </>
-  );
+  return <>
+    <Pros {...props} />
+    <Cons {...props} />
+  </>;
 };
+
 
 const Pros = (props) => {
   const { attributes } = props;
-  const { pros } = attributes;
+  const { pros, labels, layout } = attributes;
+  const { subHeadingTag } = layout;
+  const { labelPros } = labels;
+
 
   return (
-    <>
-      <h3>Pros</h3>
-      <div className="review-right-pros">
-        {pros.map((item, index) => (
-          <div key={index} className="review-right-pros-item">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              aria-hidden="true"
-              focusable="false"
-            >
-              <path d="M18.3 5.6L9.9 16.9l-4.6-3.4-.9 2.4 5.8 4.3 9.3-12.6z"></path>
-            </svg>
-            <p aria-label="Why do you like the product?">{item.text}</p>
+    <div className="review-right-pros">
+      {React.createElement(subHeadingTag, null, labelPros)}
+      {pros.map((item, index) => {
+        const { text } = item;
+
+        return (
+          <div key={index} className="review-right-pros-item" id={`productReviews-${index + 1}`}>
+            {mainProsIcon}
+            <p className="review-desc"  >
+              {text}
+            </p>
           </div>
-        ))}
-      </div>
-    </>
+        );
+      })}
+    </div>
+
   );
 };
 
 const Cons = (props) => {
   const { attributes } = props;
-  const { cons } = attributes;  
+  const { cons, labels, layout } = attributes;
+  const { subHeadingTag } = layout;
+  const { labelCons } = labels;
+
   return (
     <>
       <div className="review-right-pros">
-        <h3>Cons</h3>
-        {cons.map((item, index) => (
-          <div key={index} className="review-right-pros-item">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              aria-hidden="true"
-              focusable="false"
-            >
-              <path d="M13 11.8l6.1-6.3-1-1-6.1 6.2-6.1-6.2-1 1 6.1 6.3-6.5 6.7 1 1 6.5-6.6 6.5 6.6 1-1z"></path>
-            </svg>
-            <p aria-label="Why do you like the product?">{item.text}</p>
-          </div>
-        ))}
+        {React.createElement(subHeadingTag, null, labelCons)}
+        {cons.map((item, index) => {
+          const { text } = item;
+
+          return (
+            <div key={index} className="review-right-pros-item">
+              {mainConsIcon}
+              <p className="review-desc" >
+                {text}
+              </p>
+            </div>
+          );
+        })}
       </div>
+
     </>
   );
 };

@@ -2,10 +2,11 @@ import { getMultiShadowCSS, getTypoCSS, getColorsCSS, getBackgroundCSS } from ".
 import { getArrFromNum } from "./utils/functions";
 
 const Style = ({ attributes, clientId }) => {
-	const { ratings, rating, gap, alignment, textTypo, textColor, textShadow, background, colors, contentSize, layout } = attributes;
+	const { ratings, rating, gap, alignment, textTypo, textColor, textShadow, background, colors, layout } = attributes;
+	const { fontSize } = textTypo;
 	const { button, buttonHov } = colors;
-	const { fillColor } = rating;
-
+	const { fillColor, emptyColor } = rating;
+// console.log(fontSize);
 	const mainSl = `#productReviews-${clientId}`;
 	const ratingSl = `${mainSl} .productReviews`;
 	const buttonSl = `${ratingSl} .review-footer-button a`;
@@ -16,6 +17,7 @@ const Style = ({ attributes, clientId }) => {
 	const prosCons = `${ratingSl} .review-right .review-right-pros .review-right-pros-item p`;
 	const footerSl = `${mainSl} .productFooter`;
 	const starFillSl = `${mainSl} .ratting .stars .star .starFill svg`;
+	const emptyFillSI = `${mainSl} .ratting .stars .star svg`;
 
 	// Average Ratting
 	const totalRatings = ratings.reduce((previous, { rating }) => previous + rating, 0);
@@ -70,16 +72,19 @@ const Style = ({ attributes, clientId }) => {
 		__html: `
 		 
 		${headerDesc}{
-			font-size: ${contentSize}px;
+			font-size: ${fontSize}px;
 		} 
 		${reviewDec}{
-			font-size: ${contentSize}px;
+			font-size: ${fontSize}px;
 		}
 		${prosCons}{
-			font-size: ${contentSize}px;
+			font-size: ${fontSize}px;
 		}
 		${starFillSl}{
 			fill: ${fillColor};
+		}
+		${emptyFillSI}{
+			fill: ${emptyColor};
 		}
 		${averageRatingsCSS}
 		${ratingsCSS}
@@ -96,3 +101,7 @@ const Style = ({ attributes, clientId }) => {
 	`}} />;
 };
 export default Style;
+
+
+// var str = "Hello Bangladesh";  var savedStr = str.split(" ") .map(function(world){
+//     return world.split("").reverse().join("") }) console.log(savedStr.join(" "));  

@@ -1,5 +1,6 @@
 import React from "react";
 import Rating from './Rating';
+// import Style from '../../Style';
 // import Rating from "../Components/Rating";
 
 function Header({ attributes }) {
@@ -13,30 +14,31 @@ function Header({ attributes }) {
 export default Header;
 
 const Highlight = ({ attributes }) => {
+  const { product } = attributes
+  const { name, price, salePrice } = product;
   return (
-    <div className="review-header">
-      <h1 className="review-heading">Shart</h1>
-      <div className="header-rating">
-        <div className="rating-comp">
-          <Rating attributes={attributes} />
-        </div>
-        <span className="dist-price">
-          <del>$20aa</del> $18aa
+    <div className="headerTop">
+      <h1 className="productName">{name}</h1>
+      <div className="headerMiddle">
+        <Rating attributes={attributes} />
+        <span className="productPrice">
+          <del>{price}</del> ${salePrice}
         </span>
       </div>
     </div>
   );
 };
 
-const Details = () => {
+const Details = (attributes) => {
+  
+  const { product } = attributes.attributes;
+  const { image, description } = product;  
   return (
     <div className="productImgDesc">
       <div className="image">
-        <img src="http://localhost/wordpress/wp-content/uploads/2023/09/zebra-1050446_1280-300x200.jpg" />
+        <img src={image} />
       </div>
-
-      <p>hello this is a product description</p>
-
+      <p className="headerDesc">{description}</p>
     </div>
   );
 };

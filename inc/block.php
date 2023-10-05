@@ -27,7 +27,7 @@ class PRProductReview{
 		$blockClassName = "wp-block-b-blocks-product-review $className align$align";
 
 		ob_start(); ?>
-		<div class='<?php echo esc_attr( $blockClassName ); ?>' id='productReview-<?php echo esc_attr( $cId ) ?>' data-attributes='<?php echo esc_attr( wp_json_encode( $attributes ) ); ?>'></div>
+		<div class='<?php echo esc_attr( $blockClassName ); ?>' id='productReviews-<?php echo esc_attr( $cId ) ?>' data-attributes='<?php echo esc_attr( wp_json_encode( $attributes ) ); ?>'></div>
 
 		<?php return ob_get_clean();
 	} // Render

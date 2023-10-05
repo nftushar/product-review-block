@@ -1,7 +1,7 @@
 import React from "react";
 import Rating from './Rating';
 import { RichText } from '@wordpress/block-editor';
-import { __ } from '@wordpress/i18n'; 
+import { __ } from '@wordpress/i18n';
 
 function Header(props) {
   return (
@@ -44,14 +44,16 @@ const Highlight = (props) => {
 
 const Details = (props) => {
   const { attributes, updateObject } = props;
-  const { product,  } = attributes;
+  const { product } = attributes;
   const { image, description } = product;
 
   return (
     <div className="productImgDesc">
-      <div className="image">
-        <img src={image} />
-      </div>
+      {image &&
+        <div className="image">
+          <img src={image} />
+        </div>
+      }
 
       <RichText
         tagName="p"
