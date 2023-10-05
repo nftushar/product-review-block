@@ -1,40 +1,26 @@
-html {
-	scroll-behavior: smooth;
-}
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-	position: relative;
-	font-family: "Ubuntu", sans-serif;
-	font-weight: 400;
-	margin: 0px;
-	transition: all 500ms ease;
-	width: 100%;
-	color: #000;
-}
-span {
-	color: #000;
-}
-p {
-	color: #000;
-}
-html :where(.editor-styles-wrapper) p {
-	margin: 0;
-}
-
 .wp-block-b-blocks-product-review {
+	overflow: hidden;
 	* {
 		box-sizing: border-box;
 	}
 
 	.productReviews {
 		// background-color: oldlace;
-		padding: 3em;
+		// padding: 3em;
+		border: 5px solid yellow;
+		padding: 35px;
 
 		.productHeader {
+			position: relative;
+			&:after {
+				content: "";
+				position: absolute;
+				left: 50%;
+				transform: translateX(-50%);
+				width: calc(100% + 200px);
+				height: 0;
+				border-bottom: 5px solid #000;
+			}
 			.headerTop {
 				margin-top: 20px;
 				.productName {
@@ -87,18 +73,32 @@ html :where(.editor-styles-wrapper) p {
 		}
 
 		.productBody {
-			display: flex;
+			// display: flex;
+			// position: relative;
+			display: grid;
+			grid-template-columns: 2fr 1fr;
 
 			justify-content: space-between;
 			align-items: center;
 			flex-wrap: wrap;
-			margin-top: 20px;
+			// margin-top: 20px;
 			.review-left-features {
 				gap: 15px;
 			}
+			.productBody::after {
+				content: "";
+				position: absolute;
+				// bottom: 0;
+				// left: 0;
+				width: 110%;
+				border-top: 1px solid #e71010;
+			}
 			.review-right {
-				margin-top: 20px;
+				margin-left: auto;
+				border-left: 5px solid gray;
+				// padding-left: 20px;
 
+				padding: 20px 35px 20px 20px;
 				// display: flex;
 
 				justify-content: space-between;
@@ -135,8 +135,10 @@ html :where(.editor-styles-wrapper) p {
 			}
 		}
 		.review-left {
-			display: grid;
-			gap: 20px;
+			// display: grid;
+			// gap: 20px;
+			padding: 20px 20px 20px 35px;
+			// border-right: 4px solid #222;
 			.review-left-content {
 				display: grid;
 				gap: 5px;
@@ -153,8 +155,11 @@ html :where(.editor-styles-wrapper) p {
 			}
 		}
 		.review-footer {
-			margin-top: 50px;
+			// margin-top: 50px;
 			display: grid;
+			.productFooter {
+				border-top: 5px solid yellow;
+			}
 		}
 	}
 
@@ -201,3 +206,18 @@ html :where(.editor-styles-wrapper) p {
 		}
 	}
 }
+
+@media only screen and (max-width: 768px){
+	.productBody {
+	  grid-template-columns: 1fr;
+	}
+	.review-left{
+		padding: 20px 35px;
+		border-right: 0;
+		border-bottom: 4px solid #222;
+	}
+	.review-right{
+		padding: 20px 35px;
+	}
+  }
+  
