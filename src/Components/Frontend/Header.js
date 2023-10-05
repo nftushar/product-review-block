@@ -30,14 +30,15 @@ const Highlight = ({ attributes }) => {
 };
 
 const Details = (attributes) => {
-  
+
   const { product } = attributes.attributes;
-  const { image, description } = product;  
+  const { image, description } = product;
   return (
     <div className="productImgDesc">
-      <div className="image">
-        <img src={image} />
-      </div>
+      {image &&
+        <div className="image">
+          <img src={image} />
+        </div>}
       <p className="headerDesc">{description}</p>
     </div>
   );

@@ -120,13 +120,13 @@ const General = (props) => {
           className="mt20"
           value={name}
           onChange={(val) => setAttributes({ product: { ...product, name: val } })}
-        /> 
-          <InlineMediaUpload
-            label={__("Add Image", "product-review")}
-            className="mt20"
-            value={image}
-            onChange={(val) => setAttributes({ product: { ...product, image: val } })}
-          />     
+        />
+        <InlineMediaUpload
+          label={__("Add Image", "product-review")}
+          className="mt20"
+          value={image}
+          onChange={(val) => setAttributes({ product: { ...product, image: val } })}
+        />
         <NumberControl
           className="mt20"
           isShiftStepEnabled={true}
@@ -338,8 +338,9 @@ const General = (props) => {
 
 const Style = (props) => {
   const { attributes, setAttributes } = props;
-  const { rating, textTypo, textColor, textShadow, background, colors, product, contentSize, layout } = attributes;
+  const { rating, textTypo, textColor, textShadow, background, colors, product, layout } = attributes;
   const { headingTag, subHeadingTag } = layout;
+  const { fontSize } = textTypo;
 
   const { nameSize, subHeSize } = product;
   const { emptyColor, fillColor } = rating;
@@ -387,8 +388,10 @@ const Style = (props) => {
           className="mt20"
           label={__("Content Size", "product-review")}
           labelPosition="left"
-          value={contentSize}
-          onChange={(val) => setAttributes({ contentSize: val })}
+          value={fontSize}
+          onChange={(val) =>
+            setAttributes({ textTypo: { ...textTypo, fontSize: val } })
+          }
           min={8}
           max={25}
         />
