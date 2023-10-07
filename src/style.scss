@@ -22,7 +22,7 @@
 				border-bottom: 5px solid #000;
 			}
 			.headerTop {
-				margin-top: 20px;
+				margin-top: 5%;
 				.productName {
 					// font-size: 40px;
 				}
@@ -40,6 +40,7 @@
 				.productPrice {
 					font-size: 25px;
 					font-weight: 500;
+					margin-bottom: 20px;
 					del {
 						opacity: 0.4;
 						padding-right: 10px;
@@ -48,8 +49,9 @@
 			}
 
 			.productImgDesc {
-				margin-top: 25px;
 				display: flex;
+				margin-bottom: 9%;
+
 				flex-wrap: wrap;
 				column-gap: 40px;
 				align-items: center;
@@ -167,9 +169,11 @@
 				width: calc(100% + 200px);
 				height: 0;
 				border-bottom: 5px solid #000;
+				border-width: 15px;
 			}
 			.productFooter {
 				// border-top: 5px solid yellow;
+				margin-top: 4%;
 			}
 		}
 	}
@@ -225,7 +229,7 @@
 	.review-left {
 		padding: 20px 35px;
 		border-right: 0;
-		border-bottom: 4px solid #222;
+		// border-bottom: 4px solid #222;
 	}
 	.review-right {
 		padding: 20px 35px;

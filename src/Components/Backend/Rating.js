@@ -14,9 +14,9 @@ const Rating = ({ attributes, rating }) => {
         </span>)}
       </div>
 
-      <div className="rating-text">
         <span className="ratingPrefix">{rating} out of {scale}</span>
-      </div>
+      {/* <div className="rating-text">
+      </div> */}
     </div >
   );
 };
