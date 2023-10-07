@@ -1,16 +1,17 @@
+import { useState } from "react";
 import { __ } from "@wordpress/i18n";
 import { InspectorControls } from "@wordpress/block-editor";
 import { solidStar, outlineStar } from "./utils/icons";
 import produce from "immer";
 import { PanelBody, TabPanel, SelectControl, RangeControl, TextControl, Button, PanelRow, TextareaControl, __experimentalNumberControl as NumberControl } from "@wordpress/components";
 
-import { BColor, BtnGroup, MultiShadowControl, Typography, InlineMediaUpload, Background, ColorsControl } from "../../Components";
+import { BColor, BtnGroup, MultiShadowControl, Typography, InlineMediaUpload, Background, ColorsControl, Label, BDevice } from "../../Components";
 const iconOptions = [
   { label: __("Solid", "rating"), value: "solid", icon: solidStar },
   { label: __("Outline", "rating"), value: "outline", icon: outlineStar },
 ];
 
-const Settings = ({ attributes, setAttributes, updateArray, reviewDelete, onAddReview, onAddPros, prosDelete, onAddCons, consDelete, onAddButton, buttonDelete }) => {
+const Settings = ({ attributes, setAttributes, updateArray, updateObject, reviewDelete, onAddReview, onAddPros, prosDelete, onAddCons, consDelete, onAddButton, buttonDelete }) => {
   // const { rating, textTypo, textColor, textShadow } = attributes;
   // const { scale, style, emptyColor, fillColor } = rating;
 
@@ -30,6 +31,7 @@ const Settings = ({ attributes, setAttributes, updateArray, reviewDelete, onAddR
                 attributes={attributes}
                 setAttributes={setAttributes}
                 updateArray={updateArray}
+                updateObject={updateObject}
 
                 reviewDelete={reviewDelete}
                 onAddReview={onAddReview}
@@ -51,6 +53,7 @@ const Settings = ({ attributes, setAttributes, updateArray, reviewDelete, onAddR
                 attributes={attributes}
                 setAttributes={setAttributes}
                 updateArray={updateArray}
+                updateObject={updateObject}
               />
             )}
           </>
@@ -64,7 +67,6 @@ export default Settings;
 
 const General = (props) => {
   const { attributes, setAttributes, prosDelete, onAddPros, consDelete, onAddCons, onAddButton, buttonDelete, updateArray, reviewDelete, onAddReview } = props;
-
 
   const { product, rating, ratings, labels, pros, cons, buttons } = attributes;
   const { name, price, salePrice, currency, description, image } = product;
@@ -337,10 +339,13 @@ const General = (props) => {
 };
 
 const Style = (props) => {
-  const { attributes, setAttributes } = props;
+  const { attributes, setAttributes, updateObject } = props;
   const { rating, textTypo, textColor, textShadow, background, colors, product, layout } = attributes;
   const { headingTag, subHeadingTag } = layout;
   const { fontSize } = textTypo;
+  const defTextTypoFS = { desktop: 16, tablet: 15, mobile: 14 }
+
+  const [device, setDevice] = useState('desktop');
 
   const { nameSize, subHeSize } = product;
   const { emptyColor, fillColor } = rating;
@@ -395,6 +400,12 @@ const Style = (props) => {
           min={8}
           max={25}
         />
+
+        <PanelRow className='mt20'>
+          <Label className=''>{__('Font Size:', 'bplugins')}</Label>
+          <BDevice device={device} onChange={val => setDevice(val)} />
+        </PanelRow>
+        <RangeControl value={fontSize[device]} onChange={val => updateObject('textTypo', 'fontSize', val, device)} min={0} max={120} step={1} allowReset={true} resetFallbackValue={defTextTypoFS[device]} initialPosition={defTextTypoFS[device]} />
 
       </PanelBody>
       {/* <BColor

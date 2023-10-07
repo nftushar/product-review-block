@@ -21,8 +21,15 @@ const Edit = (props) => {
 
     setAttributes({ [array]: newArray });
   }
-  const updateObject = (object, property, value) => {
-    setAttributes({ [object]: { ...attributes[object], [property]: value } });
+  const updateObject = (object, property, value, childProp = false) => {
+    const objectAttr = attributes[object];
+
+    if (childProp !== false) {
+      setAttributes({ [object]: { ...objectAttr, [property]: { ...objectAttr[property], [childProp]: value } } });
+    } else {
+      setAttributes({ [object]: { ...objectAttr, [property]: value } });
+    }
+
   }
 
   function updateReview(index, property, value) {
@@ -117,6 +124,7 @@ const Edit = (props) => {
         updateButton={updateButton} onAddButton={onAddButton} buttonDelete={buttonDelete}
         updateReview={updateReview} reviewDelete={reviewDelete} onAddReview={onAddReview}
         updateArray={updateArray}
+        updateObject={updateObject}
       />
 
       <div className={className} id={`productReviews-${clientId}`}>

@@ -157,7 +157,11 @@
     "textTypo": {
       "type": "object",
       "default": {
-        "fontSize": 16
+        "fontSize": {
+          "desktop": 16,
+          "tablet": 15,
+          "mobile": 14
+        }
       }
     },
     "btnColors": {
