@@ -2,12 +2,12 @@ import { getMultiShadowCSS, getTypoCSS, getColorsCSS, getBackgroundCSS } from ".
 import { getArrFromNum, getDeviceFontSizeCSS } from "./utils/functions";
 
 const Style = ({ attributes, clientId }) => {
-	const { ratings, rating, gap, alignment, textTypo, textColor, textShadow, background, colors, layout } = attributes;
+	const { ratings, rating, gap, alignment, textTypo, textColor, textShadow, background, colors, layout, border } = attributes;
+	const { width, color, style, radius, } = border;
 	const { fontSize } = textTypo;
 	const { button, buttonHov } = colors;
 	const { fillColor, emptyColor } = rating;
-
-	// console.log(fontSize);
+ 
 	const mainSl = `#productReviews-${clientId}`;
 	const ratingSl = `${mainSl} .productReviews`;
 	const buttonSl = `${ratingSl} .footerButtons a`;
@@ -85,6 +85,9 @@ const Style = ({ attributes, clientId }) => {
  
 		${ratingSl}{
             ${getBackgroundCSS(background)};
+			border: ${width} ${style} ${color};
+			border-radius: ${radius};
+
         }
 		${buttonSl}{
 			${getColorsCSS(button)}; 

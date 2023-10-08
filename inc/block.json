@@ -140,12 +140,12 @@
     },
     "border": {
       "type": "array",
-      "default": [
-        {
-          "width": "5px",
-          "radius": "8px"
-        }
-      ]
+      "default": {
+        "width": "5px",
+        "radius": "8px",
+        "style":"solid",
+        "color":"#000"
+      }
     },
     "shadow": {
       "type": "array",

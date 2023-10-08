@@ -1,20 +1,19 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { __ } from "@wordpress/i18n";
 import { InspectorControls } from "@wordpress/block-editor";
 import { solidStar, outlineStar } from "./utils/icons";
 import produce from "immer";
-import { PanelBody, TabPanel, SelectControl, RangeControl, TextControl, Button, PanelRow, TextareaControl, __experimentalNumberControl as NumberControl } from "@wordpress/components";
+import { PanelBody, TabPanel, SelectControl, RangeControl, TextControl, Button, PanelRow, TextareaControl, __experimentalNumberControl as NumberControl, __experimentalUnitControl as UnitControl } from "@wordpress/components";
 
-import { BColor, BtnGroup, MultiShadowControl, Typography, InlineMediaUpload, Background, ColorsControl, Label, BDevice } from "../../Components";
+import { BColor, BtnGroup, MultiShadowControl, Typography, InlineMediaUpload, Background, ColorsControl, Label, BDevice, BorderControl } from "../../Components";
+import { borderStyles, emUnit, perUnit, pxUnit, remUnit } from '../../Components/utils/options';
+
 const iconOptions = [
   { label: __("Solid", "rating"), value: "solid", icon: solidStar },
   { label: __("Outline", "rating"), value: "outline", icon: outlineStar },
 ];
 
 const Settings = ({ attributes, setAttributes, updateArray, updateObject, reviewDelete, onAddReview, onAddPros, prosDelete, onAddCons, consDelete, onAddButton, buttonDelete }) => {
-  // const { rating, textTypo, textColor, textShadow } = attributes;
-  // const { scale, style, emptyColor, fillColor } = rating;
-
   return (
     <InspectorControls>
       <TabPanel
@@ -32,19 +31,14 @@ const Settings = ({ attributes, setAttributes, updateArray, updateObject, review
                 setAttributes={setAttributes}
                 updateArray={updateArray}
                 updateObject={updateObject}
-
                 reviewDelete={reviewDelete}
                 onAddReview={onAddReview}
-
                 onAddPros={onAddPros}
                 prosDelete={prosDelete}
-
                 onAddCons={onAddCons}
                 consDelete={consDelete}
-
                 onAddButton={onAddButton}
                 buttonDelete={buttonDelete}
-
               />
             )}
 
@@ -74,9 +68,7 @@ const General = (props) => {
 
   const { scale, style } = rating;
 
-  // console.log(image);
   return (
-    // General start
     <>
       <PanelBody
         className="bPlPanelBody"
@@ -91,15 +83,19 @@ const General = (props) => {
             { label: "0-10", value: 10 },
           ]}
           onChange={(val) => {
-            const newRatings = produce(ratings, draft => {
+            const newRatings = produce(ratings, (draft) => {
               draft.map((__, index) => {
-                const value = 5 === parseInt(val) ? Math.ceil(__.rating / 2) : __.rating * 2;
+                const value =
+                  5 === parseInt(val) ? Math.ceil(__.rating / 2) : __.rating * 2;
 
-                draft[index]['rating'] = value;
+                draft[index]["rating"] = value;
               });
             });
 
-            setAttributes({ rating: { ...rating, scale: val }, ratings: newRatings });
+            setAttributes({
+              rating: { ...rating, scale: val },
+              ratings: newRatings,
+            });
           }}
         />
         <BtnGroup
@@ -114,9 +110,11 @@ const General = (props) => {
         />
       </PanelBody>
 
-      <PanelBody initialOpen={false}
+      <PanelBody
+        initialOpen={false}
         className="bPlPanelBody"
-        title={__("Products Details", "product-review")} >
+        title={__("Products Details", "product-review")}
+      >
         <TextControl
           label={__("Add Name", "product-review")}
           className="mt20"
@@ -143,7 +141,6 @@ const General = (props) => {
           value={salePrice}
           onChange={(val) => setAttributes({ product: { ...product, salePrice: val } })}
         />
-        {/* shiftStep={10} */}
         <TextControl
           className="mt20"
           label={__("Add Currency", "product-review")}
@@ -158,10 +155,11 @@ const General = (props) => {
         />
       </PanelBody>
 
-      <PanelBody initialOpen={false}
+      <PanelBody
+        initialOpen={false}
         className="bPlPanelBody"
-        title={__("Products Ratings", "product-review")}>
-
+        title={__("Products Ratings", "product-review")}
+      >
         {ratings.map((ratings, index) => {
           const { title, rating, description } = ratings;
 
@@ -193,8 +191,15 @@ const General = (props) => {
                   onChange={(val) => updateArray("ratings", index, "description", val)}
                 />
                 <PanelRow className="itemAction mt20">
-                  {1 < pros?.length && <Button className="removeItem" onClick={() => reviewDelete(index)}>Delete</Button>}
-                  <Button className="duplicateItem" onClick={(e) => onAddReview(e, index)}>
+                  {1 < pros?.length && (
+                    <Button className="removeItem" onClick={() => reviewDelete(index)}>
+                      Delete
+                    </Button>
+                  )}
+                  <Button
+                    className="duplicateItem"
+                    onClick={(e) => onAddReview(e, index)}
+                  >
                     Duplicate
                   </Button>
                 </PanelRow>
@@ -204,8 +209,8 @@ const General = (props) => {
         })}
       </PanelBody>
 
-      {/* Labels start */}
-      <PanelBody initialOpen={false}
+      <PanelBody
+        initialOpen={false}
         className="bPlPanelBody"
         title={__("Labels", "product-review")}
       >
@@ -228,10 +233,9 @@ const General = (props) => {
           onChange={(val) => setAttributes({ labels: { ...labels, labelButtons: val } })}
         />
       </PanelBody>
-      {/* Label end */}
 
-      {/* Pros start */}
-      <PanelBody initialOpen={false}
+      <PanelBody
+        initialOpen={false}
         className="bPlPanelBody"
         title={__("Pros", "product-review")}
       >
@@ -252,8 +256,15 @@ const General = (props) => {
                   onChange={(val) => updateArray("pros", index, "text", val)}
                 />
                 <PanelRow className="itemAction mt20">
-                  {1 < pros?.length && <Button className="removeItem" onClick={() => prosDelete(index)}>Delete</Button>}
-                  <Button className="duplicateItem" onClick={(e) => onAddPros(e, index)}>
+                  {1 < pros?.length && (
+                    <Button className="removeItem" onClick={() => prosDelete(index)}>
+                      Delete
+                    </Button>
+                  )}
+                  <Button
+                    className="duplicateItem"
+                    onClick={(e) => onAddPros(e, index)}
+                  >
                     Duplicate
                   </Button>
                 </PanelRow>
@@ -262,12 +273,12 @@ const General = (props) => {
           );
         })}
       </PanelBody>
-      {/* Pros end */}
 
-      {/* Cons start */}
-      <PanelBody initialOpen={false}
+      <PanelBody
+        initialOpen={false}
         className="bPlPanelBody"
-        title={__("Cons", "product-review")} >
+        title={__("Cons", "product-review")}
+      >
         {cons.map((val, index) => {
           const { text } = val;
 
@@ -276,17 +287,24 @@ const General = (props) => {
               <PanelBody
                 initialOpen={false}
                 className="bPlPanelBody"
-                title={__(`Cons ${index + 1}`, "Cons")} >
-
+                title={__(`Cons ${index + 1}`, "Cons")}
+              >
                 <TextControl
                   className="mt20"
                   label={__("Add Title", "product-review")}
                   value={text}
-                  onChange={(val) => updateArray("cons", index, "text", val)} />
-
+                  onChange={(val) => updateArray("cons", index, "text", val)}
+                />
                 <PanelRow className="itemAction mt20">
-                  {1 < cons?.length && <Button className="removeItem" onClick={() => consDelete(index)}>Delete</Button>}
-                  <Button className="duplicateItem" onClick={(e) => onAddCons(e, index)}>
+                  {1 < cons?.length && (
+                    <Button className="removeItem" onClick={() => consDelete(index)}>
+                      Delete
+                    </Button>
+                  )}
+                  <Button
+                    className="duplicateItem"
+                    onClick={(e) => onAddCons(e, index)}
+                  >
                     Duplicate
                   </Button>
                 </PanelRow>
@@ -295,11 +313,12 @@ const General = (props) => {
           );
         })}
       </PanelBody>
-      {/* Cons end */}
 
-      <PanelBody initialOpen={false}
+      <PanelBody
+        initialOpen={false}
         className="bPlPanelBody"
-        title={__("Buttons", "product-review")} >
+        title={__("Buttons", "product-review")}
+      >
         {buttons.map((val, index) => {
           const { text, link } = val;
           return (
@@ -307,24 +326,30 @@ const General = (props) => {
               <PanelBody
                 initialOpen={false}
                 className="bPlPanelBody"
-                title={__(`Button ${index + 1}`, "product-review")}>
-
+                title={__(`Button ${index + 1}`, "product-review")}
+              >
                 <TextControl
                   className="mt20"
                   label={__("Button Label", "product-review")}
                   value={text}
-                  onChange={(val) => updateArray("buttons", index, "text", val)} />
-
+                  onChange={(val) => updateArray("buttons", index, "text", val)}
+                />
                 <TextControl
                   className="mt20"
                   label={__("Add link", "product-review")}
                   value={link}
                   onChange={(val) => updateArray("buttons", index, "link", val)}
-
                 />
                 <PanelRow className="itemAction mt20">
-                  {1 < buttons?.length && <Button className="removeItem" onClick={() => buttonDelete(index)}>Delete</Button>}
-                  <Button className="duplicateItem" onClick={(e) => onAddButton(e, index)}>
+                  {1 < buttons?.length && (
+                    <Button className="removeItem" onClick={() => buttonDelete(index)}>
+                      Delete
+                    </Button>
+                  )}
+                  <Button
+                    className="duplicateItem"
+                    onClick={(e) => onAddButton(e, index)}
+                  >
                     Duplicate
                   </Button>
                 </PanelRow>
@@ -334,17 +359,16 @@ const General = (props) => {
         })}
       </PanelBody>
     </>
-    // General end
   );
 };
 
 const Style = (props) => {
   const { attributes, setAttributes, updateObject } = props;
   const { rating, textTypo, textColor, textShadow, background, colors, product, layout, border } = attributes;
-  const { width, radius } = border;
+  const { width, radius, style, color } = border;
   const { headingTag, subHeadingTag } = layout;
   const { fontSize } = textTypo;
-  const defTextTypoFS = { desktop: 16, tablet: 15, mobile: 14 }
+  const defTextTypoFS = { desktop: 16, tablet: 15, mobile: 14 };
 
   const [device, setDevice] = useState('desktop');
 
@@ -352,148 +376,112 @@ const Style = (props) => {
   const { emptyColor, fillColor } = rating;
   const { button, buttonHov } = colors;
 
-  // Style start
-  return <>
-    <PanelBody className="bPlPanelBody" title={__("Title", "product-review")}>
+  return (
+    <>
+      <PanelBody className="bPlPanelBody" title={__("Title", "product-review")}>
+        <PanelBody className="bPlPanelBody" title={__("Typography", "product-review")}>
+          <SelectControl
+            label="Main Heading"
+            labelPosition="left"
+            value={headingTag}
+            options={[
+              { label: "H1", value: "h1" },
+              { label: "H2", value: "h2" },
+              { label: "H3", value: "h3" },
+              { label: "H4", value: "h4" },
+              { label: "H5", value: "h5" },
+              { label: "H6", value: "h6" },
+            ]}
+            onChange={(val) =>
+              setAttributes({ layout: { ...layout, headingTag: val } })
+            }
+          />
+          <SelectControl
+            label="Sub Heading"
+            labelPosition="left"
+            value={subHeadingTag}
+            options={[
+              { label: "H1", value: "h1" },
+              { label: "H2", value: "h2" },
+              { label: "H3", value: "h3" },
+              { label: "H4", value: "h4" },
+              { label: "H5", value: "h5" },
+              { label: "H6", value: "h6" },
+            ]}
+            onChange={(val) =>
+              setAttributes({ layout: { ...layout, subHeadingTag: val } })
+            }
+          />
 
-      <PanelBody className="bPlPanelBody" title={__("Typography", "product-review")}>
-        <SelectControl
-          label="Main Heading"
-          labelPosition="left"
-          value={headingTag}
-          options={[
-            { label: "H1", value: "h1" },
-            { label: "H2", value: "h2" },
-            { label: "H3", value: "h3" },
-            { label: "H4", value: "h4" },
-            { label: "H5", value: "h5" },
-            { label: "H6", value: "h6" },
-          ]}
-          onChange={(val) =>
-            setAttributes({ layout: { ...layout, headingTag: val } })
-          }
-        />
-        <SelectControl
-          label="Sub Heading"
-          labelPosition="left"
-          value={subHeadingTag}
-          options={[
-            { label: "H1", value: "h1" },
-            { label: "H2", value: "h2" },
-            { label: "H3", value: "h3" },
-            { label: "H4", value: "h4" },
-            { label: "H5", value: "h5" },
-            { label: "H6", value: "h6" },
-          ]}
-          onChange={(val) =>
-            setAttributes({ layout: { ...layout, subHeadingTag: val } })
-          }
-        />
+          <PanelRow className='mt20'>
 
-        {/* <RangeControl
-          className="mt20"
-          label={__("Content Size", "product-review")}
-          labelPosition="left"
-          value={fontSize}
-          onChange={(val) =>
-            setAttributes({ textTypo: { ...textTypo, fontSize: val } })
-          }
-          min={8}
-          max={25}
-        /> */}
+
+            <Label className=''>{__('Content Font Size:', 'product-review')}</Label>
+            <BDevice device={device} onChange={val => setDevice(val)} />
+          </PanelRow>
+
+          <RangeControl className='mt0' value={fontSize[device]} onChange={val => updateObject('textTypo', 'fontSize', val, device)} min={0} max={120} step={1} allowReset={true} resetFallbackValue={defTextTypoFS[device]} initialPosition={defTextTypoFS[device]} />
+        </PanelBody>
+      </PanelBody>
+
+      <PanelBody
+        initialOpen={false}
+        className="bPlPanelBody"
+        title={__("Border", "product-review")} >
+
+        <UnitControl label={__('Width:', 'product-review')} labelPosition='left' value={width} onChange={val => updateObject('border', 'width', val)} units={[pxUnit(), emUnit()]} />
 
         <PanelRow className='mt20'>
-          <Label className=''>{__('Content Font Size:', 'product-review')}</Label>
-          <BDevice device={device} onChange={val => setDevice(val)} />
+          <Label className=''>{__('Style:', 'product-review')}</Label>
+          <SelectControl value={style} onChange={val => updateObject('border', 'style', val)} options={borderStyles} />
         </PanelRow>
 
-        <RangeControl className='mt0' value={fontSize[device]} onChange={val => updateObject('textTypo', 'fontSize', val, device)} min={0} max={120} step={1} allowReset={true} resetFallbackValue={defTextTypoFS[device]} initialPosition={defTextTypoFS[device]} />
+        <BColor className='mt20' label={__('Color:', 'product-review')} value={color} onChange={val => updateObject('border', 'color', val)} defaultColor='#000' />
+
+        <UnitControl className='mt20' label={__('Radius:', 'product-review')} labelPosition='left' value={radius} onChange={val => updateObject('border', 'radius', val)} units={[pxUnit(50), perUnit(50), emUnit(3), remUnit(3)]} isResetValueOnUnitChange={true} />
 
       </PanelBody>
 
 
-      {/* <BColor
-        label={__("Text Color", "product-review")}
-        value={textColor}
-        onChange={(val) => setAttributes({ textColor: val })}
-        defaultColor="#0000"
-      /> */}
+      <PanelBody initialOpen={false} className="bPlPanelBody" title={__("Colors", "product-review")}>
+        <BColor
+          label={__("Fill Color", "product-review")}
+          value={fillColor}
+          onChange={(val) =>
+            setAttributes({ rating: { ...rating, fillColor: val } })
+          }
+          defaultColor="#fcce5100"
+        />
+        <BColor
+          label={__("Empty Fill Color", "product-review")}
+          value={emptyColor}
+          onChange={(val) =>
+            setAttributes({ rating: { ...rating, emptyColor: val } })
+          }
+          defaultColor="#f0efef"
+        />
+        <Background
+          label={__("Background", "product-review")}
+          value={background}
+          onChange={(val) =>
+            setAttributes({ background: val })
+          }
+        />
 
-
-      {/* <Typography
-        label={__("Text Typography", "product-review")}
-        value={textTypo}
-        onChange={(val) => setAttributes({ textTypo: val })}
-        defaults={{ fontSize: 16 }}
-        produce={produce}
-      />
-
-      <MultiShadowControl
-        label={__("Text Shadow", "product-review")}
-        value={textShadow}
-        onChange={(val) => setAttributes({ textShadow: val })}
-        type="text"
-        produce={produce}
-      /> */}
-
-    </PanelBody>
-    <PanelBody initialOpen={false}
-      className="bPlPanelBody"
-      title={__("Border", "product-review")} >
-
-      <RangeControl className='mt0' value={width} onChange={val =>
-        updateObject('border', 'width', val, device)} min={0} max={30} step={1} allowReset={true} />
-
-
-      <RangeControl
-        className="mt20"
-        label={__("Border Radius", "product-review")}
-        labelPosition="left"
-        value={radius}
-        onChange={val =>
-          updateObject('border', 'radius', val, device)} min={0} max={20} step={1} allowReset={true}
-      />
-
-    </PanelBody>
-
-    <PanelBody className="bPlPanelBody" title={__("Colors", "product-review")}>
-      <BColor
-        label={__("Fill Color", "product-review")}
-        value={fillColor}
-        onChange={(val) =>
-          setAttributes({ rating: { ...rating, fillColor: val } })
-        }
-        defaultColor="#fcce5100"
-      />
-      <BColor
-        label={__("Empty Fill Color", "product-review")}
-        value={emptyColor}
-        onChange={(val) =>
-          setAttributes({ rating: { ...rating, emptyColor: val } })
-        }
-        defaultColor="#f0efef"
-      />
-      <Background
-        label={__("Background", "product-review")}
-        value={background}
-        onChange={(val) =>
-          setAttributes({ background: val })
-        } />
-
-      <ColorsControl
-        className="mt20"
-        label={__("Btn Colors", "product-review")}
-        value={button}
-        onChange={(val) =>
-          setAttributes({ colors: { ...colors, button: val } })
-        }
-      />
-      <ColorsControl
-        label={__("btn Hover Colors", "product-review")}
-        value={buttonHov}
-        onChange={(val) => setAttributes({ colors: { ...colors, buttonHov: val } })}
-      />
-    </PanelBody>
-  </>;
-};
-{/* // Style end */ }
+        <ColorsControl
+          className="mt20"
+          label={__("Btn Colors", "product-review")}
+          value={button}
+          onChange={(val) =>
+            setAttributes({ colors: { ...colors, button: val } })
+          }
+        />
+        <ColorsControl
+          label={__("btn Hover Colors", "product-review")}
+          value={buttonHov}
+          onChange={(val) => setAttributes({ colors: { ...colors, buttonHov: val } })}
+        />
+      </PanelBody>
+    </>
+  );
+}; 

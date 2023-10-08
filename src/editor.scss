@@ -8,3 +8,11 @@ $primaryColor: #4527a4;
 		z-index: 5;
 	}
 }
+
+.block-editor-block-inspector  .bPlPanelBody{
+	.components-panel__row{
+		.components-base-control:not(.components-input-control){
+			margin: 0;
+		}
+	}
+}
