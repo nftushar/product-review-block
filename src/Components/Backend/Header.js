@@ -1,5 +1,5 @@
 import React from "react";
-import Rating from './Rating';
+import Rating from '../Rating';
 import { RichText } from '@wordpress/block-editor';
 import { __ } from '@wordpress/i18n';
 

@@ -1,5 +1,5 @@
 import React from "react";
-import Rating from "./Rating";
+import Rating from "../Rating";
 import { RichText } from "@wordpress/block-editor";
 import { __ } from '@wordpress/i18n';
 import { mainProsIcon, mainConsIcon } from "../../utils/icons";
@@ -34,7 +34,7 @@ const Review = (props) => {
     {ratings.map((ratings, index) => {
       const { title, rating, description } = ratings;
       return <div key={index} className="review-left-features" id={`reviewRatings-${index + 1}`}  >
-        
+
         <div className="review-left-content">
           <RichText
             tagName="span"
@@ -45,7 +45,9 @@ const Review = (props) => {
             inlineToolbar
             allowedFormats={["core/bold", "core/italic"]}
           />
+
           <Rating attributes={attributes} rating={rating} />
+
           <RichText
             tagName="span"
             value={description}
@@ -76,25 +78,28 @@ const Pros = (props) => {
 
   return (
     <div className="review-right-pros">
-      {React.createElement(subHeadingTag, null, labelPros)}
-      {pros.map((item, index) => {
-        const { text } = item;
+      {React.createElement(subHeadingTag, { className: 'considerationTitle' }, labelPros)}
 
-        return (
-          <div key={index} className="review-right-pros-item" id={`productReviews-${index + 1}`}>
-            {mainProsIcon}
-            <RichText
-              tagName="p"
-              value={text}
-              className="review-desc"
-              onChange={(content) => updateArray('pros', index, "text", content)}
-              placeholder={__("Enter Pros Title", "product-review")}
-              inlineToolbar
-              allowedFormats={["core/bold", "core/italic"]}
-            />
-          </div>
-        );
-      })}
+      <div className='reviewRightList'>
+        {pros.map((item, index) => {
+          const { text } = item;
+
+          return (
+            <div key={index} className="review-right-pros-item" id={`productReviews-${index + 1}`}>
+              {mainProsIcon}
+              <RichText
+                tagName="p"
+                value={text}
+                className="review-desc"
+                onChange={(content) => updateArray('pros', index, "text", content)}
+                placeholder={__("Enter Pros Title", "product-review")}
+                inlineToolbar
+                allowedFormats={["core/bold", "core/italic"]}
+              />
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 };
@@ -108,23 +113,26 @@ const Cons = (props) => {
 
   return <>
     <div className="review-right-pros">
-      {React.createElement(subHeadingTag, null, labelCons)}
-      {cons.map((item, index) => {
-        const { text } = item;
+      {React.createElement(subHeadingTag, { className: 'considerationTitle' }, labelCons)}
 
-        return <div key={index} className="review-right-pros-item">
-          {mainConsIcon}
-          <RichText
-            tagName="p"
-            value={text}
-            className="review-desc"
-            onChange={(content) => updateArray('cons', index, "text", content)}
-            placeholder={__("Enter cons Title", "product-review")}
-            inlineToolbar
-            allowedFormats={["core/bold", "core/italic"]}
-          />
-        </div>
-      })}
+      <div className='reviewRightList'>
+        {cons.map((item, index) => {
+          const { text } = item;
+
+          return <div key={index} className="review-right-pros-item">
+            {mainConsIcon}
+            <RichText
+              tagName="p"
+              value={text}
+              className="review-desc"
+              onChange={(content) => updateArray('cons', index, "text", content)}
+              placeholder={__("Enter cons Title", "product-review")}
+              inlineToolbar
+              allowedFormats={["core/bold", "core/italic"]}
+            />
+          </div>
+        })}
+      </div>
     </div>
   </>;
 };

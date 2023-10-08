@@ -14,11 +14,13 @@ function Header({ attributes }) {
 export default Header;
 
 const Highlight = ({ attributes }) => {
-  const { product } = attributes
+  const { product, layout } = attributes
   const { name, price, salePrice } = product;
+  const { headingTag } = layout;
+
   return (
     <div className="headerTop">
-      <h1 className="productName">{name}</h1>
+      {React.createElement(headingTag, { className: 'productName' }, name)}
       <div className="headerMiddle">
         <Rating attributes={attributes} />
         <span className="productPrice">

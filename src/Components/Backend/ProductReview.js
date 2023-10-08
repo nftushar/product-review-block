@@ -9,9 +9,7 @@ function ProductReview(props) {
 
     <Body {...props} />
 
-    <div className="review-footer">
       <Footer {...props} />
-    </div>
   </div>;
 }
 

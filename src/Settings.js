@@ -264,10 +264,10 @@ const General = (props) => {
       </PanelBody>
       {/* Pros end */}
 
+      {/* Cons start */}
       <PanelBody initialOpen={false}
         className="bPlPanelBody"
-        title={__("Cons", "product-review")}
-      >
+        title={__("Cons", "product-review")} >
         {cons.map((val, index) => {
           const { text } = val;
 
@@ -295,7 +295,7 @@ const General = (props) => {
           );
         })}
       </PanelBody>
-
+      {/* Cons end */}
 
       <PanelBody initialOpen={false}
         className="bPlPanelBody"
@@ -340,7 +340,8 @@ const General = (props) => {
 
 const Style = (props) => {
   const { attributes, setAttributes, updateObject } = props;
-  const { rating, textTypo, textColor, textShadow, background, colors, product, layout } = attributes;
+  const { rating, textTypo, textColor, textShadow, background, colors, product, layout, border } = attributes;
+  const { width, radius } = border;
   const { headingTag, subHeadingTag } = layout;
   const { fontSize } = textTypo;
   const defTextTypoFS = { desktop: 16, tablet: 15, mobile: 14 }
@@ -389,7 +390,7 @@ const Style = (props) => {
           }
         />
 
-        <RangeControl
+        {/* <RangeControl
           className="mt20"
           label={__("Content Size", "product-review")}
           labelPosition="left"
@@ -399,37 +400,25 @@ const Style = (props) => {
           }
           min={8}
           max={25}
-        />
+        /> */}
 
         <PanelRow className='mt20'>
-          <Label className=''>{__('Font Size:', 'bplugins')}</Label>
+          <Label className=''>{__('Content Font Size:', 'product-review')}</Label>
           <BDevice device={device} onChange={val => setDevice(val)} />
         </PanelRow>
-        <RangeControl value={fontSize[device]} onChange={val => updateObject('textTypo', 'fontSize', val, device)} min={0} max={120} step={1} allowReset={true} resetFallbackValue={defTextTypoFS[device]} initialPosition={defTextTypoFS[device]} />
+
+        <RangeControl className='mt0' value={fontSize[device]} onChange={val => updateObject('textTypo', 'fontSize', val, device)} min={0} max={120} step={1} allowReset={true} resetFallbackValue={defTextTypoFS[device]} initialPosition={defTextTypoFS[device]} />
 
       </PanelBody>
+
+
       {/* <BColor
         label={__("Text Color", "product-review")}
         value={textColor}
         onChange={(val) => setAttributes({ textColor: val })}
         defaultColor="#0000"
       /> */}
-      <BColor
-        label={__("Fill Color", "product-review")}
-        value={fillColor}
-        onChange={(val) =>
-          setAttributes({ rating: { ...rating, fillColor: val } })
-        }
-        defaultColor="#fcce5100"
-      />
-      <BColor
-        label={__("Empty Fill Color", "product-review")}
-        value={emptyColor}
-        onChange={(val) =>
-          setAttributes({ rating: { ...rating, emptyColor: val } })
-        }
-        defaultColor="#f0efef"
-      />
+
 
       {/* <Typography
         label={__("Text Typography", "product-review")}
@@ -448,7 +437,42 @@ const Style = (props) => {
       /> */}
 
     </PanelBody>
+    <PanelBody initialOpen={false}
+      className="bPlPanelBody"
+      title={__("Border", "product-review")} >
+
+      <RangeControl className='mt0' value={width} onChange={val =>
+        updateObject('border', 'width', val, device)} min={0} max={30} step={1} allowReset={true} />
+
+
+      <RangeControl
+        className="mt20"
+        label={__("Border Radius", "product-review")}
+        labelPosition="left"
+        value={radius}
+        onChange={val =>
+          updateObject('border', 'radius', val, device)} min={0} max={20} step={1} allowReset={true}
+      />
+
+    </PanelBody>
+
     <PanelBody className="bPlPanelBody" title={__("Colors", "product-review")}>
+      <BColor
+        label={__("Fill Color", "product-review")}
+        value={fillColor}
+        onChange={(val) =>
+          setAttributes({ rating: { ...rating, fillColor: val } })
+        }
+        defaultColor="#fcce5100"
+      />
+      <BColor
+        label={__("Empty Fill Color", "product-review")}
+        value={emptyColor}
+        onChange={(val) =>
+          setAttributes({ rating: { ...rating, emptyColor: val } })
+        }
+        defaultColor="#f0efef"
+      />
       <Background
         label={__("Background", "product-review")}
         value={background}

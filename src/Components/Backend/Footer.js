@@ -7,14 +7,12 @@ function Footer(props) {
   const { subHeadingTag } = layout;
 
   return <div className='productFooter'>
-    {React.createElement(subHeadingTag, null, labelButtons)}
-    <div className="review-footer-button">
+    {React.createElement(subHeadingTag, { className: 'footerMessage' }, labelButtons)}
+    <div className="footerButtons">
       {buttons.map((item, index) => (
-        <div key={index} className="review-footer-button">
-          <a aria-multiline="true" aria-label="Button label" key={index} href={item.link} >
-            {item.text}
-          </a>
-        </div>
+        <a key={index} aria-multiline="true" aria-label="Button label" href={item.link} >
+          {item.text}
+        </a>
       ))}
     </div>
   </div>;

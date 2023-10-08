@@ -1,15 +1,16 @@
 import { getMultiShadowCSS, getTypoCSS, getColorsCSS, getBackgroundCSS } from "../../Components/utils/getCSS";
-import { getArrFromNum } from "./utils/functions";
+import { getArrFromNum, getDeviceFontSizeCSS } from "./utils/functions";
 
 const Style = ({ attributes, clientId }) => {
 	const { ratings, rating, gap, alignment, textTypo, textColor, textShadow, background, colors, layout } = attributes;
 	const { fontSize } = textTypo;
 	const { button, buttonHov } = colors;
 	const { fillColor, emptyColor } = rating;
-// console.log(fontSize);
+
+	// console.log(fontSize);
 	const mainSl = `#productReviews-${clientId}`;
 	const ratingSl = `${mainSl} .productReviews`;
-	const buttonSl = `${ratingSl} .review-footer-button a`;
+	const buttonSl = `${ratingSl} .footerButtons a`;
 	const headerSl = `${mainSl} .productHeader`;
 	const headerDesc = `${headerSl} .productImgDesc p`;
 	const bodySl = `${mainSl} .productBody`;
@@ -70,16 +71,9 @@ const Style = ({ attributes, clientId }) => {
 
 	return <style dangerouslySetInnerHTML={{
 		__html: `
-		 
-		${headerDesc}{
-			font-size: ${fontSize}px;
-		} 
-		${reviewDec}{
-			font-size: ${fontSize}px;
-		}
-		${prosCons}{
-			font-size: ${fontSize}px;
-		}
+
+		${getDeviceFontSizeCSS(`${headerDesc}, ${reviewDec}, ${prosCons}`, fontSize)}
+
 		${starFillSl}{
 			fill: ${fillColor};
 		}

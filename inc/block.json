@@ -139,8 +139,13 @@
       }
     },
     "border": {
-      "type": "string",
-      "default": "8px"
+      "type": "array",
+      "default": [
+        {
+          "width": "5px",
+          "radius": "8px"
+        }
+      ]
     },
     "shadow": {
       "type": "array",

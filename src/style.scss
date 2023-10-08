@@ -5,16 +5,21 @@
 	}
 
 	.productReviews {
-		border: 5px solid yellow;
+		border: 5px solid #000;
 		padding: 35px;
 
 		.productHeader {
 			position: relative;
+			display: flex;
+			flex-direction: column;
+			gap: 20px;
+			padding-bottom: 25px;
 
 			&:after {
 				content: "";
 				position: absolute;
 				left: 50%;
+				bottom: 0;
 				transform: translateX(-50%);
 				width: calc(100% + 200px);
 				height: 0;
@@ -22,7 +27,13 @@
 			}
 
 			.headerTop {
-				margin-top: 5%;
+				display: flex;
+				flex-direction: column;
+				gap: 20px;
+
+				.productName {
+					margin: 0;
+				}
 			}
 
 			.headerMiddle {
@@ -30,7 +41,6 @@
 				justify-content: space-between;
 				align-items: center;
 				flex-wrap: wrap;
-				margin-top: 20px;
 
 				.productPrice {
 					font-size: 25px;
@@ -43,15 +53,15 @@
 			}
 
 			.productImgDesc {
-				margin: 23px 0 25px 0;
 				display: flex;
 				flex-wrap: wrap;
-				column-gap: 40px;
 				align-items: center;
+				gap: 25px;
 
 				p {
 					margin: 0 !important;
 				}
+
 				.image {
 					max-width: 50%;
 
@@ -63,78 +73,64 @@
 		}
 
 		.productBody {
-			// display: flex;
-			// position: relative;
 			display: grid;
 			grid-template-columns: 2fr 1fr;
 
-			// justify-content: space-between;
-			// align-items: center;
 			flex-wrap: wrap;
-			// margin-top: 20px;
 			.review-left-features {
 				gap: 15px;
 			}
-			// .productBody::after {
-			// 	content: "";
-			// 	position: absolute;
-			// 	// bottom: 0;
-			// 	// left: 0;
-			// 	width: 110%;
-			// 	border-top: 1px solid #e71010;
-			// }
+
 			.review-right {
-				// margin-left: auto;
-
-				border-left: 5px solid gray;
-				// padding-left: 20px;
-
+				display: flex;
+				flex-direction: column;
+				gap: 20px;
 				padding: 20px 0 20px 20px;
-				// display: flex;
+				border-left: 5px solid gray;
 
-				justify-content: space-between;
-				.review-right-pros-item {
+				.considerationTitle {
+					margin-bottom: 0.75em;
+				}
+
+				.reviewRightList {
 					display: flex;
-					align-items: baseline;
-					svg {
-						width: 20px;
-						height: 20px;
-						min-width: 20px;
-						min-height: 20px;
-						border-radius: 4px;
-						padding: 2px;
-						margin-top: 3px;
-						margin-right: 10px;
+					flex-direction: column;
+					gap: 2px;
+
+					> div {
+						display: flex;
+						align-items: baseline;
+						svg {
+							width: 20px;
+							height: 20px;
+							min-width: 20px;
+							min-height: 20px;
+							border-radius: 4px;
+							padding: 2px;
+							margin-top: 3px;
+							margin-right: 10px;
+						}
+
+						p {
+							line-height: 1.85 !important;
+							margin: 0 !important;
+						}
 					}
 				}
 			}
 		}
-		.review-footer-button {
-			display: flex;
-			flex-wrap: wrap;
-			align-items: center;
-			gap: 20px;
 
-			a {
-				background-color: #ffbb38;
-				color: #fff;
-				padding: 7px 25px;
-				margin: 20px 12px 0 0;
-				cursor: pointer;
-				text-align: center;
-				color: #000;
-				text-decoration: none;
-			}
-		}
 		.review-left {
-			// display: grid;
-			// gap: 20px;
+			display: flex;
+			flex-direction: column;
+			gap: 30px;
 			padding: 20px 20px 20px 0;
-			// border-right: 4px solid #222;
+
 			.review-left-content {
 				display: grid;
 				gap: 5px;
-				margin: 20px 0 20px 0;
+				margin: 0;
+
 				.review-heading {
 					font-size: inherit;
 					font-weight: 600;
@@ -146,23 +142,44 @@
 				}
 			}
 		}
-		.review-footer {
-			// margin-top: 50px;
-			display: grid;
+
+		.productFooter {
+			display: flex;
+			flex-direction: column;
+			gap: 20px;
+			padding-top: 25px;
 			position: relative;
+
 			&:after {
 				content: "";
 				position: absolute;
+				top: 0;
 				left: 50%;
 				transform: translateX(-50%);
 				width: calc(100% + 200px);
 				height: 0;
 				border-bottom: 5px solid #000;
-				border-width: 15px;
 			}
-			.productFooter {
-				// border-top: 5px solid yellow;
-				margin-top: 5%;
+
+			.footerMessage {
+				margin: 0;
+			}
+
+			.footerButtons {
+				display: flex;
+				flex-wrap: wrap;
+				align-items: center;
+				gap: 20px;
+
+				a {
+					background-color: #ffbb38;
+					color: #fff;
+					padding: 7px 25px;
+					cursor: pointer;
+					text-align: center;
+					color: #000;
+					text-decoration: none;
+				}
 			}
 		}
 	}
@@ -203,6 +220,7 @@
 					svg {
 						width: 20px;
 						height: 100%;
+						position: absolute;
 						fill: #ffbb38;
 					}
 				}

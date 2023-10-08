@@ -1,5 +1,5 @@
 import React from "react";
-import Rating from "./Rating";
+import Rating from "../Rating";
 import { mainProsIcon, mainConsIcon } from "../../utils/icons";
 
 
@@ -26,7 +26,7 @@ const Reviews = (props) => {
 
 const Review = (props) => {
   const { attributes } = props;
-  const { ratings } = attributes; 
+  const { ratings } = attributes;
   return (
     <>
       {ratings.map((ratings, index) => {
@@ -63,9 +63,10 @@ const Pros = (props) => {
   const { labelPros } = labels;
 
 
-  return (
-    <div className="review-right-pros">
-      {React.createElement(subHeadingTag, null, labelPros)}
+  return <div className="review-right-pros">
+    {React.createElement(subHeadingTag, {className:'considerationTitle'}, labelPros)}
+
+    <div className='reviewRightList'>
       {pros.map((item, index) => {
         const { text } = item;
 
@@ -79,8 +80,7 @@ const Pros = (props) => {
         );
       })}
     </div>
-
-  );
+  </div>
 };
 
 const Cons = (props) => {
@@ -90,9 +90,10 @@ const Cons = (props) => {
   const { labelCons } = labels;
 
   return (
-    <>
-      <div className="review-right-pros">
-        {React.createElement(subHeadingTag, null, labelCons)}
+    <div className="review-right-pros">
+      {React.createElement(subHeadingTag, {className:'considerationTitle'}, labelCons)}
+
+      <div className='reviewRightList'>
         {cons.map((item, index) => {
           const { text } = item;
 
@@ -106,7 +107,6 @@ const Cons = (props) => {
           );
         })}
       </div>
-
-    </>
+    </div>
   );
 };
