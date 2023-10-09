@@ -115,7 +115,7 @@ const General = (props) => {
         className="bPlPanelBody"
         title={__("Products Details", "product-review")}
       >
-        <Label>Add Name</Label>
+        <Label>Name</Label>
         <TextControl
           isShiftStepEnabled={true}
           value={name}
@@ -123,7 +123,7 @@ const General = (props) => {
         />
         <InlineMediaUpload
           isShiftStepEnabled={true}
-          label={__("Add Image", "product-review")}
+          label={__("Image", "product-review")}
           className="mt20"
           value={image}
           onChange={(val) => setAttributes({ product: { ...product, image: val } })}
@@ -131,26 +131,26 @@ const General = (props) => {
         <NumberControl
           className="mt20"
           isShiftStepEnabled={true}
-          label={__("Add Price", "product-review")}
+          label={__("Price", "product-review")}
           value={price}
           onChange={(val) => setAttributes({ product: { ...product, price: val } })}
         />
         <NumberControl
           className="mt20"
           isShiftStepEnabled={true}
-          label={__("Add Sale Price", "product-review")}
+          label={__("Sale Price", "product-review")}
           value={salePrice}
           onChange={(val) => setAttributes({ product: { ...product, salePrice: val } })}
         />
 
-        <Label>Add currency</Label>
+        <Label>currency</Label>
         <TextControl
           isShiftStepEnabled={true}
           value={currency}
           onChange={(val) => setAttributes({ product: { ...product, currency: val } })}
         />
 
-        <Label>Add Description</Label>
+        <Label>Description</Label>
         <TextareaControl
           value={description}
           onChange={(val) => setAttributes({ product: { ...product, description: val } })}
@@ -172,24 +172,22 @@ const General = (props) => {
                 className="bPlPanelBody"
                 title={__(`Product Rating ${index + 1}`, "product-review")}
               >
-                <Label>Add Rating</Label>
-                <RangeControl
-                  className="mt20"
-                  label={__("Rating", "product-review")}
+                <Label>Rating</Label>
+                <RangeControl 
                   labelPosition="left"
                   value={rating}
                   onChange={(val) => updateArray("ratings", index, "rating", val)}
                   max={scale >= 10 ? scale : 5}
                 />
 
-                <Label>Add Title</Label>
+                <Label>Title</Label>
                 <TextControl
                   className="mt20"
                   value={title}
                   onChange={(val) => updateArray("ratings", index, "title", val)}
                 />
 
-                <Label>Add Description</Label>
+                <Label>Description</Label>
                 <TextareaControl
                   className="mt20"
                   value={description}
@@ -259,7 +257,7 @@ const General = (props) => {
               >
                 <TextControl
                   className="mt20"
-                  label={__("Add Title", "product-review")}
+                  label={__("Title", "product-review")}
                   value={text}
                   onChange={(val) => updateArray("pros", index, "text", val)}
                 />
@@ -299,7 +297,7 @@ const General = (props) => {
               >
                 <TextControl
                   className="mt20"
-                  label={__("Add Title", "product-review")}
+                  label={__("Title", "product-review")}
                   value={text}
                   onChange={(val) => updateArray("cons", index, "text", val)}
                 />
@@ -344,7 +342,7 @@ const General = (props) => {
                 />
                 <TextControl
                   className="mt20"
-                  label={__("Add link", "product-review")}
+                  label={__("link", "product-review")}
                   value={link}
                   onChange={(val) => updateArray("buttons", index, "link", val)}
                 />
