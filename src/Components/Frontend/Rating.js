@@ -3,7 +3,7 @@ import { solidStar, outlineStar } from "../../utils/icons";
 
 const Rating = ({ attributes, rating }) => {
   const { rating: { scale, style } } = attributes;
-
+// console.log(rating);
   return (
     <div className="ratting">
       <div className="stars">

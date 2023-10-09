@@ -3,23 +3,28 @@ import { getArrFromNum, getDeviceFontSizeCSS } from "./utils/functions";
 
 const Style = ({ attributes, clientId }) => {
 	const { ratings, rating, gap, alignment, textTypo, textColor, textShadow, background, colors, layout, border } = attributes;
-	const { width, color, style, radius, } = border;
+	const { width, color, borderStyle, radius, } = border;
 	const { fontSize } = textTypo;
 	const { button, buttonHov } = colors;
 	const { fillColor, emptyColor } = rating;
- 
+
 	const mainSl = `#productReviews-${clientId}`;
 	const ratingSl = `${mainSl} .productReviews`;
 	const buttonSl = `${ratingSl} .footerButtons a`;
 	const headerSl = `${mainSl} .productHeader`;
+	const headerSlAfter = `${headerSl}:after`;
+	const productDesc = `${headerSl} .productImgDesc`;
 	const headerDesc = `${headerSl} .productImgDesc p`;
 	const bodySl = `${mainSl} .productBody`;
+	const reviewRight = `${bodySl} .review-right`;
 	const reviewDec = `${ratingSl} .review-left .review-left-content`;
 	const prosCons = `${ratingSl} .review-right .review-right-pros .review-right-pros-item p`;
 	const footerSl = `${mainSl} .productFooter`;
+	const footerSlAfter = `${mainSl} .productFooter:after`;
 	const starFillSl = `${mainSl} .ratting .stars .star .starFill svg`;
 	const emptyFillSI = `${mainSl} .ratting .stars .star svg`;
 
+	// .wp-block-b-blocks-product-review .productReviews .productFooter:after
 	// Average Ratting
 	const totalRatings = ratings.reduce((previous, { rating }) => previous + rating, 0);
 	const ratingAverage = ratings?.length ? (totalRatings / ratings?.length).toFixed(1) : 0;
@@ -74,6 +79,10 @@ const Style = ({ attributes, clientId }) => {
 
 		${getDeviceFontSizeCSS(`${headerDesc}, ${reviewDec}, ${prosCons}`, fontSize)}
 
+		${headerSlAfter}{
+			border: ${width} ${borderStyle} ${color}; 
+		}
+
 		${starFillSl}{
 			fill: ${fillColor};
 		}
@@ -85,9 +94,8 @@ const Style = ({ attributes, clientId }) => {
  
 		${ratingSl}{
             ${getBackgroundCSS(background)};
-			border: ${width} ${style} ${color};
+			border: ${width} ${borderStyle} ${color};
 			border-radius: ${radius};
-
         }
 		${buttonSl}{
 			${getColorsCSS(button)}; 
@@ -95,6 +103,13 @@ const Style = ({ attributes, clientId }) => {
 		${buttonSl}:hover {
             ${getColorsCSS(buttonHov)};
         }
+		${reviewRight}{
+			border-left: ${width} ${borderStyle} ${color}; 
+		}
+		${footerSlAfter}{
+			border-bottom: ${width} ${borderStyle} ${color}; 
+
+		}
 	`}} />;
 };
 export default Style;

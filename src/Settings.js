@@ -365,7 +365,7 @@ const General = (props) => {
 const Style = (props) => {
   const { attributes, setAttributes, updateObject } = props;
   const { rating, textTypo, textColor, textShadow, background, colors, product, layout, border } = attributes;
-  const { width, radius, style, color } = border;
+  const { width, radius, borderStyle, color } = border;
   const { headingTag, subHeadingTag } = layout;
   const { fontSize } = textTypo;
   const defTextTypoFS = { desktop: 16, tablet: 15, mobile: 14 };
@@ -378,50 +378,46 @@ const Style = (props) => {
 
   return (
     <>
-      <PanelBody className="bPlPanelBody" title={__("Title", "product-review")}>
-        <PanelBody className="bPlPanelBody" title={__("Typography", "product-review")}>
-          <SelectControl
-            label="Main Heading"
-            labelPosition="left"
-            value={headingTag}
-            options={[
-              { label: "H1", value: "h1" },
-              { label: "H2", value: "h2" },
-              { label: "H3", value: "h3" },
-              { label: "H4", value: "h4" },
-              { label: "H5", value: "h5" },
-              { label: "H6", value: "h6" },
-            ]}
-            onChange={(val) =>
-              setAttributes({ layout: { ...layout, headingTag: val } })
-            }
-          />
-          <SelectControl
-            label="Sub Heading"
-            labelPosition="left"
-            value={subHeadingTag}
-            options={[
-              { label: "H1", value: "h1" },
-              { label: "H2", value: "h2" },
-              { label: "H3", value: "h3" },
-              { label: "H4", value: "h4" },
-              { label: "H5", value: "h5" },
-              { label: "H6", value: "h6" },
-            ]}
-            onChange={(val) =>
-              setAttributes({ layout: { ...layout, subHeadingTag: val } })
-            }
-          />
+      <PanelBody className="bPlPanelBody" title={__("Typography", "product-review")}>
+        <SelectControl
+          label="Main Heading"
+          labelPosition="left"
+          value={headingTag}
+          options={[
+            { label: "H1", value: "h1" },
+            { label: "H2", value: "h2" },
+            { label: "H3", value: "h3" },
+            { label: "H4", value: "h4" },
+            { label: "H5", value: "h5" },
+            { label: "H6", value: "h6" },
+          ]}
+          onChange={(val) =>
+            setAttributes({ layout: { ...layout, headingTag: val } })
+          }
+        />
+        <SelectControl
+          label="Sub Heading"
+          labelPosition="left"
+          value={subHeadingTag}
+          options={[
+            { label: "H1", value: "h1" },
+            { label: "H2", value: "h2" },
+            { label: "H3", value: "h3" },
+            { label: "H4", value: "h4" },
+            { label: "H5", value: "h5" },
+            { label: "H6", value: "h6" },
+          ]}
+          onChange={(val) =>
+            setAttributes({ layout: { ...layout, subHeadingTag: val } })
+          }
+        />
 
-          <PanelRow className='mt20'>
+        <PanelRow className='mt20'>
+          <Label className=''>{__('Content Font Size:', 'product-review')}</Label>
+          <BDevice device={device} onChange={val => setDevice(val)} />
+        </PanelRow>
 
-
-            <Label className=''>{__('Content Font Size:', 'product-review')}</Label>
-            <BDevice device={device} onChange={val => setDevice(val)} />
-          </PanelRow>
-
-          <RangeControl className='mt0' value={fontSize[device]} onChange={val => updateObject('textTypo', 'fontSize', val, device)} min={0} max={120} step={1} allowReset={true} resetFallbackValue={defTextTypoFS[device]} initialPosition={defTextTypoFS[device]} />
-        </PanelBody>
+        <RangeControl className='mt0' value={fontSize[device]} onChange={val => updateObject('textTypo', 'fontSize', val, device)} min={0} max={120} step={1} allowReset={true} resetFallbackValue={defTextTypoFS[device]} initialPosition={defTextTypoFS[device]} />
       </PanelBody>
 
       <PanelBody
@@ -433,7 +429,7 @@ const Style = (props) => {
 
         <PanelRow className='mt20'>
           <Label className=''>{__('Style:', 'product-review')}</Label>
-          <SelectControl value={style} onChange={val => updateObject('border', 'style', val)} options={borderStyles} />
+          <SelectControl value={borderStyle} onChange={val => updateObject('border', 'borderStyle', val)} options={borderStyles} />
         </PanelRow>
 
         <BColor className='mt20' label={__('Color:', 'product-review')} value={color} onChange={val => updateObject('border', 'color', val)} defaultColor='#000' />
