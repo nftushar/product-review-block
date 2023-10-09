@@ -80,7 +80,7 @@ const Style = ({ attributes, clientId }) => {
 		${getDeviceFontSizeCSS(`${headerDesc}, ${reviewDec}, ${prosCons}`, fontSize)}
 
 		${headerSlAfter}{
-			border: ${width} ${borderStyle} ${color}; 
+			border-bottom: ${width} ${borderStyle} ${color}; 
 		}
 
 		${starFillSl}{

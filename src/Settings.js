@@ -143,7 +143,7 @@ const General = (props) => {
           onChange={(val) => setAttributes({ product: { ...product, salePrice: val } })}
         />
 
-        <Label>Add Name</Label>
+        <Label>Add currency</Label>
         <TextControl
           isShiftStepEnabled={true}
           value={currency}
@@ -151,7 +151,7 @@ const General = (props) => {
         />
 
         <Label>Add Description</Label>
-        <TextareaControl 
+        <TextareaControl
           value={description}
           onChange={(val) => setAttributes({ product: { ...product, description: val } })}
         />
@@ -172,6 +172,7 @@ const General = (props) => {
                 className="bPlPanelBody"
                 title={__(`Product Rating ${index + 1}`, "product-review")}
               >
+                <Label>Add Rating</Label>
                 <RangeControl
                   className="mt20"
                   label={__("Rating", "product-review")}
@@ -180,15 +181,17 @@ const General = (props) => {
                   onChange={(val) => updateArray("ratings", index, "rating", val)}
                   max={scale >= 10 ? scale : 5}
                 />
+
+                <Label>Add Title</Label>
                 <TextControl
                   className="mt20"
-                  label={__("Add Title", "product-review")}
                   value={title}
                   onChange={(val) => updateArray("ratings", index, "title", val)}
                 />
+
+                <Label>Add Description</Label>
                 <TextareaControl
                   className="mt20"
-                  label={__("Add Description", "product-review")}
                   value={description}
                   onChange={(val) => updateArray("ratings", index, "description", val)}
                 />
@@ -216,26 +219,29 @@ const General = (props) => {
         className="bPlPanelBody"
         title={__("Labels", "product-review")}
       >
+
+        <Label>Pros Labels</Label>
         <TextControl
           className="mt20"
-          label={__("Pros Labels", "product-review")}
           value={labelPros}
           onChange={(val) => setAttributes({ labels: { ...labels, labelPros: val } })}
         />
+
+        <Label>Cons Labels</Label>
         <TextControl
           className="mt20"
-          label={__("Cons Labels", "product-review")}
           value={labelCons}
           onChange={(val) => setAttributes({ labels: { ...labels, labelCons: val } })}
         />
+
+        <Label>Buttons Labels</Label>
         <TextControl
-          className="mt20"
-          label={__("Buttons Labels", "product-review")}
+          className="mt20" 
           value={labelButtons}
           onChange={(val) => setAttributes({ labels: { ...labels, labelButtons: val } })}
         />
       </PanelBody>
-
+       
       <PanelBody
         initialOpen={false}
         className="bPlPanelBody"

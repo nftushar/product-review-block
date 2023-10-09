@@ -1,5 +1,5 @@
 import React from "react";
-import Rating from '../Rating';
+import Rating from '../../Components/Rating';
 import { RichText } from '@wordpress/block-editor';
 import { __ } from '@wordpress/i18n';
 
@@ -16,7 +16,7 @@ export default Header;
 const Highlight = (props) => {
   const { attributes, setAttributes } = props;
   const { product, ratings, layout } = attributes
-  const { name, price, salePrice } = product;
+  const { name, price, salePrice,currency } = product;
   const { headingTag } = layout;
   const totalRatings = ratings.reduce((previous, { rating }) => previous + rating, 0);
   const ratingAverage = ratings?.length ? (totalRatings / ratings?.length).toFixed(1) : 0;
@@ -36,7 +36,7 @@ const Highlight = (props) => {
       <Rating attributes={attributes} rating={ratingAverage || 0} />
 
       <span className="productPrice">
-        <del>${price}</del> ${salePrice}
+        <del>{currency}{price}</del>{currency}{salePrice}
       </span>
     </div>
   </div>;

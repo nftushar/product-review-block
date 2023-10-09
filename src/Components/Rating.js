@@ -2,8 +2,7 @@ import { getArrFromNum } from "../utils/functions";
 import { solidStar, outlineStar } from "../utils/icons";
 
 const Rating = ({ attributes, rating }) => {
-  const { rating: { scale, style } } = attributes;
-
+  const { rating: { scale, style } } = attributes; 
   return (
     <div className="ratting">
       <div className="stars">
@@ -15,7 +14,7 @@ const Rating = ({ attributes, rating }) => {
       </div>
 
       <div className="rating-text">
-        <span className="ratingPrefix">{rating} out z of {scale}</span>
+        <span className="ratingPrefix">{rating} out of {scale}</span>
       </div>
     </div >
   );

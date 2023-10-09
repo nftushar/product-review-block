@@ -1,30 +1,30 @@
 import React from "react";
-import Rating from './Rating';
-// import Style from '../../Style';
-// import Rating from "../Components/Rating";
+import Rating from "../../Components/Rating";
 
-function Header({ attributes }) {
+function Header(props) {
   return (
     <div className="productHeader">
-      <Highlight attributes={attributes} />
-      <Details attributes={attributes} />
+      <Highlight {...props} />
+      <Details {...props} />
     </div>
   );
 }
 export default Header;
 
 const Highlight = ({ attributes }) => {
-  const { product, layout } = attributes
-  const { name, price, salePrice } = product;
+  const { product, ratings, layout } = attributes 
+  const { name, price, salePrice, currency } = product;
   const { headingTag } = layout;
+  const totalRatings = ratings.reduce((previous, { rating }) => previous + rating, 0);
+  const ratingAverage = ratings?.length ? (totalRatings / ratings?.length).toFixed(1) : 0;
 
   return (
     <div className="headerTop">
       {React.createElement(headingTag, { className: 'productName' }, name)}
       <div className="headerMiddle">
-        <Rating attributes={attributes} />
+      <Rating attributes={attributes} rating={ratingAverage || 0} />
         <span className="productPrice">
-          <del>{price}</del> ${salePrice}
+          <del>{currency}{price}</del> {currency}{salePrice}
         </span>
       </div>
     </div>
