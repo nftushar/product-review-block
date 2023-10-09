@@ -115,13 +115,14 @@ const General = (props) => {
         className="bPlPanelBody"
         title={__("Products Details", "product-review")}
       >
+        <Label>Add Name</Label>
         <TextControl
-          label={__("Add Name", "product-review")}
-          className="mt20"
+          isShiftStepEnabled={true}
           value={name}
           onChange={(val) => setAttributes({ product: { ...product, name: val } })}
         />
         <InlineMediaUpload
+          isShiftStepEnabled={true}
           label={__("Add Image", "product-review")}
           className="mt20"
           value={image}
@@ -141,15 +142,16 @@ const General = (props) => {
           value={salePrice}
           onChange={(val) => setAttributes({ product: { ...product, salePrice: val } })}
         />
+
+        <Label>Add Name</Label>
         <TextControl
-          className="mt20"
-          label={__("Add Currency", "product-review")}
+          isShiftStepEnabled={true}
           value={currency}
           onChange={(val) => setAttributes({ product: { ...product, currency: val } })}
         />
-        <TextareaControl
-          className="mt20"
-          label={__("Add Description", "product-review")}
+
+        <Label>Add Description</Label>
+        <TextareaControl 
           value={description}
           onChange={(val) => setAttributes({ product: { ...product, description: val } })}
         />
@@ -466,14 +468,14 @@ const Style = (props) => {
 
         <ColorsControl
           className="mt20"
-          label={__("Btn Colors", "product-review")}
+          label={__("Button Colors", "product-review")}
           value={button}
           onChange={(val) =>
             setAttributes({ colors: { ...colors, button: val } })
           }
         />
         <ColorsControl
-          label={__("btn Hover Colors", "product-review")}
+          label={__("Button Hover Colors", "product-review")}
           value={buttonHov}
           onChange={(val) => setAttributes({ colors: { ...colors, buttonHov: val } })}
         />

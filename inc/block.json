@@ -139,7 +139,7 @@
       }
     },
     "border": {
-      "type": "array",
+      "type": "object",
       "default": {
         "width": "5px",
         "radius": "8px",
