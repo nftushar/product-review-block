@@ -9,14 +9,14 @@ $primaryColor: #4527a4;
 	}
 }
 
-.block-editor-block-inspector  .bPlPanelBody{
-	.components-panel__row{
-		.components-base-control:not(.components-input-control){
+.block-editor-block-inspector .bPlPanelBody {
+	.components-panel__row {
+		.components-base-control:not(.components-input-control) {
 			margin: 0;
 		}
 	}
 }
-.dashicon{
+.bPlPanelBody .addItem button .dashicon {
 	font-size: 12px !important;
 	width: 100% !important;
 }

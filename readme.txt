@@ -1,7 +1,7 @@
 === Product Review Block ===
-Contributors: abuhayat, charlescormier
+Contributors: abuhayat,
 Donate link: https://gum.co/wpdonate/
-Tags: block, product-review-block, product, review, Gutenberg block
+Tags: block, product-review-block, product, review
 Requires at least: 5.0+
 Tested up to: 6.3.2
 Stable tag: 1.0.0
