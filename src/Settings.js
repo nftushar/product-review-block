@@ -7,13 +7,15 @@ import { PanelBody, TabPanel, SelectControl, RangeControl, TextControl, Button, 
 
 import { BColor, BtnGroup, MultiShadowControl, Typography, InlineMediaUpload, Background, ColorsControl, Label, BDevice, BorderControl } from "../../Components";
 import { borderStyles, emUnit, perUnit, pxUnit, remUnit } from '../../Components/utils/options';
+import { Dashicon } from '@wordpress/components';
 
 const iconOptions = [
   { label: __("Solid", "rating"), value: "solid", icon: solidStar },
   { label: __("Outline", "rating"), value: "outline", icon: outlineStar },
 ];
 
-const Settings = ({ attributes, setAttributes, updateArray, updateObject, reviewDelete, onAddReview, onAddPros, prosDelete, onAddCons, consDelete, onAddButton, buttonDelete }) => {
+const Settings = ({ attributes, setAttributes, updateArray, updateObject, reviewDelete, onAddReview, onAddNewRatting, onAddPros, onAddNewPros, prosDelete, onAddCons, onAddNewCons, consDelete, onAddButton, onAddNewBtn, buttonDelete }) => {
+  console.log(onAddNewBtn);
   return (
     <InspectorControls>
       <TabPanel
@@ -38,7 +40,12 @@ const Settings = ({ attributes, setAttributes, updateArray, updateObject, review
                 onAddCons={onAddCons}
                 consDelete={consDelete}
                 onAddButton={onAddButton}
+                onAddNewBtn={onAddNewBtn}
                 buttonDelete={buttonDelete}
+                onAddNewPros={onAddNewPros}
+                onAddNewCons={onAddNewCons}
+                onAddNewRatting={onAddNewRatting}
+
               />
             )}
 
@@ -60,7 +67,7 @@ const Settings = ({ attributes, setAttributes, updateArray, updateObject, review
 export default Settings;
 
 const General = (props) => {
-  const { attributes, setAttributes, prosDelete, onAddPros, consDelete, onAddCons, onAddButton, buttonDelete, updateArray, reviewDelete, onAddReview } = props;
+  const { attributes, setAttributes, prosDelete, onAddNewRatting, onAddNewPros, onAddPros, consDelete, onAddNewCons, onAddCons, onAddButton, onAddNewBtn, buttonDelete, updateArray, reviewDelete, onAddReview } = props;
 
   const { product, rating, ratings, labels, pros, cons, buttons } = attributes;
   const { name, price, salePrice, currency, description, image } = product;
@@ -143,7 +150,7 @@ const General = (props) => {
           onChange={(val) => setAttributes({ product: { ...product, salePrice: val } })}
         />
 
-        <Label>currency</Label>
+        <Label>Currency</Label>
         <TextControl
           isShiftStepEnabled={true}
           value={currency}
@@ -173,7 +180,7 @@ const General = (props) => {
                 title={__(`Product Rating ${index + 1}`, "product-review")}
               >
                 <Label>Rating</Label>
-                <RangeControl 
+                <RangeControl
                   labelPosition="left"
                   value={rating}
                   onChange={(val) => updateArray("ratings", index, "rating", val)}
@@ -201,8 +208,7 @@ const General = (props) => {
                   )}
                   <Button
                     className="duplicateItem"
-                    onClick={(e) => onAddReview(e, index)}
-                  >
+                    onClick={(e) => onAddReview(e, index)} >
                     Duplicate
                   </Button>
                 </PanelRow>
@@ -210,6 +216,11 @@ const General = (props) => {
             </div>
           );
         })}
+        <div className="addItem mt15">
+          <Button onClick={() => onAddNewRatting()}>
+            <Dashicon icon="plus">Add New</Dashicon>
+          </Button>
+        </div>
       </PanelBody>
 
       <PanelBody
@@ -234,12 +245,12 @@ const General = (props) => {
 
         <Label>Buttons Labels</Label>
         <TextControl
-          className="mt20" 
+          className="mt20"
           value={labelButtons}
           onChange={(val) => setAttributes({ labels: { ...labels, labelButtons: val } })}
         />
       </PanelBody>
-       
+
       <PanelBody
         initialOpen={false}
         className="bPlPanelBody"
@@ -253,11 +264,11 @@ const General = (props) => {
               <PanelBody
                 initialOpen={false}
                 className="bPlPanelBody"
-                title={__(`Pros ${index + 1}`, "Pros")}
-              >
+                title={__(`Pros ${index + 1}`, "Pros")} >
+
+                <Label>Title</Label>
                 <TextControl
                   className="mt20"
-                  label={__("Title", "product-review")}
                   value={text}
                   onChange={(val) => updateArray("pros", index, "text", val)}
                 />
@@ -269,8 +280,7 @@ const General = (props) => {
                   )}
                   <Button
                     className="duplicateItem"
-                    onClick={(e) => onAddPros(e, index)}
-                  >
+                    onClick={(e) => onAddPros(e, index)} >
                     Duplicate
                   </Button>
                 </PanelRow>
@@ -278,6 +288,11 @@ const General = (props) => {
             </div>
           );
         })}
+        <div className="addItem mt15">
+          <Button onClick={() => onAddNewPros()}>
+            <Dashicon icon="plus">Add New</Dashicon>
+          </Button>
+        </div>
       </PanelBody>
 
       <PanelBody
@@ -295,9 +310,9 @@ const General = (props) => {
                 className="bPlPanelBody"
                 title={__(`Cons ${index + 1}`, "Cons")}
               >
+                <label>Title</label>
                 <TextControl
                   className="mt20"
-                  label={__("Title", "product-review")}
                   value={text}
                   onChange={(val) => updateArray("cons", index, "text", val)}
                 />
@@ -318,6 +333,11 @@ const General = (props) => {
             </div>
           );
         })}
+        <div className="addItem mt15">
+          <Button onClick={() => onAddNewCons()}>
+            <Dashicon icon="plus">Add New</Dashicon>
+          </Button>
+        </div>
       </PanelBody>
 
       <PanelBody
@@ -363,6 +383,11 @@ const General = (props) => {
             </div>
           );
         })}
+        <div className="addItem mt15">
+          <Button onClick={() => onAddNewBtn()}>
+            <Dashicon icon="plus">Add New</Dashicon>
+          </Button>
+        </div>
       </PanelBody>
     </>
   );

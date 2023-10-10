@@ -37,7 +37,15 @@ const Edit = (props) => {
     newRatings[index][property] = value;
     setAttributes({ ratings: newRatings });
   }
-
+  function onAddNewRatting() {
+    const newRatings = [...ratings,
+    {
+      title: "Stability",
+      rating: 9,
+      description: "Hello des rating"
+    }];
+    setAttributes({ ratings: newRatings })
+  }
 
   function updatePros(index, property, value) {
     const newPros = [...pros];
@@ -49,6 +57,16 @@ const Edit = (props) => {
     newPros.splice(index, 1);
     setAttributes({ pros: newPros });
   }
+
+  function onAddNewPros() {
+    const newPros = [...pros,
+    {
+      text: "Easy to use"
+    }
+    ];
+    setAttributes({ pros: newPros });
+  }
+
   const onAddPros = () => {
     const newPros = [...pros,
     {
@@ -68,6 +86,17 @@ const Edit = (props) => {
     newCons.splice(index, 1);
     setAttributes({ cons: newCons });
   }
+
+  function onAddNewCons() {
+    const newCons = [...cons,
+    {
+      text: "Hard to assemble"
+    }
+    ];
+    setAttributes({ cons: newCons });
+  }
+
+
   const onAddCons = () => {
     const newCons = [...cons,
     {
@@ -90,6 +119,17 @@ const Edit = (props) => {
     }];
     setAttributes({ buttons: newButton });
   }
+
+  const onAddNewBtn = () => {
+    const onAddNewBtn = [...buttons,
+    {
+      "text": "Buy on Amazon",
+      "link": "",
+      "isSponsored": false,
+      "isNewTab": true
+    },]
+    setAttributes({ buttons: onAddNewBtn });
+  };
 
   function buttonDelete(index) {
     const newButton = [...buttons];
@@ -121,10 +161,13 @@ const Edit = (props) => {
       <Settings attributes={attributes} setAttributes={setAttributes}
         updatePros={updatePros} onAddPros={onAddPros} prosDelete={prosDelete}
         updateCons={updateCons} onAddCons={onAddCons} consDelete={consDelete}
-        updateButton={updateButton} onAddButton={onAddButton} buttonDelete={buttonDelete}
+        updateButton={updateButton} onAddButton={onAddButton} buttonDelete={buttonDelete}  onAddNewBtn={onAddNewBtn}
         updateReview={updateReview} reviewDelete={reviewDelete} onAddReview={onAddReview}
         updateArray={updateArray}
         updateObject={updateObject}
+        onAddNewPros={onAddNewPros}
+        onAddNewCons={onAddNewCons}
+        onAddNewRatting={onAddNewRatting}
       />
 
       <div className={className} id={`productReviews-${clientId}`}>
