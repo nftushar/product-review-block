@@ -5,7 +5,7 @@ import { solidStar, outlineStar } from "./utils/icons";
 import produce from "immer";
 import { PanelBody, TabPanel, SelectControl, RangeControl, TextControl, Button, PanelRow, TextareaControl, __experimentalNumberControl as NumberControl, __experimentalUnitControl as UnitControl } from "@wordpress/components";
 
-import { BColor, BtnGroup, MultiShadowControl, Typography, InlineMediaUpload, Background, ColorsControl, Label, BDevice, BorderControl } from "../../Components";
+import { BColor, BtnGroup, InlineMediaUpload, Background, ColorsControl, Label, BDevice } from "../../Components";
 import { borderStyles, emUnit, perUnit, pxUnit, remUnit } from '../../Components/utils/options';
 import { Dashicon } from '@wordpress/components';
 
@@ -15,7 +15,7 @@ const iconOptions = [
 ];
 
 const Settings = ({ attributes, setAttributes, updateArray, updateObject, reviewDelete, onAddReview, onAddNewRatting, onAddPros, onAddNewPros, prosDelete, onAddCons, onAddNewCons, consDelete, onAddButton, onAddNewBtn, buttonDelete }) => {
-  console.log(onAddNewBtn);
+ 
   return (
     <InspectorControls>
       <TabPanel
@@ -395,15 +395,13 @@ const General = (props) => {
 
 const Style = (props) => {
   const { attributes, setAttributes, updateObject } = props;
-  const { rating, textTypo, textColor, textShadow, background, colors, product, layout, border } = attributes;
+  const { rating, textTypo, background, colors, layout, border } = attributes;
   const { width, radius, borderStyle, color } = border;
   const { headingTag, subHeadingTag } = layout;
   const { fontSize } = textTypo;
   const defTextTypoFS = { desktop: 16, tablet: 15, mobile: 14 };
 
   const [device, setDevice] = useState('desktop');
-
-  const { nameSize, subHeSize } = product;
   const { emptyColor, fillColor } = rating;
   const { button, buttonHov } = colors;
 

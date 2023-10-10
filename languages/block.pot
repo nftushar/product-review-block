@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2023-10-09T12:47:32+00:00\n"
+"POT-Creation-Date: 2023-10-10T09:26:24+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.7.1\n"
 "X-Domain: product-review\n"
@@ -19,7 +19,7 @@ msgid "Product Review Block"
 msgstr ""
 
 #. Description of the plugin
-msgid "productReviewBlock Gutenberg plugin: Streamline Gutenberg editing with easy-to-use, responsive productReviewBlock  and more.."
+msgid "Streamline Gutenberg editing with easy-to-use, responsive productReviewBlock  and more.."
 msgstr ""
 
 #. Author of the plugin
@@ -31,164 +31,158 @@ msgid "http://bplugins.com"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:876
+#: dist/editor.js:883
 msgid "Settings"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:904
+#: dist/editor.js:911
 msgid "Icon Style"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:917
+#: dist/editor.js:924
 msgid "Products Details"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:927
+#: dist/editor.js:934
 msgid "Image"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:935
+#: dist/editor.js:942
 msgid "Price"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:942
+#: dist/editor.js:949
 msgid "Sale Price"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:964
+#: dist/editor.js:971
 msgid "Products Ratings"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:1019
+#: dist/editor.js:1030
 msgid "Labels"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:1047
+#: dist/editor.js:1058
 msgid "Pros"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:1061
-#: dist/editor.js:1101
-msgid "Title"
-msgstr ""
-
-#: dist/editor.js:1
-#: dist/editor.js:1087
+#: dist/editor.js:1102
 msgid "Cons"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:1127
+#: dist/editor.js:1147
 msgid "Buttons"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:1140
+#: dist/editor.js:1160
 msgid "Button Label"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:1146
+#: dist/editor.js:1166
 msgid "link"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:1188
+#: dist/editor.js:1211
 msgid "Typography"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:1223
+#: dist/editor.js:1246
 msgid "Content Font Size:"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:1233
+#: dist/editor.js:1256
 msgid "Border"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:1235
+#: dist/editor.js:1258
 msgid "Width:"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:1238
+#: dist/editor.js:1261
 msgid "Style:"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:1242
+#: dist/editor.js:1265
 msgid "Color:"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:1244
+#: dist/editor.js:1267
 msgid "Radius:"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:1249
+#: dist/editor.js:1272
 msgid "Colors"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:1251
+#: dist/editor.js:1274
 msgid "Fill Color"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:1259
+#: dist/editor.js:1282
 msgid "Empty Fill Color"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:1267
+#: dist/editor.js:1290
 msgid "Background"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:1276
+#: dist/editor.js:1299
 msgid "Button Colors"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:1283
+#: dist/editor.js:1306
 msgid "Button Hover Colors"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:1365
+#: dist/editor.js:1388
 msgid "Enter Product Name"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:1398
-#: dist/editor.js:1462
+#: dist/editor.js:1421
+#: dist/editor.js:1485
 msgid "Enter Description"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:1450
+#: dist/editor.js:1473
 msgid "Enter Title"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:1501
+#: dist/editor.js:1524
 msgid "Enter Pros Title"
 msgstr ""
 
 #: dist/editor.js:1
-#: dist/editor.js:1535
+#: dist/editor.js:1558
 msgid "Enter cons Title"
 msgstr ""
 

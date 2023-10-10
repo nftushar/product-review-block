@@ -1,8 +1,8 @@
-import { getMultiShadowCSS, getTypoCSS, getColorsCSS, getBackgroundCSS } from "../../Components/utils/getCSS";
+import {  getColorsCSS, getBackgroundCSS } from "../../Components/utils/getCSS";
 import { getArrFromNum, getDeviceFontSizeCSS } from "./utils/functions";
 
 const Style = ({ attributes, clientId }) => {
-	const { ratings, rating, gap, alignment, textTypo, textColor, textShadow, background, colors, layout, border } = attributes;
+	const { ratings, rating, textTypo, background, colors,  border } = attributes;
 	const { width, color, borderStyle, radius, } = border;
 	const { fontSize } = textTypo;
 	const { button, buttonHov } = colors;
@@ -12,19 +12,16 @@ const Style = ({ attributes, clientId }) => {
 	const ratingSl = `${mainSl} .productReviews`;
 	const buttonSl = `${ratingSl} .footerButtons a`;
 	const headerSl = `${mainSl} .productHeader`;
-	const headerSlAfter = `${headerSl}:after`;
-	const productDesc = `${headerSl} .productImgDesc`;
+	const headerSlAfter = `${headerSl}:after`; 
 	const headerDesc = `${headerSl} .productImgDesc p`;
 	const bodySl = `${mainSl} .productBody`;
 	const reviewRight = `${bodySl} .review-right`;
 	const reviewDec = `${ratingSl} .review-left .review-left-content`;
-	const prosCons = `${ratingSl} .review-right .review-right-pros .review-right-pros-item p`;
-	const footerSl = `${mainSl} .productFooter`;
+	const prosCons = `${ratingSl} .review-right .review-right-pros .review-right-pros-item p`; 
 	const footerSlAfter = `${mainSl} .productFooter:after`;
 	const starFillSl = `${mainSl} .ratting .stars .star .starFill svg`;
 	const emptyFillSI = `${mainSl} .ratting .stars .star svg`;
-
-	// .wp-block-b-blocks-product-review .productReviews .productFooter:after
+ 
 	// Average Ratting
 	const totalRatings = ratings.reduce((previous, { rating }) => previous + rating, 0);
 	const ratingAverage = ratings?.length ? (totalRatings / ratings?.length).toFixed(1) : 0;

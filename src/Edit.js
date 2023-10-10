@@ -3,8 +3,7 @@ import produce from 'immer';
 
 import Settings from "./Settings";
 import ProductReview from './Components/Backend/ProductReview';
-import Style from './Style';
-import Body from './Components/Backend/Body';
+import Style from './Style'; 
 
 const Edit = (props) => {
   const { className, attributes, setAttributes, clientId } = props;
