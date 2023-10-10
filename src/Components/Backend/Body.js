@@ -46,7 +46,6 @@ const Review = (props) => {
           />
 
           <Rating attributes={attributes} rating={rating} />
-
           <RichText
             tagName="span"
             value={description}
