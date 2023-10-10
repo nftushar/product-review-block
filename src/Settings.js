@@ -47,7 +47,7 @@ const Settings = ({ attributes, setAttributes, updateArray, updateObject, review
                 onAddNewRatting={onAddNewRatting}
 
               />
-            )}
+            )}   
 
             {tab.name === "style" && (
               <Style
